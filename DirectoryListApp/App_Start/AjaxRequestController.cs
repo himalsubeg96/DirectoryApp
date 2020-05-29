@@ -36,5 +36,18 @@ namespace DirectoryListApp.App_Start
             }
             return Json(palikaList, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult GetDirectorySubCategoryById(int id)
+        {
+            List<SelectListItem> subCatList = new List<SelectListItem>();
+            using (DirectoryEntities db = new DirectoryEntities())
+            {
+               var catList = db.tblDirectorySubCategories.Where(x => x.DirectoryCategoryId == id).ToList();
+               foreach (var item in catList)
+               {
+                  subCatList.Add(new SelectListItem { Text = item.DirectorySubCategoryName, Value = item.DirectorySubCategoryId.ToString() });
+               }
+            }
+            return Json(subCatList, JsonRequestBehavior.AllowGet);
+        }
     }
 }

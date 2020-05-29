@@ -36,7 +36,7 @@ namespace DirectoryListApp.Controllers
             {
                 pro.Insert(model);
                 TempData["SuccessMessage"] = "Saved Successfully";
-                return RedirectToAction("Index", "ItemCategory");
+                return RedirectToAction("Index", "DirectorySubCategory");
             }
             return View(model);
         }
@@ -66,17 +66,6 @@ namespace DirectoryListApp.Controllers
             pro.Delete(id);
             return RedirectToAction("Index");
         }
-        public JsonResult GetDirectorySubCategoryById(int id)
-        {
-
-            List<SelectListItem> subCatList = new List<SelectListItem>();
-            var catList = db.tblDirectorySubCategories.Where(x => x.DirectoryCategoryId == id).ToList();
-            foreach (var item in catList)
-            {
-                subCatList.Add(new SelectListItem { Text = item.DirectorySubCategoryName, Value = item.DirectorySubCategoryId.ToString() });
-            }
-            return Json(subCatList, JsonRequestBehavior.AllowGet);
-
-        }
+        
     }
 }

@@ -97,5 +97,41 @@ namespace DirectoryListApp
                     return "";
             }
         }
+        public static SelectList GetAllDirectoryCategory()
+        {
+            using (var ent = new DirectoryEntities())
+            {
+                return new SelectList(ent.tblDirectoryCategories.ToList(), "DirectoryCategoryId", "DirectoryCategoryName");
+            }
+        }
+        public static string GetDirectoryCategoryName(int? id)
+        {
+            using (var ent = new DirectoryEntities())
+            {
+                var obj = ent.tblDirectoryCategories.Where(x => x.DirectoryCategoryId == id).SingleOrDefault();
+                if (obj != null)
+                    return obj.DirectoryCategoryName;
+                else
+                    return "";
+            }
+        }
+        public static SelectList GetAllDirectorySubCategory()
+        {
+            using (var ent = new DirectoryEntities())
+            {
+                return new SelectList(ent.tblDirectorySubCategories.ToList(), "DirectorySubCategoryId", "DirectorySubCategoryName");
+            }
+        }
+        public static string GetDirectorySubCategoryName(int? id)
+        {
+            using (var ent = new DirectoryEntities())
+            {
+                var obj = ent.tblDirectorySubCategories.Where(x => x.DirectorySubCategoryId == id).SingleOrDefault();
+                if (obj != null)
+                    return obj.DirectorySubCategoryName;
+                else
+                    return "";
+            }
+        }
     }
 }

@@ -1,0 +1,54 @@
+﻿@model DirectoryListApp.Models.DirectoryModel
+
+<div>
+
+    <dl class="span9">
+        <dt class="span3">
+            @Html.HiddenFor(model => model.DirectoryItemId  )
+        </dt>
+        <dd class="span5">
+            @Html.HiddenFor(model => model.DirectoryItemId)
+        </dd>
+    </dl>
+    <dl class="span9">
+        <dt class="span3">
+            @Html.DisplayNameFor(model => model.DirectoryItemName )
+        </dt>
+        <dd class="span5">
+            @Html.DisplayFor(model => model.DirectoryItemName)
+        </dd>
+    </dl>
+    <dl class="span9">
+        <dt class="span3">
+            @Html.DisplayNameFor(model => model.DirectoryPhone  )
+        </dt>
+        <dd class="span5">
+            @Html.DisplayFor(model => model.DirectoryPhone)
+        </dd>
+    </dl>
+    <dl class="span9">
+        <dt class="span3">
+            @Html.DisplayNameFor(model => model.ContactPersonName)
+        </dt>
+        <dd class="span5">
+            @Html.DisplayFor(model => model.ContactPersonName)
+        </dd>
+    </dl>
+
+    <dl class="span9">
+        <dt class="span3">
+                @Html.DisplayNameFor(model => model.PermanentAddress)
+        </dt>
+        <dd class="span5">
+            @Html.DisplayFor(model => model.PermanentAddress)
+        </dd>
+    </dl>
+    <dl class="span9">
+        <dt class="span3">
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+        <dd class="span5">
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+    </dl>
+</div>          

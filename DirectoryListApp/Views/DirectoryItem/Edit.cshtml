@@ -1,0 +1,20 @@
+﻿@model DirectoryListApp.Models.DirectoryModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="well well-small">
+    @Html.HiddenFor(model=>model.DirectoryItemId)
+    @using (Html.BeginForm())
+    {
+        Html.RenderPartial("VUC_Add");
+        <br />
+
+        <input type="submit" value="सम्पादन गर्नुहोस" class="btn" />
+        <div class="btn">  @Html.ActionLink("पछाडी फर्कनुहोस्", "Index")</div>
+
+    }
+</div>
+

@@ -1,0 +1,27 @@
+﻿@model DirectoryListApp.Models.DirectoryCategoryModel
+
+<fieldset>
+    <legend>सामाग्री श्रेणी विवरण</legend>
+
+    @Html.HiddenFor(model => model.CreatedBy)
+    @Html.HiddenFor(model => model.CreatedDate)
+
+     <div class="row">
+        <div class="span3">
+            @Html.HiddenFor(model => model.DirectoryCategoryId)
+        </div>
+        <div class="span6">
+            @Html.HiddenFor(model => model.DirectoryCategoryId, new { @class = "span6", @data_name = "DirectoryCategoryId" })
+            @Html.ValidationMessageFor(model => model.DirectoryCategoryId)
+        </div>
+    </div>
+    <div class="row">
+        <div class="span3">
+            @Html.LabelFor(model => model.DirectoryCategoryName)
+        </div>
+        <div class="span6">
+            @Html.TextBoxFor(model => model.DirectoryCategoryName, new { @class = "span6", @data_name = "DirectoryCategoryName" })
+            @Html.ValidationMessageFor(model => model.DirectoryCategoryName)
+        </div>
+    </div>
+</fieldset>

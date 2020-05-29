@@ -1,0 +1,20 @@
+﻿@model DirectoryListApp.Models.DirectoryModel
+<script src="~/Scripts/jquery-1.8.3.min.js"></script>
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="well well-small">
+
+    @using (Html.BeginForm())
+    {
+        Html.RenderPartial("VUC_Add");
+        <br />
+        <div class="clearfix"></div>
+
+        <input type="submit" value="सेभ गर्नुहोस" class="btn btn-primary" />
+        <div class="btn btn-defult"> @Html.ActionLink("पछाडी फर्कनुहोस्", "Index")</div>
+
+    }
+</div>

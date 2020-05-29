@@ -1,0 +1,15 @@
+﻿@if (@ViewData["ERROR"] != null)
+{
+    <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>@ViewData["ERROR"]</strong>
+    </div>
+}
+@if (@ViewData["SUCCESS"] != null)
+{
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>@ViewData["SUCCESS"]</strong>
+    </div>
+}
+

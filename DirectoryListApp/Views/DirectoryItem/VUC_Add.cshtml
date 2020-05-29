@@ -1,0 +1,270 @@
+﻿@model DirectoryListApp.Models.DirectoryModel
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script type="text/javascript">
+    var k = jQuery.noConflict();
+    k(document).ready(function () {
+
+        k("#DirectoryCategoryId").change(function () {
+            debugger;
+            // this will call when Country Dropdown select change
+            var departmentId = parseInt(k("#DirectoryCategoryId").val());
+            var shakhaId = k("#DirectorySubCategoryId");
+            shakhaId.empty(); // this line is for clear all items from State dropdown
+            shakhaId.append(k("<option></option>").val("").html("-श्रेणी छान्नुहोस्-"));
+            if (!isNaN(departmentId)) {
+                k.ajax({
+                    url: '@Url.Action("GetDirectorySubCategoryById", "AjaxRequest")',
+                    data: { 'ID': departmentId },
+                    method: 'get',
+                    dataType: 'json',
+                    success: function (data) {
+                        var items = [];
+                        items.push("<option  value=0 >" + "उप-श्रेणी छान्नुहोस्-" + "</option>"); //first item
+                        for (var i = 0; i < data.length; i++) {
+                            items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                        }                                         //all data from the team table push into array
+                        k("#DirectorySubCategoryId").html(items.join(' '));
+
+                    },
+                    error: function (err) {
+                        alert(err);
+                    }
+
+                });
+            }
+        });
+
+        //cascade address
+        k(document).ready(function () {
+            k("#AddressState").change(function () {
+                debugger;
+                var stateId = parseInt(k("#AddressState").val());
+                var districtId = k("#AddressDistrict");
+                districtId.empty(); // this line is for clear all items from State dropdown
+                districtId.append($("<option></option>").val("").html("-Please Select-"));
+                if (!isNaN(stateId)) {
+                    k.ajax({
+                        url: '@Url.Action("GetDistrict", "AjaxRequest")',
+                        data: { 'ID': stateId },
+                        method: 'get',
+                        dataType: 'json',
+                        success: function (data) {
+                            debugger;
+                            var items = [];
+                            items.push("<option  value=0 >" + "-जिल्ला छान्नुहोस्-" + "</option>"); //first item
+                            for (var i = 0; i < data.length; i++) {
+                                items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                            }                                         //all data from the team table push into array
+                            k("#AddressDistrict").html(items.join(' '));
+
+                        },
+                        error: function (err) {
+                            alert(err);
+                        }
+
+                    })
+                }
+
+            });
+            k("#AddressDistrict").change(function () {
+                var districtId = parseInt(k("#AddressDistrict").val());
+                var palikaId = k("#AddressPalika");
+                palikaId.empty(); // this line is for clear all items from State dropdown
+                palikaId.append($("<option></option>").val("").html("-Please Select-"));
+                if (!isNaN(districtId)) {
+                    k.ajax({
+                        url: '@Url.Action("GetPalika", "AjaxRequest")',
+                        data: { 'ID': districtId },
+                        method: 'get',
+                        dataType: 'json',
+                        success: function (data) {
+
+                            var items = [];
+                            items.push("<option  value=0 >" + "-पालिका छान्नुहोस्-" + "</option>"); //first item
+                            for (var i = 0; i < data.length; i++) {
+                                items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                            }                                         //all data from the team table push into array
+                            k("#AddressPalika").html(items.join(' '));
+
+                        },
+                        error: function (err) {
+                            alert(err);
+                        }
+
+                    })
+                }
+            });
+
+        });
+    });
+</script>
+<fieldset>
+    <legend>Directory</legend>
+    @Html.HiddenFor(model => model.DirectoryItemId)
+    @Html.HiddenFor(model => model.DirectoryDetailsId)
+
+    <div class="row">
+        <div class="span11">
+
+            <div class="span3">
+                @Html.LabelFor(model => model.DirectoryCategoryId)
+            </div>
+            <div class="span7">
+                @Html.DropDownListFor(model => model.DirectoryCategoryId, DirectoryListApp.Utility.GetAllDirectoryCategory(), "छान्नुहोस्", new { @class = "span6", @required = "required", @data_name = "DirectoryCategoryId" })
+                @Html.ValidationMessageFor(model => model.DirectoryCategoryId)
+            </div>
+
+            <div class="span3">
+                @Html.LabelFor(model => model.DirectorySubCategoryId)
+            </div>
+            <div class="span7">
+                @Html.DropDownListFor(model => model.DirectorySubCategoryId, DirectoryListApp.Utility.GetAllDirectorySubCategory(), "छान्नुहोस्", new { @class = "span6", @required = "required", @data_name = "DirectorySubCategoryId" })
+                @Html.ValidationMessageFor(model => model.DirectorySubCategoryId)
+            </div>
+
+            <div class="span3">
+                @Html.LabelFor(model => model.DirectoryItemName)
+            </div>
+            <div class="span7">
+                @Html.TextBoxFor(model => model.DirectoryItemName, new { @class = "span6", @data_name = "ItemName" })
+                @Html.ValidationMessageFor(model => model.DirectoryItemName)
+            </div>
+
+        </div>
+
+        <div class="span11">
+
+            <div class="span3">
+                @Html.LabelFor(model => model.IssueDate)
+            </div>
+            <div class="span7">
+                @Html.TextBoxFor(model => model.IssueDate, new { @class = "nepali-calendar span6", @placeholder = "मिति हाल्नुहोस्", @data_name = "IssueDate" })
+                @Html.ValidationMessageFor(model => model.IssueDate)
+            </div>
+            
+            <div class="span3">
+                <label>सक्रिय अवस्था</label>
+            </div>
+            <div class="span6">
+                @Html.CheckBoxFor(model => model.Status, new { @class = "span1" })
+            </div>
+
+            <div class="span3">
+                @Html.LabelFor(model => model.Specification)
+            </div>
+            <div class="span7">
+                @Html.TextAreaFor(model => model.Specification, new { @class = "span6", @data_name = "Specification" })
+                @Html.ValidationMessageFor(model => model.Specification)
+            </div>
+
+        </div>
+    </div>
+
+
+</fieldset>
+<fieldset>
+    <legend>Directory Details</legend>
+    <div class="span24">
+        <div class="span4">
+            @Html.LabelFor(model => model.AddressState)
+        </div>
+        <div class="span19">
+            @Html.DropDownListFor(model => model.AddressState,DirectoryListApp.Utility.GetAllState(), "छान्नुहोस्", new { @class = "span6" })
+            @Html.ValidationMessageFor(model => model.AddressState)
+        </div>
+    </div>
+
+    <div class="span24">
+        <div class="span4">
+            @Html.LabelFor(model => model.AddressDistrict)
+        </div>
+        <div class="span19">
+            @Html.DropDownListFor(model => model.AddressDistrict,DirectoryListApp.Utility.GetAllDistrict() ,"छान्नुहोस्", new { @class = "span6" })
+            @Html.ValidationMessageFor(model => model.AddressDistrict)
+        </div>
+    </div>
+    <div class="span24">
+        <div class="span4">
+            @Html.LabelFor(model => model.AddressPalika)
+        </div>
+        <div class="span19">
+            @Html.DropDownListFor(model => model.AddressPalika,DirectoryListApp.Utility.GetAllPalika() ,"छान्नुहोस्", new { @class = "span6" })
+            @Html.ValidationMessageFor(model => model.AddressPalika)
+        </div>
+    </div>
+    <div class="span24">
+        <div class="span4">
+            @Html.LabelFor(model => model.DirectoryPhone )
+        </div>
+        <div class="span19">
+            @Html.TextBoxFor(model => model.DirectoryPhone, new { @class = "span7" })
+            @Html.ValidationMessageFor(model => model.DirectoryPhone)
+        </div>
+    </div>
+    <div class="span24">
+        <div class="span4">
+            @Html.LabelFor(model => model.PAN)
+        </div>
+        <div class="span19">
+            @Html.TextBoxFor(model => model.PAN, new { @class = "span7" })
+            @Html.ValidationMessageFor(model => model.PAN)
+        </div>
+    </div>
+
+    <div class="span24">
+        <div class="span4">
+            @Html.LabelFor(model => model.VAT)
+        </div>
+        <div class="span19">
+            @Html.TextBoxFor(model => model.VAT, new { @class = "span7" })
+            @Html.ValidationMessageFor(model => model.VAT)
+        </div>
+    </div>
+    <div class="span24">
+        <div class="span4">
+            @Html.LabelFor(model => model.Details)
+        </div>
+        <div class="span19">
+            @Html.TextBoxFor(model => model.Details, new { @class = "span12" })
+            @Html.ValidationMessageFor(model => model.Details)
+        </div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>सम्पर्क व्यक्तिको विवरण</legend>
+    <div class="span24">
+        <div class="span4">
+            @Html.LabelFor(model => model.ContactPersonName)
+        </div>
+        <div class="span19">
+            @Html.TextBoxFor(model => model.ContactPersonName, new { @class = "span7" })
+            @Html.ValidationMessageFor(model => model.ContactPersonName)
+        </div>
+    </div>
+
+    <div class="span24">
+        <div class="span4">
+            @Html.LabelFor(model => model.ContactPersonPhone)
+        </div>
+        <div class="span19">
+            @Html.TextBoxFor(model => model.ContactPersonPhone, new { @class = "span7" })
+            @Html.ValidationMessageFor(model => model.ContactPersonPhone)
+        </div>
+    </div>
+
+    <div class="span24">
+        <div class="span4">
+            @Html.LabelFor(model => model.Email )
+        </div>
+        <div class="span19">
+            @Html.TextBoxFor(model => model.Email, new { @class = "span7" })
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+    </div>
+</fieldset>
+
+<script>
+        var k = jQuery.noConflict();
+        k('.nepali-calendar').nepaliDatePicker()
+
+</script>

@@ -37,7 +37,7 @@ namespace DirectoryListApp.Controllers
             {
                 pro.Insert(model);
                 TempData["SuccessMessage"] = "Saved Successfully";
-                return RedirectToAction("Index", "ItemCategory");
+                return RedirectToAction("Index", "DirectoryCategory");
             }
             return View(model);
         }

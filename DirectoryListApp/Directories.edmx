@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DirectoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DirectoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblDirectoryCategory">
           <Key>
             <PropertyRef Name="DirectoryCategoryId" />
@@ -23,6 +23,7 @@
           <Property Name="AddressState" Type="int" />
           <Property Name="AddressDistrict" Type="int" />
           <Property Name="AddressPalika" Type="int" />
+          <Property Name="AddressWard" Type="int" />
           <Property Name="DirectoryPhone" Type="nvarchar" MaxLength="50" />
           <Property Name="PAN" Type="nvarchar" MaxLength="50" />
           <Property Name="VAT" Type="nvarchar" MaxLength="50" />
@@ -187,8 +188,7 @@
             <End Role="tblState1" EntitySet="tblState" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DirectoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -220,6 +220,7 @@
           <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tblDirectoryItem" Relationship="Self.FK_tblDirectoryDetails_tblDirectoryItem" FromRole="tblDirectoryDetails" ToRole="tblDirectoryItem" />
+          <Property Name="AddressWard" Type="Int32" />
         </EntityType>
         <EntityType Name="tblDirectoryItem">
           <Key>
@@ -405,6 +406,7 @@
           <EntitySetMapping Name="tblDirectoryDetails">
             <EntityTypeMapping TypeName="DirectoryModel.tblDirectoryDetail">
               <MappingFragment StoreEntitySet="tblDirectoryDetails">
+                <ScalarProperty Name="AddressWard" ColumnName="AddressWard" />
                 <ScalarProperty Name="DirectoryDetailsId" ColumnName="DirectoryDetailsId" />
                 <ScalarProperty Name="DirectoryItemId" ColumnName="DirectoryItemId" />
                 <ScalarProperty Name="AddressState" ColumnName="AddressState" />
