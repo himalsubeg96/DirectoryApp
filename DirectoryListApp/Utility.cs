@@ -133,5 +133,14 @@ namespace DirectoryListApp
                     return "";
             }
         }
+        public static SelectList GetDirectorySubCategoryById(int id)
+        {
+            List<SelectListItem> subCatList = new List<SelectListItem>();
+            using (DirectoryEntities db = new DirectoryEntities())
+            {
+                return new SelectList(db.tblDirectorySubCategories.Where(x => x.DirectoryCategoryId == id).ToList(), "DirectorySubCategoryId", "DirectorySubCategoryName");
+                
+            }
+        }
     }
 }

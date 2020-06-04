@@ -41,7 +41,8 @@ namespace DirectoryListApp.Provider
                 ContactPersonName = model.ContactPersonName,
                 ContactPersonPhone = model.ContactPersonPhone,
                 Details = model.Details,
-                Email = model.Email
+                Email = model.Email,
+                PhotoLogo=model.PhotoLogo
             };
             ent.tblDirectoryDetails.Add(addDetail);
             ent.SaveChanges();
@@ -71,6 +72,7 @@ namespace DirectoryListApp.Provider
             editDetail.ContactPersonPhone = model.ContactPersonPhone;
             editDetail.Details = model.Details;
             editDetail.Email = model.Email;
+            editDetail.PhotoLogo = model.PhotoLogo;
             ent.Entry(editDetail).State = System.Data.Entity.EntityState.Modified;
             ent.SaveChanges();
         }
@@ -88,7 +90,8 @@ namespace DirectoryListApp.Provider
                                               AddressState = b.AddressState,
                                               AddressDistrict = b.AddressDistrict,
                                               AddressPalika = b.AddressPalika,
-                                              AddressWard=b.AddressWard
+                                              AddressWard=b.AddressWard,
+                                              PhotoLogo=b.PhotoLogo
                                           }).OrderBy(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
             return result;
         }
@@ -118,8 +121,79 @@ namespace DirectoryListApp.Provider
                                          ContactPersonName = b.ContactPersonName,
                                          ContactPersonPhone = b.ContactPersonPhone,
                                          Details = b.Details,
-                                         Email = b.Email
+                                         Email = b.Email,
+                                         PhotoLogo=b.PhotoLogo
                                      }).SingleOrDefault();
+            return result;
+        }
+        public List<DirectoryModel> GetFilterList(int? category, int? subcategory, int? state, int? district, int? palika)
+        {
+            List<DirectoryModel> result = (from a in ent.tblDirectoryItems
+                                           join b in ent.tblDirectoryDetails on a.DirectoryItemId equals b.DirectoryItemId
+                                           select new DirectoryModel
+                                           {
+                                               DirectoryItemId = a.DirectoryItemId,
+                                               DirectoryItemName = a.DirectoryItemName,
+                                               DirectoryCategoryId = a.DirectoryCategoryId,
+                                               DirectorySubCategoryId = a.DirectorySubCategoryId,
+                                               Specification = a.Specification,
+                                               AddressState = b.AddressState,
+                                               AddressDistrict = b.AddressDistrict,
+                                               AddressPalika = b.AddressPalika,
+                                               AddressWard = b.AddressWard,
+                                               PhotoLogo = b.PhotoLogo
+                                           }).OrderBy(x => x.DirectoryItemId).ToList();
+            if (category!=null)
+            {
+                result = result.Where(x => x.DirectoryCategoryId == category).ToList();
+            }
+            if (subcategory !=null)
+            {
+                result = result.Where(x => x.DirectorySubCategoryId == subcategory).ToList();
+            }
+            if (state!=null)
+            {
+                result = result.Where(x => x.AddressState == state).ToList();
+            }
+            if (district!=null)
+            {
+                result = result.Where(x => x.AddressDistrict == district).ToList();
+            }
+            if (palika!=null)
+            {
+                result = result.Where(x => x.AddressPalika == palika).ToList();
+            }
+            return result;
+        }
+        public List<DirectoryModel> GetDirectoryCategory(int Id)
+        {
+            List<DirectoryModel> result = (from a in ent.tblDirectoryItems
+                                           where a.DirectoryCategoryId == Id
+                                           select new DirectoryModel {
+                                               DirectoryItemId = a.DirectoryItemId,
+                                               DirectoryItemName = a.DirectoryItemName,
+                                               DirectoryCategoryId = a.DirectoryCategoryId,
+                                               DirectorySubCategoryId = a.DirectorySubCategoryId,
+                                               IssueDate = a.IssueDate,
+                                               Status = a.Status,
+                                               Specification = a.Specification,
+                                           }).ToList();
+            return result;
+        }
+        public List<DirectoryModel> GetDirectorySubCategory(int Id)
+        {
+            List<DirectoryModel> result = (from a in ent.tblDirectoryItems
+                                           where a.DirectorySubCategoryId == Id
+                                           select new DirectoryModel
+                                           {
+                                               DirectoryItemId = a.DirectoryItemId,
+                                               DirectoryItemName = a.DirectoryItemName,
+                                               DirectoryCategoryId = a.DirectoryCategoryId,
+                                               DirectorySubCategoryId = a.DirectorySubCategoryId,
+                                               IssueDate = a.IssueDate,
+                                               Status = a.Status,
+                                               Specification = a.Specification,
+                                           }).ToList();
             return result;
         }
     }

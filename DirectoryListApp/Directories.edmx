@@ -31,6 +31,7 @@
           <Property Name="ContactPersonPhone" Type="nvarchar" MaxLength="50" />
           <Property Name="Details" Type="nvarchar(max)" />
           <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="PhotoLogo" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblDirectoryItem">
           <Key>
@@ -221,6 +222,7 @@
           <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tblDirectoryItem" Relationship="Self.FK_tblDirectoryDetails_tblDirectoryItem" FromRole="tblDirectoryDetails" ToRole="tblDirectoryItem" />
           <Property Name="AddressWard" Type="Int32" />
+          <Property Name="PhotoLogo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tblDirectoryItem">
           <Key>
@@ -406,6 +408,7 @@
           <EntitySetMapping Name="tblDirectoryDetails">
             <EntityTypeMapping TypeName="DirectoryModel.tblDirectoryDetail">
               <MappingFragment StoreEntitySet="tblDirectoryDetails">
+                <ScalarProperty Name="PhotoLogo" ColumnName="PhotoLogo" />
                 <ScalarProperty Name="AddressWard" ColumnName="AddressWard" />
                 <ScalarProperty Name="DirectoryDetailsId" ColumnName="DirectoryDetailsId" />
                 <ScalarProperty Name="DirectoryItemId" ColumnName="DirectoryItemId" />

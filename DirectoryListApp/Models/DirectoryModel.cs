@@ -21,35 +21,36 @@ namespace DirectoryListApp.Models
         //details
         public int DirectoryDetailsId { get; set; }
         public Nullable<int> MapDirectoryItemId { get; set; }
-        [DisplayName("प्रदेश")]
+        [DisplayName("State")]
         public Nullable<int> AddressState { get; set; }
-        [DisplayName("जिल्ला")]
+        [DisplayName("District")]
         public Nullable<int> AddressDistrict { get; set; }
-        [DisplayName("न.पा/ग.पा")]
+        [DisplayName("Municipality")]
         public Nullable<int> AddressPalika { get; set; }
-        [DisplayName("वडा नं.")]
+        [DisplayName("Ward No.")]
         public Nullable<int> AddressWard { get; set; }
-        [DisplayName("फोन नं")]
+        [DisplayName("Phone No")]
         public string DirectoryPhone { get; set; }
         [DisplayName("TPIN/PAN")]
         public string PAN { get; set; }
-        [DisplayName("करदाता नं")]
+        [DisplayName("VAT")]
         public string VAT { get; set; }
-        [DisplayName("नाम")]
+        [DisplayName("Contact Person Name")]
         public string ContactPersonName { get; set; }
-        [DisplayName("फोन नं")]
+        [DisplayName("Contact Person Phone")]
         public string ContactPersonPhone { get; set; }
-        [DisplayName("विवरण")]
+        [DisplayName("Details")]
         public string Details { get; set; }
         public string Email { get; set; }
-        [DisplayName("स्थायी ठेगाना")]
+        public string PhotoLogo { get; set; }
+        [DisplayName("Permanent Address")]
         public string PermanentAddress { get { return Utility.GetPalikaName(Convert.ToInt32(AddressPalika)) + "-" + AddressWard + ", " + Utility.GetDistrictName(Convert.ToInt32(AddressDistrict)) + ", " + Utility.GetStateName(Convert.ToInt32(AddressState)); } }
         public List<DirectoryModel> DirectoryModelList { get; set; }
     }
     public class DirectoryCategoryModel
     {
         public int DirectoryCategoryId { get; set; }
-        [DisplayName("श्रेणी")]
+        [DisplayName("Category Name")]
         public string DirectoryCategoryName { get; set; }
         public Nullable<int> CreatedBy { get; set; }
         public string CreatedDate { get; set; }
@@ -58,7 +59,7 @@ namespace DirectoryListApp.Models
     public class DirectorySubCategoryModel
     {
         public int DirectorySubCategoryId { get; set; }
-        [DisplayName("उप-श्रेणी")]
+        [DisplayName("Sub Category Name")]
         public string DirectorySubCategoryName { get; set; }
         public Nullable<int> DirectoryCategoryId { get; set; }
         public Nullable<int> CreatedBy { get; set; }
