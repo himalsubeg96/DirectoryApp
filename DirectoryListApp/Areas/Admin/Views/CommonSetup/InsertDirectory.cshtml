@@ -1,0 +1,22 @@
+﻿@model DirectoryListApp.Areas.Admin.Models.DirectoryViewModel
+
+@{
+    ViewBag.Title = "InsertDirectory";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="well well-small">
+
+    @using (Html.BeginForm("InsertDirectory", "CommonSetup", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        Html.RenderPartial("VUC_AddDirectory");
+        <br />
+        <div class="clearfix"></div>
+
+        <input type="submit" value="Save" class="btn btn-success" />
+        <div class="btn btn-defult"> @Html.ActionLink("Back To List", "Index")</div>
+
+    }
+</div>
+
+

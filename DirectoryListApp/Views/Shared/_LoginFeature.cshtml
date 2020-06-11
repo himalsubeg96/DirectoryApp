@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNet.Identity
+<div class="header-top ">
+    <div class="container">
+        <div class="row">
+           
+            <div class="pull-right">
+                <!-- header top menu -->
+                <div class="header-top-menu">
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <ul>
+                                <li>
+                                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                </li>
+                                <li>@Html.ActionLink("My account", "Index", "User", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                            </ul>
+                        }
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" ,@class="btn btn-lg"})
+                      
+                    }
+
+
+                </div>
+                <!-- end of header top menu -->
+            </div>
+        </div>
+    </div>
+</div>

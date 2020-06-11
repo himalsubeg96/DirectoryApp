@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -140,6 +141,43 @@ namespace DirectoryListApp
             {
                 return new SelectList(db.tblDirectorySubCategories.Where(x => x.DirectoryCategoryId == id).ToList(), "DirectorySubCategoryId", "DirectorySubCategoryName");
                 
+            }
+        }
+        public static IamgeView_Model GetUploadedImagePath(HttpPostedFileBase file, string relativeFolder)
+        {
+            IamgeView_Model model = new IamgeView_Model();
+            string folder = "/Images/" + relativeFolder + "/";
+            String Serverpath = HttpContext.Current.Server.MapPath("~" + folder);
+            if (!Directory.Exists(Serverpath))
+            {
+                Directory.CreateDirectory(Serverpath);
+            }
+            string fileExt = Path.GetExtension(file.FileName);
+            string fileName = Guid.NewGuid() + fileExt;
+            string path = Path.Combine(HttpContext.Current.Server.MapPath("~" + folder), fileName);
+            file.SaveAs(path);
+            model.FullPath = path;
+            model.RelativePath = folder + fileName;
+            model.ImgName = fileName;
+            return model;
+        }
+        public class IamgeView_Model
+        {
+            public string FullPath { get; set; }
+            public string RelativePath { get; set; }
+            public string ImgName { get; set; }
+        }
+        public static string GetUrlForImage()
+        {
+            string Fullurl = HttpContext.Current.Request.Url.AbsoluteUri;
+            var aa = Fullurl.Split('/', ' ');
+            return aa[0] + "//" + aa[2];
+        }
+        public static SelectList GetRoleList()
+        {
+            using (var ent = new DirectoryEntities())
+            {
+                return new SelectList(ent.AspNetRoles.ToList(), "Name", "Name");
             }
         }
     }

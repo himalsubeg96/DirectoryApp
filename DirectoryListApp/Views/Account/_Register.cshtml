@@ -1,0 +1,43 @@
+﻿@model DirectoryListApp.Models.RegisterViewModel
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="login-form">
+        <h4 class="login-title">Register</h4>
+
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="row">
+            @*<div class="col-md-6 col-12 mb-20">
+                    <label>First Name</label>
+                    <input class="mb-0" type="text" placeholder="First Name">
+                </div>
+                <div class="col-md-6 col-12 mb-20">
+                    <label>Last Name</label>
+                    <input class="mb-0" type="text" placeholder="Last Name">
+                </div>*@
+            <div class="col-md-12 mb-20">
+                <label>Email Address*</label>
+                @Html.TextBoxFor(m => m.Email, new { @class = "mb-0", @placeholder = "Email Address" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6 mb-20">
+                <label>Password</label>
+                @*<input class="mb-0" type="password" placeholder="Password">*@
+                @Html.TextBoxFor(m => m.Password, new { @class = "mb-0", @placeholder = "Password", @type = "password" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6 mb-20">
+                <label>Confirm Password</label>
+                @*<input class="mb-0" type="password" placeholder="Confirm Password">*@
+                @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "mb-0", @placeholder = "Confirm Password", @type = "password" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-12">
+                <button type="submit" class="register-button mt-0">Register</button>
+            </div>
+        </div>
+    </div>
+
+}

@@ -1,0 +1,21 @@
+﻿@model DirectoryListApp.Areas.Admin.Models.SubCategorySetupViewModel
+
+@{
+    ViewBag.Title = "InsertUpdateSubCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="well well-small">
+
+    @using (Html.BeginForm())
+    {
+        Html.RenderPartial("VUC_AddSubCategory");
+        <br />
+        <div class="clearfix"></div>
+
+        <input type="submit" value="Save" class="btn btn-success" />
+        <div class="btn btn-defult"> @Html.ActionLink("Back To List", "SubCategory")</div>
+
+    }
+</div>
+

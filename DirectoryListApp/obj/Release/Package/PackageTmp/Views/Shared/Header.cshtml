@@ -1,5 +1,5 @@
 ﻿@using DirectoryListApp
-
+@using Microsoft.AspNet.Identity
 <style>
     .dropdown-menu {
   position: absolute;
@@ -81,22 +81,21 @@
     </style>
         <div class="navbar navbar-primary">
         <div class="navbar-inner">
-            @*<p class="navbar-text pull-right">
-                @Html.Partial("_LoginPartial")
-            </p>*@
+            
+
             <div class="container">
                 <div class="nav-collapse collapse">
                     <ul class="nav">
                         <li class="dropdown"><a  href="~/Home/Index"><i class="fa fa-home" style="color: white; font-size: medium"></i>Home</a>
 
-                        <li class="dropdown">
+                        @*<li class="dropdown">
                             <a  data-toggle="dropdown" href="#"><i class="fa fa-gears" style="color: white; font-size: medium"></i>Setup</a>
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink("Directory Category", "Index", "DirectoryCategory")</li>
                                 <li>@Html.ActionLink("Directory SubCategory", "Index", "DirectorySubCategory") </li>
 
                             </ul>
-                        </li>
+                        </li>*@
                         <li class="dropdown">
                             <a data-toggle="dropdown" href="#"><i class="fa fa-list" style="color: white; font-size: medium"></i>Directories</a>
                             <ul class="dropdown-menu">

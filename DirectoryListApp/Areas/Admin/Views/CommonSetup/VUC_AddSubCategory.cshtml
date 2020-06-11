@@ -1,0 +1,38 @@
+﻿@model DirectoryListApp.Areas.Admin.Models.SubCategorySetupViewModel
+
+<fieldset>
+    <legend>Directory SubCategory</legend>
+
+    @Html.HiddenFor(model => model.DirectorySubCategoryId)
+    @Html.HiddenFor(model => model.CreatedBy)
+    @Html.HiddenFor(model => model.CreatedDate)
+
+
+    <div class="row">
+        <div class="span3">
+            @Html.Label("Directory Category")
+        </div>
+        <div class="span6">
+            @Html.DropDownListFor(model => model.DirectoryCategoryId, DirectoryListApp.Utility.GetAllDirectoryCategory(), "--Select--", new { @class = "span6", @required = "required", @data_name = "DirectoryCategoryId" })
+            @Html.ValidationMessageFor(model => model.DirectoryCategoryId)
+        </div>
+    </div>
+    <div class="row">
+        <div class="span3">
+            @Html.HiddenFor(model => model.DirectorySubCategoryId)
+        </div>
+        <div class="span6">
+            @Html.HiddenFor(model => model.DirectorySubCategoryId, new { @class = "span6", @data_name = "DirectorySubCategoryId" })
+            @Html.ValidationMessageFor(model => model.DirectorySubCategoryId)
+        </div>
+    </div>
+    <div class="row">
+        <div class="span3">
+            @Html.LabelFor(model => model.DirectorySubCategoryName)
+        </div>
+        <div class="span6">
+            @Html.TextBoxFor(model => model.DirectorySubCategoryName, new { @class = "span6", @data_name = "DirectorySubCategoryName" })
+            @Html.ValidationMessageFor(model => model.DirectorySubCategoryName)
+        </div>
+    </div>
+</fieldset>

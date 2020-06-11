@@ -198,13 +198,33 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CommonSetupController.cs" />
+    <Compile Include="Areas\Admin\Models\CommonSetupViewModel.cs" />
+    <Compile Include="Areas\Admin\Providers\CommonSetupProvider.cs" />
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>Directories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>Directories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>Directories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>Directories.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DirectoryCategoryController.cs" />
     <Compile Include="Controllers\DirectoryItemController.cs" />
     <Compile Include="Controllers\DirectorySubCategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Converter\UnicodeConverter.cs" />
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>Directories.tt</DependentUpon>
+    </Compile>
     <Compile Include="Directories.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -228,10 +248,12 @@
     <Compile Include="Models\DirectoryModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider\DirectoryCategoryProvider.cs" />
     <Compile Include="Provider\DirectoryItemProvider.cs" />
     <Compile Include="Provider\DirectorySubCategoryProvider.cs" />
+    <Compile Include="Provider\UserProvider.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="tblDirectoryCategory.cs">
       <DependentUpon>Directories.tt</DependentUpon>
@@ -252,6 +274,9 @@
       <DependentUpon>Directories.tt</DependentUpon>
     </Compile>
     <Compile Include="tblState.cs">
+      <DependentUpon>Directories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsersDetail.cs">
       <DependentUpon>Directories.tt</DependentUpon>
     </Compile>
     <Compile Include="Utility.cs" />
@@ -432,6 +457,22 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\CommonSetup\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CommonSetup\InsertUpdateCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\CommonSetup\Category.cshtml" />
+    <Content Include="Areas\Admin\Views\CommonSetup\VUC_AddCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\CommonSetup\SubCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\CommonSetup\InsertUpdateSubCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\CommonSetup\VUC_AddSubCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\CommonSetup\DirectoryList.cshtml" />
+    <Content Include="Areas\Admin\Views\CommonSetup\InsertDirectory.cshtml" />
+    <Content Include="Areas\Admin\Views\CommonSetup\UpdateDirectory.cshtml" />
+    <Content Include="Areas\Admin\Views\CommonSetup\VUC_Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CommonSetup\VUC_AddDirectory.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Login_Partial.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Header.cshtml" />
     <None Include="Properties\PublishProfiles\DirectoryListApp.pubxml" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
@@ -594,6 +635,12 @@
     <Content Include="Views\Shared\sidebar.cshtml" />
     <Content Include="Views\DirectoryItem\GetDirectoryCategory.cshtml" />
     <Content Include="Views\DirectoryItem\GetDirectorySubCategory.cshtml" />
+    <Content Include="Views\Shared\_LoginFeature.cshtml" />
+    <Content Include="Views\User\_UserDetailsInsert.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Insert.cshtml" />
+    <Content Include="Views\Account\_Login.cshtml" />
+    <Content Include="Views\Account\_Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

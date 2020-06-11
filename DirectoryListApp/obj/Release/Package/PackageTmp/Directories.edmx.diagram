@@ -18,6 +18,15 @@
         <AssociationConnector Association="DirectoryModel.FK_tblDirectoryItem_tblDirectorySubCategory" ManuallyRouted="false" />
         <AssociationConnector Association="DirectoryModel.FK_tblDistrict_tblDistrict" ManuallyRouted="false" />
         <AssociationConnector Association="DirectoryModel.FK_tblState_tblState" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DirectoryModel.C__MigrationHistory" Width="1.5" PointX="10.375" PointY="6.75" />
+        <EntityTypeShape EntityType="DirectoryModel.AspNetRole" Width="1.5" PointX="5.375" PointY="2.5" />
+        <EntityTypeShape EntityType="DirectoryModel.AspNetUserClaim" Width="1.5" PointX="9.875" PointY="1" />
+        <EntityTypeShape EntityType="DirectoryModel.AspNetUserLogin" Width="1.5" PointX="9.875" PointY="3.75" />
+        <EntityTypeShape EntityType="DirectoryModel.AspNetUser" Width="1.5" PointX="7.625" PointY="1.375" />
+        <EntityTypeShape EntityType="DirectoryModel.UsersDetail" Width="1.5" PointX="10.375" PointY="9.75" />
+        <AssociationConnector Association="DirectoryModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="DirectoryModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="DirectoryModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

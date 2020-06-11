@@ -8,6 +8,7 @@ namespace DirectoryListApp.Controllers
 {
     public class HomeController : Controller
     {
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
@@ -26,5 +27,14 @@ namespace DirectoryListApp.Controllers
 
             return View();
         }
+        public ActionResult LoggedIn()
+        {
+            if (!User.IsInRole("Customer"))
+            {
+                return RedirectToAction("Index", "CommonSetup", new { area = "Admin" });
+            }
+            return RedirectToAction("Index", "Home", new { Area = "" });
+        }
+
     }
 }

@@ -1,0 +1,120 @@
+﻿@using DirectoryListApp
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/chosen.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/bootstrapjq")
+    @Styles.Render("~/Content/bootstrapcss")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery-1.8.3.min.js"></script>
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap/all.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/json.cycle.js"></script>
+    <script src="~/Scripts/nepali.datepicker.js"></script>
+    <link href="~/Content/nepali.datepicker.css" rel="stylesheet" />
+    <script src="~/Scripts/select2.full.js"></script>
+    <link href="~/Scripts/select2.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/alertify.min.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/themes/default.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <header style="padding:5px;">
+        <div class="row">
+            <div class="span2">
+                <a href="/Home/Index">
+                    <img src="~/Content/img/dire.jpg" style="width:100px;height:100px;" />
+                </a>
+            </div>
+            <div class="span9" style="margin-left:-5px;">
+                <h4 style="margin:3px 0 0;">Nepal</h4>
+                <h5 style="margin:0 0 3px 0;font-size:25px; color:red;">Directory </h5>
+            </div>
+            <div class="span10 pull-right" style="margin-left:400px;">
+                <h4><span>Date:</span>@DateTime.Now.ToLongDateString()</h4>
+            </div>
+        </div>
+       
+            <div class='avatar-dropdown-menu '>
+                <div class='avatar-image float-right' style="float: right"></div>
+                <div class='avatar-dropdown-menu-items'>
+
+                    @Html.Partial("_Login_Partial")
+                </div>
+            </div>
+  
+            
+</header>
+
+        @Html.Partial("_Header")
+        @*@Html.Partial("sidebar")*@
+        <div id="body">
+            @if (Session["msg"] != null)
+            {
+                <div class="alert alert-info">
+                    <i class="fa fa-info-circle fa-2x" style="color: green;"></i><strong>@Session["msg"]</strong>
+                </div>
+                Session["msg"] = null;
+            }
+            @RenderSection("featured", required: false)
+
+            <section class="content-wrapper main-content clear-fix" style="min-height: 400px;">
+                @Html.Partial("Message")
+                @RenderBody()
+            </section>
+        </div>
+
+        <footer style="text-align: center; background-color: #2460b9; margin-top:30px; width: 100%;">
+            <div style="padding:10px; color: whitesmoke;">© Softech Foundation</div>
+        </footer>
+
+        <script src="~/Scripts/alertify.min.js"></script>
+        <script>
+        $(function () {
+
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+            var errorMessage = '@TempData["ErrorMessage"]'
+            if (errorMessage != '')
+                alertify.error(errorMessage)
+            var alertMessage = '@TempData["AlertMessage"]'
+            if (alertMessage != '')
+                alertify.alert(alertMessage)
+        });
+        </script>
+        @RenderSection("scripts", required: false)
+        <script type="text/javascript">
+        $(document).ready(function () {
+            $('.nepali-calendar').nepaliDatePicker(
+                {
+                    date: "dd/mm/yyyy"
+                }
+            );
+
+            //alert(getNepaliDate())
+            $('#DisplayTodayDate').html(getNepaliDate())
+            $('#submit')[0].reset();
+            $(window).on('popstate', function () {
+                location.reload(true);
+            });
+
+        });
+
+        </script>
+</body>
+
+</html>
