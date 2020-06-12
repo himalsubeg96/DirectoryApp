@@ -45,6 +45,7 @@ namespace DirectoryListApp.Provider
                             user.Image = model.Image;
 
                         con.Entry(user).State =System.Data.Entity.EntityState.Modified;
+                        con.SaveChanges();
                     }
                     else
                     {
@@ -58,13 +59,13 @@ namespace DirectoryListApp.Provider
                             Image = model.Image,
                         };
                         con.UsersDetails.Add(usersDetail);
+                        con.SaveChanges();
                     }
 
-                    con.SaveChanges();
                     return true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }

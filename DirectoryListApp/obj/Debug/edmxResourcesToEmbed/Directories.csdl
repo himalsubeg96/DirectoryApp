@@ -1,205 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DirectoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="tblDirectoryCategory">
-    <Key>
-      <PropertyRef Name="DirectoryCategoryId" />
-    </Key>
-    <Property Name="DirectoryCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DirectoryCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="CreatedBy" Type="Int32" />
-    <Property Name="CreatedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tblDirectoryItems" Relationship="Self.FK_tblDirectoryItem_tblDirectoryCategory" FromRole="tblDirectoryCategory" ToRole="tblDirectoryItem" />
-    <NavigationProperty Name="tblDirectorySubCategories" Relationship="Self.FK_tblDirectorySubCategory_tblDirectoryCategory" FromRole="tblDirectoryCategory" ToRole="tblDirectorySubCategory" />
-  </EntityType>
-  <EntityType Name="tblDirectoryDetail">
-    <Key>
-      <PropertyRef Name="DirectoryDetailsId" />
-    </Key>
-    <Property Name="DirectoryDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DirectoryItemId" Type="Int32" />
-    <Property Name="AddressState" Type="Int32" />
-    <Property Name="AddressDistrict" Type="Int32" />
-    <Property Name="AddressPalika" Type="Int32" />
-    <Property Name="DirectoryPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="PAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="VAT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ContactPersonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ContactPersonPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tblDirectoryItem" Relationship="Self.FK_tblDirectoryDetails_tblDirectoryItem" FromRole="tblDirectoryDetails" ToRole="tblDirectoryItem" />
-    <Property Name="AddressWard" Type="Int32" />
-    <Property Name="PhotoLogo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="tblDirectoryItem">
-    <Key>
-      <PropertyRef Name="DirectoryItemId" />
-    </Key>
-    <Property Name="DirectoryItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DirectoryItemName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="DirectoryCategoryId" Type="Int32" />
-    <Property Name="DirectorySubCategoryId" Type="Int32" />
-    <Property Name="IssueDate" Type="DateTime" Precision="0" />
-    <Property Name="Status" Type="Boolean" Nullable="false" />
-    <Property Name="Specification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tblDirectoryCategory" Relationship="Self.FK_tblDirectoryItem_tblDirectoryCategory" FromRole="tblDirectoryItem" ToRole="tblDirectoryCategory" />
-    <NavigationProperty Name="tblDirectoryDetails" Relationship="Self.FK_tblDirectoryDetails_tblDirectoryItem" FromRole="tblDirectoryItem" ToRole="tblDirectoryDetails" />
-    <NavigationProperty Name="tblDirectorySubCategory" Relationship="Self.FK_tblDirectoryItem_tblDirectorySubCategory" FromRole="tblDirectoryItem" ToRole="tblDirectorySubCategory" />
-  </EntityType>
-  <EntityType Name="tblDirectorySubCategory">
-    <Key>
-      <PropertyRef Name="DirectorySubCategoryId" />
-    </Key>
-    <Property Name="DirectorySubCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DirectorySubCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="DirectoryCategoryId" Type="Int32" />
-    <Property Name="CreatedBy" Type="Int32" />
-    <Property Name="CreatedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tblDirectoryCategory" Relationship="Self.FK_tblDirectorySubCategory_tblDirectoryCategory" FromRole="tblDirectorySubCategory" ToRole="tblDirectoryCategory" />
-    <NavigationProperty Name="tblDirectoryItems" Relationship="Self.FK_tblDirectoryItem_tblDirectorySubCategory" FromRole="tblDirectorySubCategory" ToRole="tblDirectoryItem" />
-  </EntityType>
-  <EntityType Name="tblDistrict">
-    <Key>
-      <PropertyRef Name="DistrictId" />
-    </Key>
-    <Property Name="DistrictId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DistrictId_val" Type="Int32" />
-    <Property Name="DistrictName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="StateId_val" Type="Int32" />
-    <Property Name="DistrictName_Nep" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tblState" Relationship="Self.FK_tblDistrict_tblDistrict" FromRole="tblDistrict" ToRole="tblState" />
-  </EntityType>
-  <EntityType Name="tblPalika">
-    <Key>
-      <PropertyRef Name="PalikaId" />
-    </Key>
-    <Property Name="PalikaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PalikaId_val" Type="Int32" Nullable="false" />
-    <Property Name="DistrictId" Type="Int32" />
-    <Property Name="PalikaName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="PalikaName_Nep" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="tblState">
-    <Key>
-      <PropertyRef Name="StateId" />
-    </Key>
-    <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="StateId_val" Type="Int32" />
-    <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="StateName_Nep" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tblDistricts" Relationship="Self.FK_tblDistrict_tblDistrict" FromRole="tblState" ToRole="tblDistrict" />
-    <NavigationProperty Name="tblState1" Relationship="Self.FK_tblState_tblState" FromRole="tblState" ToRole="tblState1" />
-    <NavigationProperty Name="tblState2" Relationship="Self.FK_tblState_tblState" FromRole="tblState1" ToRole="tblState" />
-  </EntityType>
-  <Association Name="FK_tblDirectoryItem_tblDirectoryCategory">
-    <End Role="tblDirectoryCategory" Type="Self.tblDirectoryCategory" Multiplicity="0..1" />
-    <End Role="tblDirectoryItem" Type="Self.tblDirectoryItem" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblDirectoryCategory">
-        <PropertyRef Name="DirectoryCategoryId" />
-      </Principal>
-      <Dependent Role="tblDirectoryItem">
-        <PropertyRef Name="DirectoryCategoryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tblDirectorySubCategory_tblDirectoryCategory">
-    <End Role="tblDirectoryCategory" Type="Self.tblDirectoryCategory" Multiplicity="0..1" />
-    <End Role="tblDirectorySubCategory" Type="Self.tblDirectorySubCategory" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblDirectoryCategory">
-        <PropertyRef Name="DirectoryCategoryId" />
-      </Principal>
-      <Dependent Role="tblDirectorySubCategory">
-        <PropertyRef Name="DirectoryCategoryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tblDirectoryDetails_tblDirectoryItem">
-    <End Role="tblDirectoryItem" Type="Self.tblDirectoryItem" Multiplicity="0..1" />
-    <End Role="tblDirectoryDetails" Type="Self.tblDirectoryDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblDirectoryItem">
-        <PropertyRef Name="DirectoryItemId" />
-      </Principal>
-      <Dependent Role="tblDirectoryDetails">
-        <PropertyRef Name="DirectoryItemId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tblDirectoryItem_tblDirectorySubCategory">
-    <End Role="tblDirectorySubCategory" Type="Self.tblDirectorySubCategory" Multiplicity="0..1" />
-    <End Role="tblDirectoryItem" Type="Self.tblDirectoryItem" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblDirectorySubCategory">
-        <PropertyRef Name="DirectorySubCategoryId" />
-      </Principal>
-      <Dependent Role="tblDirectoryItem">
-        <PropertyRef Name="DirectorySubCategoryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tblDistrict_tblDistrict">
-    <End Role="tblState" Type="Self.tblState" Multiplicity="0..1" />
-    <End Role="tblDistrict" Type="Self.tblDistrict" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblState">
-        <PropertyRef Name="StateId" />
-      </Principal>
-      <Dependent Role="tblDistrict">
-        <PropertyRef Name="StateId_val" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tblState_tblState">
-    <End Role="tblState" Type="Self.tblState" Multiplicity="1" />
-    <End Role="tblState1" Type="Self.tblState" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="tblState">
-        <PropertyRef Name="StateId" />
-      </Principal>
-      <Dependent Role="tblState1">
-        <PropertyRef Name="StateId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="DirectoryEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="tblDirectoryCategories" EntityType="Self.tblDirectoryCategory" />
-    <EntitySet Name="tblDirectoryDetails" EntityType="Self.tblDirectoryDetail" />
-    <EntitySet Name="tblDirectoryItems" EntityType="Self.tblDirectoryItem" />
-    <EntitySet Name="tblDirectorySubCategories" EntityType="Self.tblDirectorySubCategory" />
-    <EntitySet Name="tblDistricts" EntityType="Self.tblDistrict" />
-    <EntitySet Name="tblPalikas" EntityType="Self.tblPalika" />
-    <EntitySet Name="tblStates" EntityType="Self.tblState" />
-    <AssociationSet Name="FK_tblDirectoryItem_tblDirectoryCategory" Association="Self.FK_tblDirectoryItem_tblDirectoryCategory">
-      <End Role="tblDirectoryCategory" EntitySet="tblDirectoryCategories" />
-      <End Role="tblDirectoryItem" EntitySet="tblDirectoryItems" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tblDirectorySubCategory_tblDirectoryCategory" Association="Self.FK_tblDirectorySubCategory_tblDirectoryCategory">
-      <End Role="tblDirectoryCategory" EntitySet="tblDirectoryCategories" />
-      <End Role="tblDirectorySubCategory" EntitySet="tblDirectorySubCategories" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tblDirectoryDetails_tblDirectoryItem" Association="Self.FK_tblDirectoryDetails_tblDirectoryItem">
-      <End Role="tblDirectoryItem" EntitySet="tblDirectoryItems" />
-      <End Role="tblDirectoryDetails" EntitySet="tblDirectoryDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tblDirectoryItem_tblDirectorySubCategory" Association="Self.FK_tblDirectoryItem_tblDirectorySubCategory">
-      <End Role="tblDirectorySubCategory" EntitySet="tblDirectorySubCategories" />
-      <End Role="tblDirectoryItem" EntitySet="tblDirectoryItems" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tblDistrict_tblDistrict" Association="Self.FK_tblDistrict_tblDistrict">
-      <End Role="tblState" EntitySet="tblStates" />
-      <End Role="tblDistrict" EntitySet="tblDistricts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tblState_tblState" Association="Self.FK_tblState_tblState">
-      <End Role="tblState" EntitySet="tblStates" />
-      <End Role="tblState1" EntitySet="tblStates" />
-    </AssociationSet>
     <EntitySet Name="C__MigrationHistory" EntityType="DirectoryModel.C__MigrationHistory" />
     <EntitySet Name="AspNetRoles" EntityType="DirectoryModel.AspNetRole" />
     <EntitySet Name="AspNetUserClaims" EntityType="DirectoryModel.AspNetUserClaim" />
     <EntitySet Name="AspNetUserLogins" EntityType="DirectoryModel.AspNetUserLogin" />
     <EntitySet Name="AspNetUsers" EntityType="DirectoryModel.AspNetUser" />
+    <EntitySet Name="tblDirectoryCategories" EntityType="DirectoryModel.tblDirectoryCategory" />
+    <EntitySet Name="tblDirectoryDetails" EntityType="DirectoryModel.tblDirectoryDetail" />
+    <EntitySet Name="tblDirectoryItems" EntityType="DirectoryModel.tblDirectoryItem" />
+    <EntitySet Name="tblDirectorySubCategories" EntityType="DirectoryModel.tblDirectorySubCategory" />
+    <EntitySet Name="tblDistricts" EntityType="DirectoryModel.tblDistrict" />
+    <EntitySet Name="tblPalikas" EntityType="DirectoryModel.tblPalika" />
+    <EntitySet Name="tblStates" EntityType="DirectoryModel.tblState" />
     <EntitySet Name="UsersDetails" EntityType="DirectoryModel.UsersDetail" />
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="DirectoryModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
@@ -208,6 +21,30 @@
     <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="DirectoryModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
       <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDirectoryItem_tblDirectoryCategory" Association="DirectoryModel.FK_tblDirectoryItem_tblDirectoryCategory">
+      <End Role="tblDirectoryCategory" EntitySet="tblDirectoryCategories" />
+      <End Role="tblDirectoryItem" EntitySet="tblDirectoryItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDirectorySubCategory_tblDirectoryCategory" Association="DirectoryModel.FK_tblDirectorySubCategory_tblDirectoryCategory">
+      <End Role="tblDirectoryCategory" EntitySet="tblDirectoryCategories" />
+      <End Role="tblDirectorySubCategory" EntitySet="tblDirectorySubCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDirectoryDetails_tblDirectoryItem" Association="DirectoryModel.FK_tblDirectoryDetails_tblDirectoryItem">
+      <End Role="tblDirectoryItem" EntitySet="tblDirectoryItems" />
+      <End Role="tblDirectoryDetail" EntitySet="tblDirectoryDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDirectoryItem_tblDirectorySubCategory" Association="DirectoryModel.FK_tblDirectoryItem_tblDirectorySubCategory">
+      <End Role="tblDirectorySubCategory" EntitySet="tblDirectorySubCategories" />
+      <End Role="tblDirectoryItem" EntitySet="tblDirectoryItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDistrict_tblDistrict" Association="DirectoryModel.FK_tblDistrict_tblDistrict">
+      <End Role="tblState" EntitySet="tblStates" />
+      <End Role="tblDistrict" EntitySet="tblDistricts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblState_tblState" Association="DirectoryModel.FK_tblState_tblState">
+      <End Role="tblState" EntitySet="tblStates" />
+      <End Role="tblState1" EntitySet="tblStates" />
     </AssociationSet>
     <AssociationSet Name="AspNetUserRoles" Association="DirectoryModel.AspNetUserRoles">
       <End Role="AspNetRole" EntitySet="AspNetRoles" />
@@ -273,6 +110,97 @@
     <NavigationProperty Name="AspNetUserLogins" Relationship="DirectoryModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
     <NavigationProperty Name="AspNetRoles" Relationship="DirectoryModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
   </EntityType>
+  <EntityType Name="tblDirectoryCategory">
+    <Key>
+      <PropertyRef Name="DirectoryCategoryId" />
+    </Key>
+    <Property Name="DirectoryCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DirectoryCategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblDirectoryItems" Relationship="DirectoryModel.FK_tblDirectoryItem_tblDirectoryCategory" FromRole="tblDirectoryCategory" ToRole="tblDirectoryItem" />
+    <NavigationProperty Name="tblDirectorySubCategories" Relationship="DirectoryModel.FK_tblDirectorySubCategory_tblDirectoryCategory" FromRole="tblDirectoryCategory" ToRole="tblDirectorySubCategory" />
+  </EntityType>
+  <EntityType Name="tblDirectoryDetail">
+    <Key>
+      <PropertyRef Name="DirectoryDetailsId" />
+    </Key>
+    <Property Name="DirectoryDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DirectoryItemId" Type="Int32" />
+    <Property Name="AddressState" Type="Int32" />
+    <Property Name="AddressDistrict" Type="Int32" />
+    <Property Name="AddressPalika" Type="Int32" />
+    <Property Name="AddressWard" Type="Int32" />
+    <Property Name="DirectoryPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VAT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPersonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPersonPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PhotoLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblDirectoryItem" Relationship="DirectoryModel.FK_tblDirectoryDetails_tblDirectoryItem" FromRole="tblDirectoryDetail" ToRole="tblDirectoryItem" />
+  </EntityType>
+  <EntityType Name="tblDirectoryItem">
+    <Key>
+      <PropertyRef Name="DirectoryItemId" />
+    </Key>
+    <Property Name="DirectoryItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DirectoryItemName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DirectoryCategoryId" Type="Int32" />
+    <Property Name="DirectorySubCategoryId" Type="Int32" />
+    <Property Name="IssueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="Specification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblDirectoryCategory" Relationship="DirectoryModel.FK_tblDirectoryItem_tblDirectoryCategory" FromRole="tblDirectoryItem" ToRole="tblDirectoryCategory" />
+    <NavigationProperty Name="tblDirectoryDetails" Relationship="DirectoryModel.FK_tblDirectoryDetails_tblDirectoryItem" FromRole="tblDirectoryItem" ToRole="tblDirectoryDetail" />
+    <NavigationProperty Name="tblDirectorySubCategory" Relationship="DirectoryModel.FK_tblDirectoryItem_tblDirectorySubCategory" FromRole="tblDirectoryItem" ToRole="tblDirectorySubCategory" />
+  </EntityType>
+  <EntityType Name="tblDirectorySubCategory">
+    <Key>
+      <PropertyRef Name="DirectorySubCategoryId" />
+    </Key>
+    <Property Name="DirectorySubCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DirectorySubCategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DirectoryCategoryId" Type="Int32" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblDirectoryCategory" Relationship="DirectoryModel.FK_tblDirectorySubCategory_tblDirectoryCategory" FromRole="tblDirectorySubCategory" ToRole="tblDirectoryCategory" />
+    <NavigationProperty Name="tblDirectoryItems" Relationship="DirectoryModel.FK_tblDirectoryItem_tblDirectorySubCategory" FromRole="tblDirectorySubCategory" ToRole="tblDirectoryItem" />
+  </EntityType>
+  <EntityType Name="tblDistrict">
+    <Key>
+      <PropertyRef Name="DistrictId" />
+    </Key>
+    <Property Name="DistrictId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DistrictId_val" Type="Int32" />
+    <Property Name="DistrictName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StateId_val" Type="Int32" />
+    <Property Name="DistrictName_Nep" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblState" Relationship="DirectoryModel.FK_tblDistrict_tblDistrict" FromRole="tblDistrict" ToRole="tblState" />
+  </EntityType>
+  <EntityType Name="tblPalika">
+    <Key>
+      <PropertyRef Name="PalikaId" />
+    </Key>
+    <Property Name="PalikaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PalikaId_val" Type="Int32" Nullable="false" />
+    <Property Name="DistrictId" Type="Int32" />
+    <Property Name="PalikaName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PalikaName_Nep" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblState">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateId_val" Type="Int32" />
+    <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StateName_Nep" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblDistricts" Relationship="DirectoryModel.FK_tblDistrict_tblDistrict" FromRole="tblState" ToRole="tblDistrict" />
+    <NavigationProperty Name="tblState1" Relationship="DirectoryModel.FK_tblState_tblState" FromRole="tblState" ToRole="tblState1" />
+    <NavigationProperty Name="tblState2" Relationship="DirectoryModel.FK_tblState_tblState" FromRole="tblState1" ToRole="tblState" />
+  </EntityType>
   <EntityType Name="UsersDetail">
     <Key>
       <PropertyRef Name="Id" />
@@ -311,6 +239,78 @@
       </Principal>
       <Dependent Role="AspNetUserLogin">
         <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDirectoryItem_tblDirectoryCategory">
+    <End Type="DirectoryModel.tblDirectoryCategory" Role="tblDirectoryCategory" Multiplicity="0..1" />
+    <End Type="DirectoryModel.tblDirectoryItem" Role="tblDirectoryItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDirectoryCategory">
+        <PropertyRef Name="DirectoryCategoryId" />
+      </Principal>
+      <Dependent Role="tblDirectoryItem">
+        <PropertyRef Name="DirectoryCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDirectorySubCategory_tblDirectoryCategory">
+    <End Type="DirectoryModel.tblDirectoryCategory" Role="tblDirectoryCategory" Multiplicity="0..1" />
+    <End Type="DirectoryModel.tblDirectorySubCategory" Role="tblDirectorySubCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDirectoryCategory">
+        <PropertyRef Name="DirectoryCategoryId" />
+      </Principal>
+      <Dependent Role="tblDirectorySubCategory">
+        <PropertyRef Name="DirectoryCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDirectoryDetails_tblDirectoryItem">
+    <End Type="DirectoryModel.tblDirectoryItem" Role="tblDirectoryItem" Multiplicity="0..1" />
+    <End Type="DirectoryModel.tblDirectoryDetail" Role="tblDirectoryDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDirectoryItem">
+        <PropertyRef Name="DirectoryItemId" />
+      </Principal>
+      <Dependent Role="tblDirectoryDetail">
+        <PropertyRef Name="DirectoryItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDirectoryItem_tblDirectorySubCategory">
+    <End Type="DirectoryModel.tblDirectorySubCategory" Role="tblDirectorySubCategory" Multiplicity="0..1" />
+    <End Type="DirectoryModel.tblDirectoryItem" Role="tblDirectoryItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDirectorySubCategory">
+        <PropertyRef Name="DirectorySubCategoryId" />
+      </Principal>
+      <Dependent Role="tblDirectoryItem">
+        <PropertyRef Name="DirectorySubCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDistrict_tblDistrict">
+    <End Type="DirectoryModel.tblState" Role="tblState" Multiplicity="0..1" />
+    <End Type="DirectoryModel.tblDistrict" Role="tblDistrict" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblState">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="tblDistrict">
+        <PropertyRef Name="StateId_val" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblState_tblState">
+    <End Type="DirectoryModel.tblState" Role="tblState" Multiplicity="1" />
+    <End Type="DirectoryModel.tblState" Role="tblState1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tblState">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="tblState1">
+        <PropertyRef Name="StateId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

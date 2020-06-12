@@ -153,7 +153,7 @@ namespace DirectoryListApp.Areas.Admin.Providers
                 DirectoryItemName = model.DirectoryItemName,
                 DirectoryCategoryId = model.DirectoryCategoryId,
                 DirectorySubCategoryId = model.DirectorySubCategoryId,
-                IssueDate = model.IssueDate,
+                IssueDate = model.IssueDate.ToString(),
                 Status = model.Status,
                 Specification = model.Specification
             };
@@ -185,7 +185,7 @@ namespace DirectoryListApp.Areas.Admin.Providers
             objToEdit.DirectoryItemName = model.DirectoryItemName;
             objToEdit.DirectoryCategoryId = model.DirectoryCategoryId;
             objToEdit.DirectorySubCategoryId = model.DirectorySubCategoryId;
-            objToEdit.IssueDate = model.IssueDate;
+            objToEdit.IssueDate = model.IssueDate.ToString();
             objToEdit.Status = model.Status;
             objToEdit.Specification = model.Specification;
             ent.Entry(objToEdit).State = System.Data.Entity.EntityState.Modified;
@@ -210,6 +210,7 @@ namespace DirectoryListApp.Areas.Admin.Providers
         }
         public List<DirectoryViewModel> GetList(int page, int pagesize)
         {
+            var baseUrl = Utility.GetUrlForImage();
             List<DirectoryViewModel> result = (from a in ent.tblDirectoryItems
                                            join b in ent.tblDirectoryDetails on a.DirectoryItemId equals b.DirectoryItemId
                                            select new DirectoryViewModel
@@ -223,12 +224,13 @@ namespace DirectoryListApp.Areas.Admin.Providers
                                                AddressDistrict = b.AddressDistrict,
                                                AddressPalika = b.AddressPalika,
                                                AddressWard = b.AddressWard,
-                                               PhotoLogo = b.PhotoLogo
+                                               PhotoLogo =baseUrl + b.PhotoLogo
                                            }).OrderBy(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
             return result;
         }
         public DirectoryViewModel GetDirectoryData(int Id)
         {
+            var baseUrl = Utility.GetUrlForImage();
             DirectoryViewModel result = (from a in ent.tblDirectoryItems
                                      join b in ent.tblDirectoryDetails on a.DirectoryItemId equals b.DirectoryItemId
                                      where a.DirectoryItemId == Id
@@ -255,7 +257,7 @@ namespace DirectoryListApp.Areas.Admin.Providers
                                          ContactPersonPhone = b.ContactPersonPhone,
                                          Details = b.Details,
                                          Email = b.Email,
-                                         PhotoLogo = b.PhotoLogo
+                                         PhotoLogo =baseUrl + b.PhotoLogo
                                      }).SingleOrDefault();
             return result;
         }

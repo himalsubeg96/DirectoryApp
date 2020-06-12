@@ -5,27 +5,27 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="cae32ebd19054ad88e457505df6f3b54" Name="Diagram1">
-        <EntityTypeShape EntityType="DirectoryModel.tblDirectoryCategory" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DirectoryModel.tblDirectoryDetail" Width="1.5" PointX="7.5" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DirectoryModel.tblDirectoryItem" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DirectoryModel.tblDirectorySubCategory" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DirectoryModel.tblDistrict" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DirectoryModel.tblPalika" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DirectoryModel.tblState" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="DirectoryModel.FK_tblDirectoryItem_tblDirectoryCategory" ManuallyRouted="false" />
-        <AssociationConnector Association="DirectoryModel.FK_tblDirectorySubCategory_tblDirectoryCategory" ManuallyRouted="false" />
-        <AssociationConnector Association="DirectoryModel.FK_tblDirectoryDetails_tblDirectoryItem" ManuallyRouted="false" />
-        <AssociationConnector Association="DirectoryModel.FK_tblDirectoryItem_tblDirectorySubCategory" ManuallyRouted="false" />
-        <AssociationConnector Association="DirectoryModel.FK_tblDistrict_tblDistrict" ManuallyRouted="false" />
-        <AssociationConnector Association="DirectoryModel.FK_tblState_tblState" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DirectoryModel.C__MigrationHistory" Width="1.5" PointX="10.375" PointY="6.75" />
-        <EntityTypeShape EntityType="DirectoryModel.AspNetRole" Width="1.5" PointX="5.375" PointY="2.5" />
-        <EntityTypeShape EntityType="DirectoryModel.AspNetUserClaim" Width="1.5" PointX="9.875" PointY="1" />
-        <EntityTypeShape EntityType="DirectoryModel.AspNetUserLogin" Width="1.5" PointX="9.875" PointY="3.75" />
-        <EntityTypeShape EntityType="DirectoryModel.AspNetUser" Width="1.5" PointX="7.625" PointY="1.375" />
-        <EntityTypeShape EntityType="DirectoryModel.UsersDetail" Width="1.5" PointX="10.375" PointY="9.75" />
+        <EntityTypeShape EntityType="DirectoryModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DirectoryModel.AspNetRole" Width="1.5" PointX="5.75" PointY="2.5" />
+        <EntityTypeShape EntityType="DirectoryModel.AspNetUserClaim" Width="1.5" PointX="10.25" PointY="1" />
+        <EntityTypeShape EntityType="DirectoryModel.AspNetUserLogin" Width="1.5" PointX="10.25" PointY="3.75" />
+        <EntityTypeShape EntityType="DirectoryModel.AspNetUser" Width="1.5" PointX="8" PointY="1.375" />
+        <EntityTypeShape EntityType="DirectoryModel.tblDirectoryCategory" Width="1.5" PointX="0.75" PointY="7.625" />
+        <EntityTypeShape EntityType="DirectoryModel.tblDirectoryDetail" Width="1.5" PointX="7.5" PointY="9.125" />
+        <EntityTypeShape EntityType="DirectoryModel.tblDirectoryItem" Width="1.5" PointX="5.25" PointY="9.625" />
+        <EntityTypeShape EntityType="DirectoryModel.tblDirectorySubCategory" Width="1.5" PointX="3" PointY="12.125" />
+        <EntityTypeShape EntityType="DirectoryModel.tblDistrict" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="DirectoryModel.tblPalika" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DirectoryModel.tblState" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="DirectoryModel.UsersDetail" Width="1.5" PointX="4.75" PointY="5.75" />
         <AssociationConnector Association="DirectoryModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="DirectoryModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="DirectoryModel.FK_tblDirectoryItem_tblDirectoryCategory" />
+        <AssociationConnector Association="DirectoryModel.FK_tblDirectorySubCategory_tblDirectoryCategory" />
+        <AssociationConnector Association="DirectoryModel.FK_tblDirectoryDetails_tblDirectoryItem" />
+        <AssociationConnector Association="DirectoryModel.FK_tblDirectoryItem_tblDirectorySubCategory" />
+        <AssociationConnector Association="DirectoryModel.FK_tblDistrict_tblDistrict" />
+        <AssociationConnector Association="DirectoryModel.FK_tblState_tblState" />
         <AssociationConnector Association="DirectoryModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>

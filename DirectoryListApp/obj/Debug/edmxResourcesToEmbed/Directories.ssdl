@@ -87,7 +87,7 @@
     <Property Name="ContactPersonPhone" Type="nvarchar" MaxLength="50" />
     <Property Name="Details" Type="nvarchar(max)" />
     <Property Name="Email" Type="nvarchar" MaxLength="150" />
-    <Property Name="PhotoLogo" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhotoLogo" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="tblDirectoryItem">
     <Key>
@@ -97,7 +97,7 @@
     <Property Name="DirectoryItemName" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="DirectoryCategoryId" Type="int" />
     <Property Name="DirectorySubCategoryId" Type="int" />
-    <Property Name="IssueDate" Type="date" />
+    <Property Name="IssueDate" Type="nvarchar" MaxLength="50" />
     <Property Name="Status" Type="bit" Nullable="false" />
     <Property Name="Specification" Type="nvarchar(max)" />
   </EntityType>

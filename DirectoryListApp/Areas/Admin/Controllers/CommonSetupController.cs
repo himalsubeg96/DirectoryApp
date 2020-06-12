@@ -122,10 +122,12 @@ namespace DirectoryListApp.Areas.Admin.Controllers
                     }
                     else
                     {
-                        var fileName = Path.GetFileName(PhotoLogo.FileName);
-                        var path = Path.Combine(Server.MapPath("~/DirectoryLogo/"), fileName);
-                        PhotoLogo.SaveAs(path);
-                        model.PhotoLogo = fileName;
+                        //var fileName = Path.GetFileName(PhotoLogo.FileName);
+                        //var path = Path.Combine(Server.MapPath("~/DirectoryLogo/"), fileName);
+                        //PhotoLogo.SaveAs(path);
+                        //model.PhotoLogo = fileName;
+                        var image = Utility.GetUploadedImagePath(PhotoLogo, "DirectoryLogo");
+                        model.PhotoLogo = image.RelativePath;
                     }
                 }
                 catch (Exception)
@@ -133,7 +135,9 @@ namespace DirectoryListApp.Areas.Admin.Controllers
 
                     throw;
                 }
+               
             }
+            else { model.PhotoLogo = "/Images/NoImage(1).png"; }
             if (ModelState.IsValid)
             {
                 _proCommon.Insert(model);
@@ -165,10 +169,12 @@ namespace DirectoryListApp.Areas.Admin.Controllers
                     }
                     else
                     {
-                        var fileName = Path.GetFileName(PhotoLogo.FileName);
-                        var path = Path.Combine(Server.MapPath("~/DirectoryLogo/"), fileName);
-                        PhotoLogo.SaveAs(path);
-                        model.PhotoLogo = fileName;
+                        //var fileName = Path.GetFileName(PhotoLogo.FileName);
+                        //var path = Path.Combine(Server.MapPath("~/DirectoryLogo/"), fileName);
+                        //PhotoLogo.SaveAs(path);
+                        //model.PhotoLogo = fileName;
+                        var image = Utility.GetUploadedImagePath(PhotoLogo, "DirectoryLogo");
+                        model.PhotoLogo = image.RelativePath;
                     }
                 }
 

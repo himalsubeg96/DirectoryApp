@@ -37,7 +37,7 @@ namespace DirectoryListApp.Areas.Admin.Models
         public string DirectoryItemName { get; set; }
         public Nullable<int> DirectoryCategoryId { get; set; }
         public Nullable<int> DirectorySubCategoryId { get; set; }
-        public Nullable<System.DateTime> IssueDate { get; set; }
+        public string IssueDate { get; set; }
         public bool Status { get; set; }
         public string Specification { get; set; }
         //details

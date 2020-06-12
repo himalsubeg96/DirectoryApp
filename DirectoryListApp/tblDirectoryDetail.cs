@@ -19,6 +19,7 @@ namespace DirectoryListApp
         public Nullable<int> AddressState { get; set; }
         public Nullable<int> AddressDistrict { get; set; }
         public Nullable<int> AddressPalika { get; set; }
+        public Nullable<int> AddressWard { get; set; }
         public string DirectoryPhone { get; set; }
         public string PAN { get; set; }
         public string VAT { get; set; }
@@ -26,7 +27,6 @@ namespace DirectoryListApp
         public string ContactPersonPhone { get; set; }
         public string Details { get; set; }
         public string Email { get; set; }
-        public Nullable<int> AddressWard { get; set; }
         public string PhotoLogo { get; set; }
     
         public virtual tblDirectoryItem tblDirectoryItem { get; set; }

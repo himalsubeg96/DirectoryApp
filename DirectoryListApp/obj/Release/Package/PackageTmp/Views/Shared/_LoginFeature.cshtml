@@ -22,7 +22,8 @@
                     }
                     else
                     {
-                        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" ,@class="btn btn-lg"})
+                        <a href="/Account/Login" class="btn btn-lg" id="loginLink" routeValue="null">Log In</a>
+                       // @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" ,@class="btn btn-lg",Area=""})
                       
                     }
 

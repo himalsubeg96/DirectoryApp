@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\DirectoryPublishes\DirectoryPublish_June11</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\DirectoryPublishes\DirectoryPublish_June12</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -40,13 +40,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/09/2020 12:33:40</publishTime>
     </File>
     <File Include="Areas/Admin/Views/CommonSetup/VUC_AddDirectory.cshtml">
-      <publishTime>06/09/2020 13:15:01</publishTime>
+      <publishTime>06/12/2020 13:32:36</publishTime>
     </File>
     <File Include="Areas/Admin/Views/CommonSetup/VUC_AddSubCategory.cshtml">
       <publishTime>06/09/2020 12:50:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/CommonSetup/VUC_Details.cshtml">
-      <publishTime>06/09/2020 13:14:28</publishTime>
+      <publishTime>06/12/2020 13:32:06</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Header.cshtml">
       <publishTime>06/09/2020 14:21:55</publishTime>
@@ -60,6 +60,63 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Areas/Admin/Views/web.config">
       <publishTime>06/09/2020 11:41:57</publishTime>
     </File>
+    <File Include="Areas/Directory/Views/DirectoryCategory/Create.cshtml">
+      <publishTime>06/11/2020 19:33:39</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/DirectoryCategory/Edit.cshtml">
+      <publishTime>06/11/2020 19:34:51</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/DirectoryCategory/Index.cshtml">
+      <publishTime>06/11/2020 19:30:25</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/DirectoryCategory/VUC_Add.cshtml">
+      <publishTime>06/11/2020 19:35:45</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/DirectoryItem/AdvanceSearch.cshtml">
+      <publishTime>06/11/2020 20:22:42</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/DirectoryItem/Create.cshtml">
+      <publishTime>06/11/2020 19:42:30</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/DirectoryItem/Edit.cshtml">
+      <publishTime>06/11/2020 19:43:54</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/DirectoryItem/GetDirectoryCategory.cshtml">
+      <publishTime>06/11/2020 19:47:34</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/DirectoryItem/GetDirectorySubCategory.cshtml">
+      <publishTime>06/11/2020 19:50:06</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/DirectoryItem/Index.cshtml">
+      <publishTime>06/11/2020 20:21:35</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/DirectoryItem/SearchList.cshtml">
+      <publishTime>06/11/2020 19:51:18</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/DirectoryItem/VUC_Add.cshtml">
+      <publishTime>06/12/2020 12:51:20</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/DirectoryItem/VUC_AdvanceSearch.cshtml">
+      <publishTime>06/11/2020 19:54:19</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/DirectoryItem/VUC_Details.cshtml">
+      <publishTime>06/12/2020 12:54:05</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/DirectorySubCategory/Create.cshtml">
+      <publishTime>06/11/2020 19:56:55</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/DirectorySubCategory/Edit.cshtml">
+      <publishTime>06/11/2020 19:56:30</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/DirectorySubCategory/Index.cshtml">
+      <publishTime>06/11/2020 19:58:04</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/DirectorySubCategory/VUC_Add.cshtml">
+      <publishTime>06/11/2020 19:59:04</publishTime>
+    </File>
+    <File Include="Areas/Directory/Views/web.config">
+      <publishTime>06/11/2020 19:07:07</publishTime>
+    </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>02/22/2013 21:28:40</publishTime>
     </File>
@@ -67,7 +124,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/27/2020 13:47:07</publishTime>
     </File>
     <File Include="bin/DirectoryListApp.dll">
-      <publishTime>06/11/2020 15:01:31</publishTime>
+      <publishTime>06/12/2020 13:53:21</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 22:17:26</publishTime>
@@ -535,7 +592,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/02/2020 11:31:29</publishTime>
     </File>
     <File Include="Directories.edmx.diagram">
-      <publishTime>06/08/2020 16:54:12</publishTime>
+      <publishTime>06/12/2020 12:39:35</publishTime>
     </File>
     <File Include="DirectoryLogo/121005-nyzqizvbxb-1559451473.jpg">
       <publishTime>06/02/2020 15:05:46</publishTime>
@@ -575,6 +632,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Global.asax">
       <publishTime>05/27/2020 13:46:44</publishTime>
+    </File>
+    <File Include="Images/NoImage %281%29.png">
+      <publishTime>06/12/2020 12:00:02</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>06/03/2020 13:33:43</publishTime>
@@ -1114,7 +1174,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/27/2020 13:46:56</publishTime>
     </File>
     <File Include="Views/Shared/Header.cshtml">
-      <publishTime>06/11/2020 12:32:13</publishTime>
+      <publishTime>06/11/2020 20:01:02</publishTime>
     </File>
     <File Include="Views/Shared/Lockout.cshtml">
       <publishTime>05/27/2020 13:46:56</publishTime>
@@ -1123,13 +1183,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/28/2020 12:35:59</publishTime>
     </File>
     <File Include="Views/Shared/sidebar.cshtml">
-      <publishTime>06/04/2020 12:34:18</publishTime>
+      <publishTime>06/11/2020 20:03:11</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>06/08/2020 16:50:07</publishTime>
     </File>
     <File Include="Views/Shared/_LoginFeature.cshtml">
-      <publishTime>06/11/2020 14:40:44</publishTime>
+      <publishTime>06/11/2020 20:32:23</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>05/27/2020 13:46:56</publishTime>

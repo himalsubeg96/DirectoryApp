@@ -1,0 +1,182 @@
+﻿@model DirectoryListApp.Areas.Directory.Models.DirectoryModel
+<script src="~/Scripts/jquery-1.8.3.min.js"></script>
+@{
+    ViewBag.Title = "AdvanceSearch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    var k = jQuery.noConflict();
+    k(document).ready(function () {
+
+        k("#DirectoryCategoryId").change(function () {
+            debugger;
+            // this will call when Country Dropdown select change
+            var departmentId = parseInt(k("#DirectoryCategoryId").val());
+            var shakhaId = k("#DirectorySubCategoryId");
+            shakhaId.empty(); // this line is for clear all items from State dropdown
+            shakhaId.append(k("<option></option>").val("").html("-select Category-"));
+            if (!isNaN(departmentId)) {
+                k.ajax({
+                    url: '@Url.Action("GetDirectorySubCategoryById", "AjaxRequest")',
+                    data: { 'ID': departmentId },
+                    method: 'get',
+                    dataType: 'json',
+                    success: function (data) {
+                        var items = [];
+                        items.push("<option>" + "Select SubCategory-" + "</option>"); //first item
+                        for (var i = 0; i < data.length; i++) {
+                            items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                        }                                         //all data from the team table push into array
+                        k("#DirectorySubCategoryId").html(items.join(' '));
+
+                    },
+                    error: function (err) {
+                        alert(err);
+                    }
+
+                });
+            }
+        });
+
+        //cascade address
+        k(document).ready(function () {
+            k("#AddressState").change(function () {
+                debugger;
+                var stateId = parseInt(k("#AddressState").val());
+                var districtId = k("#AddressDistrict");
+                districtId.empty(); // this line is for clear all items from State dropdown
+                districtId.append($("<option></option>").val("").html("-Please Select-"));
+                if (!isNaN(stateId)) {
+                    k.ajax({
+                        url: '@Url.Action("GetDistrict", "AjaxRequest")',
+                        data: { 'ID': stateId },
+                        method: 'get',
+                        dataType: 'json',
+                        success: function (data) {
+                            debugger;
+                            var items = [];
+                            items.push("<option>" + "-Select District-" + "</option>"); //first item
+                            for (var i = 0; i < data.length; i++) {
+                                items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                            }                                         //all data from the team table push into array
+                            k("#AddressDistrict").html(items.join(' '));
+
+                        },
+                        error: function (err) {
+                            alert(err);
+                        }
+
+                    })
+                }
+
+            });
+            k("#AddressDistrict").change(function () {
+                var districtId = parseInt(k("#AddressDistrict").val());
+                var palikaId = k("#AddressPalika");
+                palikaId.empty(); // this line is for clear all items from State dropdown
+                palikaId.append($("<option></option>").val("").html("-Please Select-"));
+                if (!isNaN(districtId)) {
+                    k.ajax({
+                        url: '@Url.Action("GetPalika", "AjaxRequest")',
+                        data: { 'ID': districtId },
+                        method: 'get',
+                        dataType: 'json',
+                        success: function (data) {
+
+                            var items = [];
+                            items.push("<option>" + "-Select Municipality-" + "</option>"); //first item
+                            for (var i = 0; i < data.length; i++) {
+                                items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                            }                                         //all data from the team table push into array
+                            k("#AddressPalika").html(items.join(' '));
+
+                        },
+                        error: function (err) {
+                            alert(err);
+                        }
+
+                    })
+                }
+            });
+
+        });
+    });
+</script>
+<fieldset>
+    <legend>Advanced Search</legend>
+    <div class="well well-small">
+        <div class="row">
+            <div class="span11">
+                <div class="span3">
+                    @Html.Label("Category")
+                </div>
+                <div class="span7">
+                    @Html.DropDownListFor(model => model.DirectoryCategoryId, DirectoryListApp.Utility.GetAllDirectoryCategory(), "--Select Category--", new { @class = "span6" })
+                </div>
+            </div>
+            <div class="span11">
+                <div class="span3">
+                    @Html.Label("Sub Category")
+                </div>
+                <div class="span7">
+                    @Html.DropDownListFor(model => model.DirectorySubCategoryId, DirectoryListApp.Utility.GetAllDirectorySubCategory(), "--Select SubCategory--", new { @class = "span6" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span11">
+                <div class="span3">
+                    @Html.Label("State")
+                </div>
+                <div class="span7">
+                    @Html.DropDownListFor(model => model.AddressState, DirectoryListApp.Utility.GetAllState(), "--Select State--", new { @class = "span6" })
+                </div>
+            </div>
+            <div class="span11">
+                <div class="span3">
+                    @Html.Label("District")
+                </div>
+                <div class="span7">
+                    @Html.DropDownListFor(model => model.AddressDistrict, DirectoryListApp.Utility.GetAllDistrict(), "--Select District--", new { @class = "span6" })
+                </div>
+            </div>
+            <div class="span11">
+                <div class="span3">
+                    @Html.Label("Municipality")
+                </div>
+                <div class="span7">
+                    @Html.DropDownListFor(model => model.AddressPalika, DirectoryListApp.Utility.GetAllPalika(), "--Select Municipality--", new { @class = "span6" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button id="Search" class="btn" type="button"><i class="fa fa-search-plus"></i>Search</button>
+        </div>
+    </div>
+</fieldset>
+
+
+<div id="ResultDisplay"></div>
+
+<script>
+    $("#Search").click(function () {
+        var category = $("#DirectoryCategoryId").val();
+        var subcategory = $("#DirectorySubCategoryId").val();
+        var state = $("#AddressState").val();
+        var district = $("#AddressDistrict").val();
+        var palika = $("#AddressPalika").val();
+        var href = '/Directory/DirectoryItem/AdvanceSearchResult';
+        $.ajax({
+            url: href,
+            data: { category: category, subcategory: subcategory, state: state, district: district, palika: palika },
+            type: 'GET',
+            success: function (data) {
+                $('#ResultDisplay').html(data);
+                //var table = $('#ResultDisplay').find("#reportTable").DataTable();
+            }
+
+        })
+    });
+</script>
+

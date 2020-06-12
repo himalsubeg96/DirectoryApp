@@ -3,11 +3,11 @@
     <figure style="margin-bottom:2px;border:1px solid #eee;padding:2px;display:inline-block;">
         @if (Model.PhotoLogo != null)
         {
-            <img src="~/DirectoryLogo/@Model.PhotoLogo" height="100" width="100" class="thumbnail" />
+            <img src="@Model.PhotoLogo" height="100" width="100" class="thumbnail" />
         }
         else
         {
-            <img id="imgPreview" src="~/Content/img/NoImage (1).png" width="70" height="70" alt="Photo" />
+            <img id="imgPreview" src="~/Images/NoImage (1).png" width="70" height="70" alt="Photo" />
         }
 
     </figure>

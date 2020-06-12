@@ -192,16 +192,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AjaxRequestController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AjaxRequestController.cs" />
     <Compile Include="Areas\Admin\Controllers\CommonSetupController.cs" />
     <Compile Include="Areas\Admin\Models\CommonSetupViewModel.cs" />
     <Compile Include="Areas\Admin\Providers\CommonSetupProvider.cs" />
+    <Compile Include="Areas\Directory\Controllers\AjaxRequestController.cs" />
+    <Compile Include="Areas\Directory\Controllers\DirectoryCategoryController.cs" />
+    <Compile Include="Areas\Directory\Controllers\DirectoryItemController.cs" />
+    <Compile Include="Areas\Directory\Controllers\DirectorySubCategoryController.cs" />
+    <Compile Include="Areas\Directory\DirectoryAreaRegistration.cs" />
+    <Compile Include="Areas\Directory\Models\DirectoryModel.cs" />
+    <Compile Include="Areas\Directory\Providers\DirectoryCategoryProvider.cs" />
+    <Compile Include="Areas\Directory\Providers\DirectoryItemProvider.cs" />
+    <Compile Include="Areas\Directory\Providers\DirectorySubCategoryProvider.cs" />
     <Compile Include="AspNetRole.cs">
       <DependentUpon>Directories.tt</DependentUpon>
     </Compile>
@@ -215,9 +224,6 @@
       <DependentUpon>Directories.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\DirectoryCategoryController.cs" />
-    <Compile Include="Controllers\DirectoryItemController.cs" />
-    <Compile Include="Controllers\DirectorySubCategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -245,14 +251,10 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddressModel.cs" />
-    <Compile Include="Models\DirectoryModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Provider\DirectoryCategoryProvider.cs" />
-    <Compile Include="Provider\DirectoryItemProvider.cs" />
-    <Compile Include="Provider\DirectorySubCategoryProvider.cs" />
     <Compile Include="Provider\UserProvider.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="tblDirectoryCategory.cs">
@@ -395,15 +397,11 @@
       <DependentUpon>Directories.edmx</DependentUpon>
       <LastGenOutput>Directories.cs</LastGenOutput>
     </Content>
-    <Content Include="DirectoryLogo\121005-nyzqizvbxb-1559451473.jpg" />
-    <Content Include="DirectoryLogo\329386.jpg" />
-    <Content Include="DirectoryLogo\896e25d01980f467d2266a58801d91a6.jpg" />
-    <Content Include="DirectoryLogo\NoImage %281%29.png" />
-    <Content Include="DirectoryLogo\product4.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\NoImage %281%29.png" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\alertify.js" />
@@ -473,6 +471,25 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Login_Partial.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Header.cshtml" />
+    <Content Include="Areas\Directory\Views\web.config" />
+    <Content Include="Areas\Directory\Views\DirectoryCategory\Index.cshtml" />
+    <Content Include="Areas\Directory\Views\DirectoryCategory\Create.cshtml" />
+    <Content Include="Areas\Directory\Views\DirectoryCategory\Edit.cshtml" />
+    <Content Include="Areas\Directory\Views\DirectoryCategory\VUC_Add.cshtml" />
+    <Content Include="Areas\Directory\Views\DirectoryItem\Index.cshtml" />
+    <Content Include="Areas\Directory\Views\DirectoryItem\Create.cshtml" />
+    <Content Include="Areas\Directory\Views\DirectoryItem\Edit.cshtml" />
+    <Content Include="Areas\Directory\Views\DirectoryItem\AdvanceSearch.cshtml" />
+    <Content Include="Areas\Directory\Views\DirectoryItem\GetDirectoryCategory.cshtml" />
+    <Content Include="Areas\Directory\Views\DirectoryItem\GetDirectorySubCategory.cshtml" />
+    <Content Include="Areas\Directory\Views\DirectoryItem\SearchList.cshtml" />
+    <Content Include="Areas\Directory\Views\DirectoryItem\VUC_Add.cshtml" />
+    <Content Include="Areas\Directory\Views\DirectoryItem\VUC_Details.cshtml" />
+    <Content Include="Areas\Directory\Views\DirectoryItem\VUC_AdvanceSearch.cshtml" />
+    <Content Include="Areas\Directory\Views\DirectorySubCategory\Index.cshtml" />
+    <Content Include="Areas\Directory\Views\DirectorySubCategory\Create.cshtml" />
+    <Content Include="Areas\Directory\Views\DirectorySubCategory\Edit.cshtml" />
+    <Content Include="Areas\Directory\Views\DirectorySubCategory\VUC_Add.cshtml" />
     <None Include="Properties\PublishProfiles\DirectoryListApp.pubxml" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
@@ -604,24 +621,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\DirectoryCategory\Index.cshtml" />
     <Content Include="Views\Shared\Header.cshtml" />
     <Content Include="Views\Shared\Message.cshtml" />
-    <Content Include="Views\DirectoryCategory\Create.cshtml" />
-    <Content Include="Views\DirectoryCategory\Edit.cshtml" />
-    <Content Include="Views\DirectoryCategory\VUC_Add.cshtml" />
-    <Content Include="Views\DirectorySubCategory\Index.cshtml" />
-    <Content Include="Views\DirectorySubCategory\Create.cshtml" />
-    <Content Include="Views\DirectorySubCategory\Edit.cshtml" />
-    <Content Include="Views\DirectorySubCategory\VUC_Add.cshtml" />
-    <Content Include="Views\DirectoryItem\Index.cshtml" />
-    <Content Include="Views\DirectoryItem\Create.cshtml" />
-    <Content Include="Views\DirectoryItem\Edit.cshtml" />
-    <Content Include="Views\DirectoryItem\VUC_Add.cshtml" />
-    <Content Include="Views\DirectoryItem\VUC_Details.cshtml" />
-    <Content Include="Views\DirectoryItem\VUC_AdvanceSearch.cshtml" />
-    <Content Include="Views\DirectoryItem\AdvanceSearch.cshtml" />
-    <Content Include="Views\DirectoryItem\SearchList.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.js.flow" />
@@ -633,8 +634,6 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\sidebar.cshtml" />
-    <Content Include="Views\DirectoryItem\GetDirectoryCategory.cshtml" />
-    <Content Include="Views\DirectoryItem\GetDirectorySubCategory.cshtml" />
     <Content Include="Views\Shared\_LoginFeature.cshtml" />
     <Content Include="Views\User\_UserDetailsInsert.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
@@ -644,7 +643,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\AjaxRequest\" />
+    <Folder Include="Areas\Admin\Views\AjaxRequest\" />
+    <Folder Include="Areas\Directory\Views\AjaxRequest\" />
+    <Folder Include="Areas\Directory\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

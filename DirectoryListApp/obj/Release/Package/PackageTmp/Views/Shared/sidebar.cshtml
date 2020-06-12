@@ -82,7 +82,7 @@
     @foreach (var item in result)
     {
         <div class="btn-group">
-            <a type="button" class="btn btn-warning" href="/DirectoryItem/GetDirectoryCategory/@item.DirectoryCategoryId">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</a>
+            <a type="button" class="btn btn-warning" href="~/Directory/DirectoryItem/GetDirectoryCategory/@item.DirectoryCategoryId">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</a>
             @{ 
                 var sub = ent.tblDirectorySubCategories.Where(x => x.DirectoryCategoryId == item.DirectoryCategoryId).ToList();
             }
@@ -93,7 +93,7 @@
                 <div class="dropdown-menu">
 @foreach (var itemSub in sub)
 {
-                    <a class="dropdown-item" href="/DirectoryItem/GetDirectorySubCategory/@itemSub.DirectorySubCategoryId">@Utility.GetDirectorySubCategoryName(itemSub.DirectorySubCategoryId)</a>
+                    <a class="dropdown-item" href="~/Directory/DirectoryItem/GetDirectorySubCategory/@itemSub.DirectorySubCategoryId">@Utility.GetDirectorySubCategoryName(itemSub.DirectorySubCategoryId)</a>
 }
                 </div>
              

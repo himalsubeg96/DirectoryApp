@@ -1,0 +1,19 @@
+﻿@model DirectoryListApp.Areas.Directory.Models.DirectorySubCategoryModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="well well-small">
+    @using (Html.BeginForm())
+    {
+        Html.RenderPartial("VUC_Add");
+        <br />
+
+        <input type="submit" value="Edit and Save" class="btn" />
+        <div class="btn">  @Html.ActionLink("Back To List", "Index")</div>
+
+    }
+</div>
+

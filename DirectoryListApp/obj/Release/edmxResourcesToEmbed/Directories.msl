@@ -1,92 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DirectoryModelStoreContainer" CdmEntityContainer="DirectoryEntities">
-    <EntitySetMapping Name="tblDirectoryCategories">
-      <EntityTypeMapping TypeName="DirectoryModel.tblDirectoryCategory">
-        <MappingFragment StoreEntitySet="tblDirectoryCategory">
-          <ScalarProperty Name="DirectoryCategoryId" ColumnName="DirectoryCategoryId" />
-          <ScalarProperty Name="DirectoryCategoryName" ColumnName="DirectoryCategoryName" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblDirectoryDetails">
-      <EntityTypeMapping TypeName="DirectoryModel.tblDirectoryDetail">
-        <MappingFragment StoreEntitySet="tblDirectoryDetails">
-          <ScalarProperty Name="PhotoLogo" ColumnName="PhotoLogo" />
-          <ScalarProperty Name="AddressWard" ColumnName="AddressWard" />
-          <ScalarProperty Name="DirectoryDetailsId" ColumnName="DirectoryDetailsId" />
-          <ScalarProperty Name="DirectoryItemId" ColumnName="DirectoryItemId" />
-          <ScalarProperty Name="AddressState" ColumnName="AddressState" />
-          <ScalarProperty Name="AddressDistrict" ColumnName="AddressDistrict" />
-          <ScalarProperty Name="AddressPalika" ColumnName="AddressPalika" />
-          <ScalarProperty Name="DirectoryPhone" ColumnName="DirectoryPhone" />
-          <ScalarProperty Name="PAN" ColumnName="PAN" />
-          <ScalarProperty Name="VAT" ColumnName="VAT" />
-          <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
-          <ScalarProperty Name="ContactPersonPhone" ColumnName="ContactPersonPhone" />
-          <ScalarProperty Name="Details" ColumnName="Details" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblDirectoryItems">
-      <EntityTypeMapping TypeName="DirectoryModel.tblDirectoryItem">
-        <MappingFragment StoreEntitySet="tblDirectoryItem">
-          <ScalarProperty Name="DirectoryItemId" ColumnName="DirectoryItemId" />
-          <ScalarProperty Name="DirectoryItemName" ColumnName="DirectoryItemName" />
-          <ScalarProperty Name="DirectoryCategoryId" ColumnName="DirectoryCategoryId" />
-          <ScalarProperty Name="DirectorySubCategoryId" ColumnName="DirectorySubCategoryId" />
-          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Specification" ColumnName="Specification" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblDirectorySubCategories">
-      <EntityTypeMapping TypeName="DirectoryModel.tblDirectorySubCategory">
-        <MappingFragment StoreEntitySet="tblDirectorySubCategory">
-          <ScalarProperty Name="DirectorySubCategoryId" ColumnName="DirectorySubCategoryId" />
-          <ScalarProperty Name="DirectorySubCategoryName" ColumnName="DirectorySubCategoryName" />
-          <ScalarProperty Name="DirectoryCategoryId" ColumnName="DirectoryCategoryId" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblDistricts">
-      <EntityTypeMapping TypeName="DirectoryModel.tblDistrict">
-        <MappingFragment StoreEntitySet="tblDistrict">
-          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
-          <ScalarProperty Name="DistrictId_val" ColumnName="DistrictId_val" />
-          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
-          <ScalarProperty Name="StateId_val" ColumnName="StateId_val" />
-          <ScalarProperty Name="DistrictName_Nep" ColumnName="DistrictName_Nep" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblPalikas">
-      <EntityTypeMapping TypeName="DirectoryModel.tblPalika">
-        <MappingFragment StoreEntitySet="tblPalika">
-          <ScalarProperty Name="PalikaId" ColumnName="PalikaId" />
-          <ScalarProperty Name="PalikaId_val" ColumnName="PalikaId_val" />
-          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
-          <ScalarProperty Name="PalikaName" ColumnName="PalikaName" />
-          <ScalarProperty Name="PalikaName_Nep" ColumnName="PalikaName-Nep" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblStates">
-      <EntityTypeMapping TypeName="DirectoryModel.tblState">
-        <MappingFragment StoreEntitySet="tblState">
-          <ScalarProperty Name="StateId" ColumnName="StateId" />
-          <ScalarProperty Name="StateId_val" ColumnName="StateId_val" />
-          <ScalarProperty Name="StateName" ColumnName="StateName" />
-          <ScalarProperty Name="StateName_Nep" ColumnName="StateName_Nep" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="C__MigrationHistory">
       <EntityTypeMapping TypeName="DirectoryModel.C__MigrationHistory">
         <MappingFragment StoreEntitySet="__MigrationHistory">
@@ -139,6 +53,92 @@
           <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDirectoryCategories">
+      <EntityTypeMapping TypeName="DirectoryModel.tblDirectoryCategory">
+        <MappingFragment StoreEntitySet="tblDirectoryCategory">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="DirectoryCategoryName" ColumnName="DirectoryCategoryName" />
+          <ScalarProperty Name="DirectoryCategoryId" ColumnName="DirectoryCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDirectoryDetails">
+      <EntityTypeMapping TypeName="DirectoryModel.tblDirectoryDetail">
+        <MappingFragment StoreEntitySet="tblDirectoryDetails">
+          <ScalarProperty Name="PhotoLogo" ColumnName="PhotoLogo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="ContactPersonPhone" ColumnName="ContactPersonPhone" />
+          <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
+          <ScalarProperty Name="VAT" ColumnName="VAT" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="DirectoryPhone" ColumnName="DirectoryPhone" />
+          <ScalarProperty Name="AddressWard" ColumnName="AddressWard" />
+          <ScalarProperty Name="AddressPalika" ColumnName="AddressPalika" />
+          <ScalarProperty Name="AddressDistrict" ColumnName="AddressDistrict" />
+          <ScalarProperty Name="AddressState" ColumnName="AddressState" />
+          <ScalarProperty Name="DirectoryItemId" ColumnName="DirectoryItemId" />
+          <ScalarProperty Name="DirectoryDetailsId" ColumnName="DirectoryDetailsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDirectoryItems">
+      <EntityTypeMapping TypeName="DirectoryModel.tblDirectoryItem">
+        <MappingFragment StoreEntitySet="tblDirectoryItem">
+          <ScalarProperty Name="Specification" ColumnName="Specification" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="DirectorySubCategoryId" ColumnName="DirectorySubCategoryId" />
+          <ScalarProperty Name="DirectoryCategoryId" ColumnName="DirectoryCategoryId" />
+          <ScalarProperty Name="DirectoryItemName" ColumnName="DirectoryItemName" />
+          <ScalarProperty Name="DirectoryItemId" ColumnName="DirectoryItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDirectorySubCategories">
+      <EntityTypeMapping TypeName="DirectoryModel.tblDirectorySubCategory">
+        <MappingFragment StoreEntitySet="tblDirectorySubCategory">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="DirectoryCategoryId" ColumnName="DirectoryCategoryId" />
+          <ScalarProperty Name="DirectorySubCategoryName" ColumnName="DirectorySubCategoryName" />
+          <ScalarProperty Name="DirectorySubCategoryId" ColumnName="DirectorySubCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDistricts">
+      <EntityTypeMapping TypeName="DirectoryModel.tblDistrict">
+        <MappingFragment StoreEntitySet="tblDistrict">
+          <ScalarProperty Name="DistrictName_Nep" ColumnName="DistrictName_Nep" />
+          <ScalarProperty Name="StateId_val" ColumnName="StateId_val" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="DistrictId_val" ColumnName="DistrictId_val" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPalikas">
+      <EntityTypeMapping TypeName="DirectoryModel.tblPalika">
+        <MappingFragment StoreEntitySet="tblPalika">
+          <ScalarProperty Name="PalikaName_Nep" ColumnName="PalikaName-Nep" />
+          <ScalarProperty Name="PalikaName" ColumnName="PalikaName" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="PalikaId_val" ColumnName="PalikaId_val" />
+          <ScalarProperty Name="PalikaId" ColumnName="PalikaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblStates">
+      <EntityTypeMapping TypeName="DirectoryModel.tblState">
+        <MappingFragment StoreEntitySet="tblState">
+          <ScalarProperty Name="StateName_Nep" ColumnName="StateName_Nep" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="StateId_val" ColumnName="StateId_val" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
