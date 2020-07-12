@@ -2,20 +2,65 @@
 @model LoginViewModel
 @{
     ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="page-content mb-50" style="margin-top: 10px;">
-    <div class="container">
-        <div style="width: 50%; float:left">
-            <div class="control-list col-md-6">
-                @Html.Partial("_Login", new DirectoryListApp.Models.LoginViewModel())
-            </div>
-        </div>
 
-        <div style="width: 50%; float:right">
-            <div class="control-list col-md-6">
-                @Html.Partial("_Register", new DirectoryListApp.Models.RegisterViewModel())
+<!-- Mirrored from code-theme.com/html/listifind/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Jun 2020 06:22:51 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="html 5 template">
+    <meta name="author" content="">
+    <title>Login</title>
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- ARCHIVES CSS -->
+    <link href="~/Content/CSS/animate.css" rel="stylesheet" />
+    <link href="~/Content/CSS/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/CSS/menu.css" rel="stylesheet" />
+    <link href="~/Content/CSS/styles.css" rel="stylesheet" />
+    <link href="~/Content/CSS/default.css" rel="stylesheet" id="color" />
+</head>
+
+<body class="inner-pages">
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- START SECTION HEADINGS -->
+      
+        <section class="headings" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(Content/images/slider1.jpeg) no-repeat center center;">
+            <div class="text-heading text-center">
+                <div class="container">
+                    <h1>Login</h1>
+                </div>
             </div>
-        </div>
+        </section>
+        <!-- END SECTION HEADINGS -->
+        <!-- START SECTION LOGIN -->
+        @Html.Partial("_Login", new DirectoryListApp.Models.LoginViewModel())
+        <!-- END SECTION LOGIN -->
+        
+
+            <!-- ARCHIVES JS -->
+            <script src="~/Scripts/JS/jquery.min.js"></script>
+            <script src="~/Scripts/JS/tether.min.js"></script>
+            <script src="~/Scripts/JS/bootstrap.min.js"></script>
+            <script src="~/Scripts/JS/mmenu.min.js"></script>
+            <script src="~/Scripts/JS/mmenu.js"></script>
+            <script src="~/Scripts/JS/smooth-scroll.min.js"></script>
+            <script src="~/Scripts/JS/ajaxchimp.min.js"></script>
+            <script src="~/Scripts/JS/newsletter.js"></script>
+            <script src="~/Scripts/JS/inner.js"></script>
+            <script src="~/Scripts/JS/color-switcher.js"></script>
     </div>
-</div>
+
+</body>
+</html>
+
+
+

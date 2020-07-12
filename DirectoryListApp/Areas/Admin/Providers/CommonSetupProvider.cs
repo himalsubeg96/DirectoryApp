@@ -9,6 +9,10 @@ namespace DirectoryListApp.Areas.Admin.Providers
     public class CommonSetupProvider
     {
         DirectoryEntities ent = new DirectoryEntities();
+        public int GetTotalItemCount()
+        {
+            return ent.tblDirectoryItems.Count();
+        }
         public List<CategorySetupViewModel> GetAllCategories()
         {
             using (var con = new DirectoryEntities())
@@ -208,7 +212,7 @@ namespace DirectoryListApp.Areas.Admin.Providers
             ent.Entry(editDetail).State = System.Data.Entity.EntityState.Modified;
             ent.SaveChanges();
         }
-        public List<DirectoryViewModel> GetList(int page, int pagesize)
+        public List<DirectoryViewModel> GetDirectoryList(int page, int pagesize)
         {
             var baseUrl = Utility.GetUrlForImage();
             List<DirectoryViewModel> result = (from a in ent.tblDirectoryItems
@@ -261,5 +265,27 @@ namespace DirectoryListApp.Areas.Admin.Providers
                                      }).SingleOrDefault();
             return result;
         }
+        public List<DirectoryViewModel> GetDirectoryCategory(int Id, int page, int pagesize)
+        {
+            List<DirectoryViewModel> result = (from a in ent.tblDirectoryItems
+                                           join b in ent.tblDirectoryDetails on a.DirectoryItemId equals b.DirectoryItemId
+                                           where a.DirectoryCategoryId == Id
+                                           select new DirectoryViewModel
+                                           {
+                                               DirectoryItemId = a.DirectoryItemId,
+                                               DirectoryItemName = a.DirectoryItemName,
+                                               DirectoryCategoryId = a.DirectoryCategoryId,
+                                               DirectorySubCategoryId = a.DirectorySubCategoryId,
+                                               IssueDate = a.IssueDate,
+                                               Status = a.Status,
+                                               Specification = a.Specification,
+                                               AddressState = b.AddressState,
+                                               AddressDistrict = b.AddressDistrict,
+                                               AddressPalika = b.AddressPalika,
+                                               AddressWard = b.AddressWard,
+                                           }).OrderBy(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
+            return result;
+        }
+        
     }
 }

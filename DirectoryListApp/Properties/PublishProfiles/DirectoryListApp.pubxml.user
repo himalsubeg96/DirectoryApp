@@ -6,23 +6,26 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\DirectoryPublishes\DirectoryPublish_June12</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\DirectoryPublishes\DirectoryPublish_July1</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
       <publishTime>05/27/2020 13:47:07</publishTime>
     </File>
     <File Include="Areas/Admin/Views/CommonSetup/Category.cshtml">
-      <publishTime>06/11/2020 14:30:06</publishTime>
+      <publishTime>07/01/2020 15:33:28</publishTime>
     </File>
     <File Include="Areas/Admin/Views/CommonSetup/DirectoryList.cshtml">
-      <publishTime>06/11/2020 14:30:14</publishTime>
+      <publishTime>07/01/2020 13:38:00</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/CommonSetup/GetDirectoryCategory.cshtml">
+      <publishTime>07/01/2020 12:56:30</publishTime>
     </File>
     <File Include="Areas/Admin/Views/CommonSetup/Index.cshtml">
-      <publishTime>06/11/2020 12:31:14</publishTime>
+      <publishTime>06/24/2020 11:24:19</publishTime>
     </File>
     <File Include="Areas/Admin/Views/CommonSetup/InsertDirectory.cshtml">
-      <publishTime>06/11/2020 14:30:20</publishTime>
+      <publishTime>07/01/2020 14:55:03</publishTime>
     </File>
     <File Include="Areas/Admin/Views/CommonSetup/InsertUpdateCategory.cshtml">
       <publishTime>06/11/2020 14:30:26</publishTime>
@@ -31,28 +34,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/11/2020 14:30:31</publishTime>
     </File>
     <File Include="Areas/Admin/Views/CommonSetup/SubCategory.cshtml">
-      <publishTime>06/11/2020 14:30:37</publishTime>
+      <publishTime>07/01/2020 15:22:06</publishTime>
     </File>
     <File Include="Areas/Admin/Views/CommonSetup/UpdateDirectory.cshtml">
       <publishTime>06/11/2020 14:30:42</publishTime>
     </File>
     <File Include="Areas/Admin/Views/CommonSetup/VUC_AddCategory.cshtml">
-      <publishTime>06/09/2020 12:33:40</publishTime>
+      <publishTime>07/01/2020 15:03:19</publishTime>
     </File>
     <File Include="Areas/Admin/Views/CommonSetup/VUC_AddDirectory.cshtml">
-      <publishTime>06/12/2020 13:32:36</publishTime>
+      <publishTime>07/01/2020 15:00:31</publishTime>
     </File>
     <File Include="Areas/Admin/Views/CommonSetup/VUC_AddSubCategory.cshtml">
-      <publishTime>06/09/2020 12:50:52</publishTime>
+      <publishTime>07/01/2020 15:13:27</publishTime>
     </File>
     <File Include="Areas/Admin/Views/CommonSetup/VUC_Details.cshtml">
-      <publishTime>06/12/2020 13:32:06</publishTime>
+      <publishTime>06/24/2020 11:26:56</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Header.cshtml">
       <publishTime>06/09/2020 14:21:55</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
-      <publishTime>06/11/2020 14:34:46</publishTime>
+      <publishTime>07/01/2020 13:22:00</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Login_Partial.cshtml">
       <publishTime>06/11/2020 12:47:33</publishTime>
@@ -73,7 +76,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/11/2020 19:35:45</publishTime>
     </File>
     <File Include="Areas/Directory/Views/DirectoryItem/AdvanceSearch.cshtml">
-      <publishTime>06/11/2020 20:22:42</publishTime>
+      <publishTime>06/23/2020 14:51:36</publishTime>
     </File>
     <File Include="Areas/Directory/Views/DirectoryItem/Create.cshtml">
       <publishTime>06/11/2020 19:42:30</publishTime>
@@ -82,25 +85,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/11/2020 19:43:54</publishTime>
     </File>
     <File Include="Areas/Directory/Views/DirectoryItem/GetDirectoryCategory.cshtml">
-      <publishTime>06/11/2020 19:47:34</publishTime>
+      <publishTime>07/01/2020 12:55:36</publishTime>
     </File>
     <File Include="Areas/Directory/Views/DirectoryItem/GetDirectorySubCategory.cshtml">
-      <publishTime>06/11/2020 19:50:06</publishTime>
+      <publishTime>07/01/2020 12:55:23</publishTime>
     </File>
     <File Include="Areas/Directory/Views/DirectoryItem/Index.cshtml">
-      <publishTime>06/11/2020 20:21:35</publishTime>
+      <publishTime>06/24/2020 14:33:15</publishTime>
     </File>
     <File Include="Areas/Directory/Views/DirectoryItem/SearchList.cshtml">
-      <publishTime>06/11/2020 19:51:18</publishTime>
+      <publishTime>06/23/2020 17:07:31</publishTime>
     </File>
     <File Include="Areas/Directory/Views/DirectoryItem/VUC_Add.cshtml">
-      <publishTime>06/12/2020 12:51:20</publishTime>
+      <publishTime>07/01/2020 14:58:10</publishTime>
     </File>
     <File Include="Areas/Directory/Views/DirectoryItem/VUC_AdvanceSearch.cshtml">
-      <publishTime>06/11/2020 19:54:19</publishTime>
+      <publishTime>06/23/2020 17:08:05</publishTime>
     </File>
     <File Include="Areas/Directory/Views/DirectoryItem/VUC_Details.cshtml">
-      <publishTime>06/12/2020 12:54:05</publishTime>
+      <publishTime>06/23/2020 17:03:02</publishTime>
     </File>
     <File Include="Areas/Directory/Views/DirectorySubCategory/Create.cshtml">
       <publishTime>06/11/2020 19:56:55</publishTime>
@@ -124,7 +127,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/27/2020 13:47:07</publishTime>
     </File>
     <File Include="bin/DirectoryListApp.dll">
-      <publishTime>06/12/2020 13:53:21</publishTime>
+      <publishTime>07/01/2020 16:01:23</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 22:17:26</publishTime>
@@ -366,6 +369,192 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/chosen.css">
       <publishTime>05/28/2020 11:29:23</publishTime>
     </File>
+    <File Include="Content/CSS/all.min.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/all5.0.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/all5.min.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/animate.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/bootstrap.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/colors/dark-blue.css">
+      <publishTime>06/18/2020 10:42:02</publishTime>
+    </File>
+    <File Include="Content/CSS/colors/dark-orange.css">
+      <publishTime>06/18/2020 10:42:02</publishTime>
+    </File>
+    <File Include="Content/CSS/colors/dark-pink.css">
+      <publishTime>06/18/2020 10:42:02</publishTime>
+    </File>
+    <File Include="Content/CSS/colors/green.css">
+      <publishTime>06/18/2020 10:42:02</publishTime>
+    </File>
+    <File Include="Content/CSS/colors/light-black.css">
+      <publishTime>06/18/2020 10:42:02</publishTime>
+    </File>
+    <File Include="Content/CSS/datedropper.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/default.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/font-awesome.min.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/fontawesome-all.min.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/images copy/contact.png">
+      <publishTime>06/18/2020 10:41:27</publishTime>
+    </File>
+    <File Include="Content/CSS/images copy/credit.png">
+      <publishTime>06/18/2020 10:41:27</publishTime>
+    </File>
+    <File Include="Content/CSS/images copy/de.png">
+      <publishTime>06/18/2020 10:41:27</publishTime>
+    </File>
+    <File Include="Content/CSS/images copy/en.png">
+      <publishTime>06/18/2020 10:41:27</publishTime>
+    </File>
+    <File Include="Content/CSS/images copy/food-logo.png">
+      <publishTime>06/18/2020 10:41:27</publishTime>
+    </File>
+    <File Include="Content/CSS/images copy/fr.png">
+      <publishTime>06/18/2020 10:41:27</publishTime>
+    </File>
+    <File Include="Content/CSS/images copy/it.png">
+      <publishTime>06/18/2020 10:41:27</publishTime>
+    </File>
+    <File Include="Content/CSS/images copy/job-logo.svg">
+      <publishTime>06/18/2020 10:41:27</publishTime>
+    </File>
+    <File Include="Content/CSS/images copy/logo-footer.svg">
+      <publishTime>06/18/2020 10:41:27</publishTime>
+    </File>
+    <File Include="Content/CSS/images copy/logo-white.svg">
+      <publishTime>06/18/2020 10:41:27</publishTime>
+    </File>
+    <File Include="Content/CSS/images copy/logo.svg">
+      <publishTime>06/18/2020 10:41:27</publishTime>
+    </File>
+    <File Include="Content/CSS/images copy/map.png">
+      <publishTime>06/18/2020 10:41:27</publishTime>
+    </File>
+    <File Include="Content/CSS/images copy/paypal.png">
+      <publishTime>06/18/2020 10:41:27</publishTime>
+    </File>
+    <File Include="Content/CSS/images copy/preloader.gif">
+      <publishTime>06/18/2020 10:41:27</publishTime>
+    </File>
+    <File Include="Content/CSS/images copy/user.png">
+      <publishTime>06/18/2020 10:41:27</publishTime>
+    </File>
+    <File Include="Content/CSS/images/layers-2x.html">
+      <publishTime>06/18/2020 10:41:08</publishTime>
+    </File>
+    <File Include="Content/CSS/images/layers.html">
+      <publishTime>06/18/2020 10:41:08</publishTime>
+    </File>
+    <File Include="Content/CSS/images/ui-icons_444444_256x240.html">
+      <publishTime>06/18/2020 10:41:08</publishTime>
+    </File>
+    <File Include="Content/CSS/images/ui-icons_555555_256x240.html">
+      <publishTime>06/18/2020 10:41:08</publishTime>
+    </File>
+    <File Include="Content/CSS/images/ui-icons_777620_256x240.html">
+      <publishTime>06/18/2020 10:41:08</publishTime>
+    </File>
+    <File Include="Content/CSS/images/ui-icons_777777_256x240.html">
+      <publishTime>06/18/2020 10:41:08</publishTime>
+    </File>
+    <File Include="Content/CSS/images/ui-icons_cc0000_256x240.html">
+      <publishTime>06/18/2020 10:41:08</publishTime>
+    </File>
+    <File Include="Content/CSS/images/ui-icons_ffffff_256x240.html">
+      <publishTime>06/18/2020 10:41:08</publishTime>
+    </File>
+    <File Include="Content/CSS/invoice.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/jquery-ui.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/leaflet-gesture-handling.min.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/leaflet.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/leaflet.markercluster.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/leaflet.markercluster.default.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/lightcase.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/magnific-popup.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/map-animation.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/maps.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/menu.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/nice-select.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/owl-carousel.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/owl.carousel.min.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/search.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/slick.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/slider-home18.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/src/datedropper.eot">
+      <publishTime>06/18/2020 10:40:29</publishTime>
+    </File>
+    <File Include="Content/CSS/src/datedropper.svg">
+      <publishTime>06/18/2020 10:40:29</publishTime>
+    </File>
+    <File Include="Content/CSS/src/datedropper.ttf">
+      <publishTime>06/18/2020 10:40:29</publishTime>
+    </File>
+    <File Include="Content/CSS/src/datedropper.woff">
+      <publishTime>06/18/2020 10:40:29</publishTime>
+    </File>
+    <File Include="Content/CSS/src/datedropperd41d.eot">
+      <publishTime>06/18/2020 10:40:29</publishTime>
+    </File>
+    <File Include="Content/CSS/styles.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/swiper.min.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
+    <File Include="Content/CSS/timedropper.css">
+      <publishTime>06/18/2020 10:39:10</publishTime>
+    </File>
     <File Include="Content/DataTable.css">
       <publishTime>05/28/2020 11:29:23</publishTime>
     </File>
@@ -378,6 +567,72 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/images/bg.gif">
       <publishTime>05/28/2020 11:30:45</publishTime>
     </File>
+    <File Include="Content/images/icons/1.png">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/10.png">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/11.png">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/12.png">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/2.png">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/3.png">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/4.png">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/5.png">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/6.png">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/7.png">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/8.png">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/9.png">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/bank.png">
+      <publishTime>07/01/2020 12:36:15</publishTime>
+    </File>
+    <File Include="Content/images/icons/car.svg">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/cross.png">
+      <publishTime>07/01/2020 12:36:15</publishTime>
+    </File>
+    <File Include="Content/images/icons/i-1.svg">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/i-2.svg">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/i-3.svg">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/i-4.svg">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/icon-2.svg">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/icon-3.svg">
+      <publishTime>06/18/2020 10:46:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/stationery.png">
+      <publishTime>07/01/2020 12:36:15</publishTime>
+    </File>
     <File Include="Content/images/index.jpg">
       <publishTime>05/28/2020 11:30:45</publishTime>
     </File>
@@ -389,6 +644,18 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/images/ndp_date_bg.png">
       <publishTime>05/28/2020 11:30:45</publishTime>
+    </File>
+    <File Include="Content/images/no-person.jpg">
+      <publishTime>06/18/2020 10:46:09</publishTime>
+    </File>
+    <File Include="Content/images/slider.jpeg">
+      <publishTime>06/18/2020 10:46:09</publishTime>
+    </File>
+    <File Include="Content/images/slider1.jpeg">
+      <publishTime>06/18/2020 10:46:09</publishTime>
+    </File>
+    <File Include="Content/images/slider2.jpeg">
+      <publishTime>06/18/2020 10:46:09</publishTime>
     </File>
     <File Include="Content/images/Uncheck.png">
       <publishTime>05/28/2020 11:30:45</publishTime>
@@ -768,6 +1035,174 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery.validate.unobtrusive.min.js">
       <publishTime>05/27/2020 13:46:54</publishTime>
     </File>
+    <File Include="Scripts/JS/ajaxchimp.min.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/bootstrap.min.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/color-switcher.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/counterup.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/datedropper.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/dropzone.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/fitvids.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/forms-2.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/forms.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/imagesloaded.pkgd.min.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/inner.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/isotope.pkgd.min.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/jquery-3.3.1.min.html">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/jquery-ui.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/jquery.countdown.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/jquery.counterup.min.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/jquery.form.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/jquery.magnific-popup.min.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/jquery.min.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/jquery.validate.min.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/jquery.waypoints.min.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/jqueryadd-count.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/leaflet-gesture-handling.min.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/leaflet-providers.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/leaflet.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/leaflet.markercluster.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/light.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/lightcase.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/map-single.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/map-style3.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/map4.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/mmenu.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/mmenu.min.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/moment.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/newsletter.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/owl.carousel.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/popper.min.html">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/popup.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/pricingbottom.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/range-slider.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/script.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/search.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/searched.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/slick.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/slick.min.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/slick2.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/slick3.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/smooth-scroll.min.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/swiper.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/swiper.min.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/tether.min.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/timedropper.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/timer.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/transition.min.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/typed.min.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
+    <File Include="Scripts/JS/under.js">
+      <publishTime>06/18/2020 11:00:36</publishTime>
+    </File>
     <File Include="Scripts/json.cycle.js">
       <publishTime>05/28/2020 11:38:07</publishTime>
     </File>
@@ -1045,7 +1480,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/03/2020 13:33:38</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>06/03/2020 13:33:43</publishTime>
+      <publishTime>06/18/2020 11:00:42</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>05/27/2020 13:46:56</publishTime>
@@ -1063,10 +1498,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/27/2020 13:46:56</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>06/11/2020 14:45:11</publishTime>
+      <publishTime>07/01/2020 13:21:01</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
-      <publishTime>06/11/2020 12:53:43</publishTime>
+      <publishTime>06/24/2020 10:59:26</publishTime>
     </File>
     <File Include="Views/Account/ResetPassword.cshtml">
       <publishTime>05/27/2020 13:46:56</publishTime>
@@ -1084,10 +1519,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/27/2020 13:46:56</publishTime>
     </File>
     <File Include="Views/Account/_Login.cshtml">
-      <publishTime>06/11/2020 14:50:12</publishTime>
+      <publishTime>06/23/2020 12:40:23</publishTime>
     </File>
     <File Include="Views/Account/_Register.cshtml">
-      <publishTime>06/11/2020 14:50:07</publishTime>
+      <publishTime>06/23/2020 13:57:26</publishTime>
     </File>
     <File Include="Views/DirectoryCategory/Create.cshtml">
       <publishTime>06/01/2020 17:41:17</publishTime>
@@ -1150,7 +1585,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/27/2020 13:46:44</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>06/04/2020 11:20:36</publishTime>
+      <publishTime>06/23/2020 14:30:01</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>05/27/2020 13:46:56</publishTime>
@@ -1186,7 +1621,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/11/2020 20:03:11</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>06/08/2020 16:50:07</publishTime>
+      <publishTime>07/01/2020 13:09:15</publishTime>
     </File>
     <File Include="Views/Shared/_LoginFeature.cshtml">
       <publishTime>06/11/2020 20:32:23</publishTime>

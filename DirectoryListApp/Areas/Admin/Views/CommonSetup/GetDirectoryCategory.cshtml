@@ -1,0 +1,48 @@
+﻿@model DirectoryListApp.Areas.Admin.Models.DirectoryViewModel
+
+@{
+    ViewBag.Title = "GetDirectoryCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="well well-small" style="background-color:white;">
+    @if (Model.DirectoryViewModelList.Count > 0)
+    {
+        foreach (var item in Model.DirectoryViewModelList)
+        {
+            <div>
+                <ul>
+                    <li>
+                        <p><strong>@item.DirectoryItemName</strong></p>
+                        <p>@item.PermanentAddress</p>
+                        <p>Category: <span style="color:green;">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</span></p>
+                        <a class="details" href="~/Admin/CommonSetup/DirectoryDetail/@item.DirectoryItemId" title="View Details"><i class="fa fa-pinterest" style="color:lightseagreen;" ></i></a>
+                        <hr style="border:dashed 0.2px;" />
+                    </li>
+                </ul>
+            </div>
+        }
+    }
+    else
+    {
+        <h4>No records found!</h4>
+    }
+</div>
+<nav aria-label="...">
+    <ul class="pagination list mt-0">
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        @for (int p = 1; p <= ViewBag.TotalPages; p++)
+        {
+            <li class="page-item">
+                <a class="@(p == ViewBag.currentPage ? "btn btn-default" : "") page-link"
+                   href="@Url.Action("GetDirectoryCategory", "CommonSetup", new {Area="Admin", page = p })">@p</a>
+            </li>
+        }
+        <li class="page-item disabled">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav>
+

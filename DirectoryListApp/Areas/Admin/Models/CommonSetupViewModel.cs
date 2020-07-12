@@ -69,4 +69,9 @@ namespace DirectoryListApp.Areas.Admin.Models
         public string PermanentAddress { get { return Utility.GetPalikaName(Convert.ToInt32(AddressPalika)) + "-" + AddressWard + ", " + Utility.GetDistrictName(Convert.ToInt32(AddressDistrict)) + ", " + Utility.GetStateName(Convert.ToInt32(AddressState)); } }
         public List<DirectoryViewModel> DirectoryViewModelList { get; set; }
     }
+    public class ImportExcel
+    {
+        [FileExtensions(Extensions = "xlsx|xls", ErrorMessage = "Please select an Excel file.")]
+        public string file { get; set; }
+    }
 }

@@ -6,6 +6,11 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+//Add new namespaces
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data.OleDb;
 
 namespace DirectoryListApp.Areas.Admin.Controllers
 {
@@ -14,6 +19,9 @@ namespace DirectoryListApp.Areas.Admin.Controllers
         CommonSetupProvider _proCommon = new CommonSetupProvider();
         DirectoryEntities ent = new DirectoryEntities();
         // GET: Admin/CommonSetup
+        //Add Connection string for SQL Server and OLEDB
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+        OleDbConnection Econ;
         public CommonSetupController()
         {
             CommonSetupProvider _proCommon = new CommonSetupProvider();
@@ -29,7 +37,42 @@ namespace DirectoryListApp.Areas.Admin.Controllers
             ViewBag.currentPage = page;
             return View(model);
         }
-
+        [HttpPost]
+        public ActionResult Category(HttpPostedFileBase file)
+        {
+            string filename = Guid.NewGuid() + Path.GetExtension(file.FileName);
+            string filepath = "/Content/Upload/" + filename;
+            file.SaveAs(Path.Combine(Server.MapPath("/Content/Upload"), filename));
+            InsertExceldata(filepath, filename);
+            return View();
+        }
+        //for excel upload
+        public void ExcelConn(string filepath)
+        {
+            string constr = string.Format(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=""Excel 12.0 Xml;HDR=YES;""", filepath);
+           Econ = new OleDbConnection(constr);
+        }
+        public void InsertExceldata(string fileepath,string filename)
+        {
+            string fullpath = Server.MapPath("/Content/Upload/")+filename;
+            ExcelConn(fullpath);
+            string query = string.Format("Select * from [{0}]", "Sheet1$");
+            OleDbCommand Ecom = new OleDbCommand(query, Econ);
+            Econ.Open();
+            DataSet ds = new DataSet();
+            OleDbDataAdapter oda = new OleDbDataAdapter(query, Econ);
+            Econ.Close();
+            oda.Fill(ds);
+            DataTable dt = ds.Tables[0];
+            SqlBulkCopy objbulk = new SqlBulkCopy(con);
+            objbulk.DestinationTableName = "tblDirectoryCategory";
+            objbulk.ColumnMappings.Add("DirectoryCategoryName", "DirectoryCategoryName");
+            objbulk.ColumnMappings.Add("CreatedBy", "CreatedBy");
+            objbulk.ColumnMappings.Add("CreatedDate", "CreatedDate");
+            con.Open();
+            objbulk.WriteToServer(dt);
+            con.Close();
+        }
         public ActionResult InsertUpdateCategory(int? id)
         {
             var model = _proCommon.GetCategoryById(id);
@@ -94,11 +137,11 @@ namespace DirectoryListApp.Areas.Admin.Controllers
         }
         public ActionResult DirectoryList(int page=1)
         {
-            int pagesize = 10000;
+            int pagesize = Utility.PageSize;
             var model = new DirectoryViewModel();
-            model.DirectoryViewModelList = _proCommon.GetList(page, pagesize);
+            model.DirectoryViewModelList = _proCommon.GetDirectoryList(page, pagesize);
             ViewBag.currentPage = page;
-            
+            ViewBag.TotalPages = Math.Ceiling((double)_proCommon.GetTotalItemCount() / pagesize);
             return View(model);
         }
         public ActionResult InsertDirectory()
@@ -199,6 +242,15 @@ namespace DirectoryListApp.Areas.Admin.Controllers
             var model = new DirectoryViewModel();
             model = _proCommon.GetDirectoryData(id);
             return PartialView("VUC_Details", model);
+        }
+        public ActionResult GetDirectoryCategory(int id, int page = 1)
+        {
+            int pagesize = Utility.PageSize;
+            var model = new DirectoryViewModel();
+            model.DirectoryViewModelList = _proCommon.GetDirectoryCategory(id, page, pagesize);
+            ViewBag.currentPage = page;
+            ViewBag.TotalPages = Math.Ceiling((double)_proCommon.GetTotalItemCount() / pagesize);
+            return View(model);
         }
     }
 }

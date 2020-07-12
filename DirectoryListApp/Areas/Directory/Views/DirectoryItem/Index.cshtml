@@ -5,129 +5,52 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<link href="~/Scripts/DataTable/datatables.min.css" rel="stylesheet" />
-<script src="~/Scripts/DataTable/datatables.min.js"></script>
-<br />
-<div class="row">
-    <div class="span4">
-        <h4>Directory List</h4>
-    </div>
-
-    <div class="pull-right">
-        <a class="btn btn-primary" href="~/Directory/DirectoryItem/Create">
-            Create`New
-        </a>
-    </div>
-</div>
-<div class="row well well-sm">
-    <div id="filter" class="filter row">
-        <div class="input-append">
-            <input class="span6" id="SearchId" type="text" placeholder="Search...">
-            <button class="btn" type="button" id="SearchBtn"><i class="fa fa-search"></i></button>
-            <a class="btn btn-warning" style="margin-left:100px;" href="~/Directory/DirectoryItem/AdvanceSearch">
-                Advanced Search
-            </a>
-        </div>
-
-    </div>
-</div>
-
-<br />
-<div id="ResultDisplay" class="well well-small" style="background-color:blanchedalmond;">
-
-    @if (Model.DirectoryModelList.Count > 0)
-    {
-        foreach (var item in Model.DirectoryModelList)
-        {
-            <div>
-                <ul>
-                    <li>
-                        <p><strong>@item.DirectoryItemName</strong></p>
-                        <p>@item.PermanentAddress</p>
-                        <p>Category:<span style="color:green;">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</span> </p>
-                        <a class="details" href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId" title="View Details"><i class="fa fa-pinterest" style="color:lightseagreen;" data-toggle="modal" data-target="#myModal"></i></a>
-                        <a href="~/Directory/DirectoryItem/Edit/@item.DirectoryItemId " title="Edit"><i class="fa fa-edit" style="color:blue;"></i></a>
-                        <hr style="border:dashed 0.5px;" />
-                    </li>
-                </ul>
-            </div>
-        }
-    }
-    else
-    {
-        <h4>No records found!</h4>
-    }
-
-</div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Directory Details</h4>
-            </div>
-            <div id="ModalBody" class="modal-body">
-                <form></form>
+<section class="feature-categories">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="sec-title">
+                    <h2>Newly Registered</h2>
+                   
+                </div>
+                <div class="sec-title float-right">
+                    <a class="btn btn-primary" href="~/Directory/DirectoryItem/Create">Free Registration</a>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+        <!-- /row -->
+        <div class="row">
+            <div id="ResultDisplay" class="well well-small" style="background-color:white;">
 
-<script>
-    var table = $('#ItemCategory').DataTable({
-        "order": false,
-        "pageLength": 25,
-        "language": {
-            "lengthMenu": "Display _MENU_ records per page",
-            "zeroRecords": "No records available!",
-            "info": " Page _PAGE_ of _PAGES_",
-            "infoEmpty": "No records available",
-            "infoFiltered": "(filtered from _MAX_ total records)",
-            "paginate":
-            {
-                "previous": "Previous",
-                "next": "Next"
-            }
-        }
-    });
-</script>
-<script>
-    $(".details").on("click", function () {
-        debugger;
-        var href = $(this).attr('href');
-        $.ajax({
-            url: href,
-            success: function (result) {
-                debugger;
-                if (result) {
-                    $("#myModal").modal('show');
-                    $('#ModalBody').html(result);
+                @if (Model.DirectoryModelList.Count > 0)
+                {
+                    foreach (var item in Model.DirectoryModelList)
+                    {
+                        <div>
+                            <ul>
+                                <li>
+                                    <p><strong>@item.DirectoryItemName</strong>,@item.PermanentAddress</p>
+                                    <p>Category:<span style="color:green;">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</span> </p>
+                                    <a class="details" href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId" title="View Details"><i class="fa fa-pinterest" style="color:lightseagreen;"></i></a>
+                                    @*<a href="~/Directory/DirectoryItem/Edit/@item.DirectoryItemId " title="Edit"><i class="fa fa-edit" style="color:blue;"></i></a>*@
+                                    <hr style="border:dashed 0.2px;" />
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <h4>No records found!</h4>
                 }
 
-            },
-            error: function (xhr, status, error) {
-                alert("Error");
-            }
-        });
-
-    });
-</script>
+            </div>
+           
+        </div>
+        <!-- /row -->
+    </div>
+</section>
 
 
-
-<script>
-    $('#filter').on('click', '#SearchBtn', function () {
-        debugger;
-        var href = '/Directory/DirectoryItem/SearchList';
-        //var url = href;
-
-        var anydata = $('#SearchId').val();
-        $.get(href, { anydata }, function (data) {
-            debugger;
-            $('#ResultDisplay').html(data);
-        })
-    })
-
-</script>
 
 

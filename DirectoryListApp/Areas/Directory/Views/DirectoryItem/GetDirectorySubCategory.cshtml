@@ -15,9 +15,10 @@
                 <ul>
                     <li>
                         <p><strong>@item.DirectoryItemName</strong></p>
+                        <p>@item.PermanentAddress</p>
                         <p>Category: <span style="color:green;">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</span></p>
-                        <a class="details" href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId" title="View Details"><i class="fa fa-pinterest" style="color:lightseagreen;" data-toggle="modal" data-target="#myModal"></i></a>
-                        <hr style="border:dashed 0.5px;" />
+                        <a class="details" href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId" title="View Details"><i class="fa fa-pinterest" style="color:lightseagreen;" ></i></a>
+                        <hr style="border:dashed 0.2px;" />
                     </li>
                 </ul>
             </div>
@@ -29,40 +30,23 @@
     }
 </div>
 
+<nav aria-label="...">
+    <ul class="pagination list mt-0">
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        @for (int p = 1; p <= ViewBag.TotalPages; p++)
+        {
+            <li class="page-item">
+                <a class="@(p == ViewBag.currentPage ? "btn btn-default" : "") page-link"
+                   href="@Url.Action("GetDirectorySubCategory", "DirectoryItem", new {Area="Directory", page = p })">@p</a>
+            </li>
+        }
+        <li class="page-item disabled">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Directory Details</h4>
-            </div>
-            <div id="ModalBody" class="modal-body">
-                <form></form>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    $(".details").on("click", function () {
-        debugger;
-        var href = $(this).attr('href');
-        $.ajax({
-            url: href,
-            success: function (result) {
-                debugger;
-                if (result) {
-                    $("#myModal").modal('show');
-                    $('#ModalBody').html(result);
-                }
-
-            },
-            error: function (xhr, status, error) {
-                alert("Error");
-            }
-        });
-
-    });
-</script>
 
 

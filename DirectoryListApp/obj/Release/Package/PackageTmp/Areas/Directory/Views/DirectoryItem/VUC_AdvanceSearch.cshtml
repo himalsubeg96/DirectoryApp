@@ -25,37 +25,3 @@
     }
 
 </div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Directory Details</h4>
-            </div>
-            <div id="ModalBody" class="modal-body">
-                <form></form>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    $(".details").on("click", function () {
-        debugger;
-        var href = $(this).attr('href');
-        $.ajax({
-            url: href,
-            success: function (result) {
-                debugger;
-                if (result) {
-                    $("#myModal").modal('show');
-                    $('#ModalBody').html(result);
-                }
-
-            },
-            error: function (xhr, status, error) {
-                alert("Error");
-            }
-        });
-
-    });
-</script>

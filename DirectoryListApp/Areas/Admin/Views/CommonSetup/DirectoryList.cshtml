@@ -7,97 +7,68 @@
 
 <link href="~/Scripts/DataTable/datatables.min.css" rel="stylesheet" />
 <script src="~/Scripts/DataTable/datatables.min.js"></script>
-<br />
-<div class="row">
-    <div class="span4">
-        <h4>Directory List</h4>
-    </div>
-
-    <div class="pull-right">
-        <a class="btn btn-primary" href="~/Admin/CommonSetup/InsertDirectory">
-            Create`New
-        </a>
-    </div>
-</div>
-
-<br />
-<div id="ResultDisplay" class="well well-small" style="background-color:blanchedalmond;">
-
-    @if (Model.DirectoryViewModelList.Count > 0)
-    {
-        foreach (var item in Model.DirectoryViewModelList)
-        {
-            <div>
-                <ul>
-                    <li>
-                        <p><strong>@item.DirectoryItemName</strong></p>
-                        <p>@item.PermanentAddress</p>
-                        <p>Category:<span style="color:green;">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</span> </p>
-                        <a class="details" href="~/Admin/CommonSetup/DirectoryDetail/@item.DirectoryItemId" title="View Details"><i class="fa fa-pinterest" style="color:lightseagreen;" data-toggle="modal" data-target="#myModal"></i></a>
-                        <a href="~/Admin/CommonSetup/UpdateDirectory/@item.DirectoryItemId " title="Edit"><i class="fa fa-edit" style="color:blue;"></i></a>
-                        <hr style="border:dashed 0.5px;" />
-                    </li>
-                </ul>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="sec-title">
+                    <h2>Directory List</h2>
+                </div>
+                <div class="pull-right">
+                    <a class="btn btn-primary" href="~/Admin/CommonSetup/InsertDirectory">
+                        Create`New
+                    </a>
+                </div>
             </div>
-        }
-    }
-    else
-    {
-        <h4>No records found!</h4>
-    }
-
-</div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Directory Details</h4>
-            </div>
-            <div id="ModalBody" class="modal-body">
-                <form></form>
-            </div>
+            
         </div>
+        
     </div>
-</div>
+    <br />
+    <div id="ResultDisplay" class="well well-small" style="background-color:white;">
 
-<script>
-    var table = $('#ItemCategory').DataTable({
-        "order": false,
-        "pageLength": 25,
-        "language": {
-            "lengthMenu": "Display _MENU_ records per page",
-            "zeroRecords": "No records available!",
-            "info": " Page _PAGE_ of _PAGES_",
-            "infoEmpty": "No records available",
-            "infoFiltered": "(filtered from _MAX_ total records)",
-            "paginate":
+        @if (Model.DirectoryViewModelList.Count > 0)
+        {
+            foreach (var item in Model.DirectoryViewModelList)
             {
-                "previous": "Previous",
-                "next": "Next"
+                <div>
+                    <ul>
+                        <li>
+                            <p><strong>@item.DirectoryItemName</strong></p>
+                            <p>@item.PermanentAddress</p>
+                            <p>Category:<span style="color:green;">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</span> </p>
+                            <a class="details" href="~/Admin/CommonSetup/DirectoryDetail/@item.DirectoryItemId" title="View Details"><i class="fa fa-pinterest" style="color:lightseagreen;"></i></a>
+                            <a href="~/Admin/CommonSetup/UpdateDirectory/@item.DirectoryItemId " title="Edit"><i class="fa fa-edit" style="color:blue;"></i></a>
+                            <hr style="border:dashed 0.2px;" />
+                        </li>
+                    </ul>
+                </div>
             }
         }
-    });
-</script>
-<script>
-    $(".details").on("click", function () {
-        debugger;
-        var href = $(this).attr('href');
-        $.ajax({
-            url: href,
-            success: function (result) {
-                debugger;
-                if (result) {
-                    $("#myModal").modal('show');
-                    $('#ModalBody').html(result);
-                }
+        else
+        {
+            <h4>No records found!</h4>
+        }
 
-            },
-            error: function (xhr, status, error) {
-                alert("Error");
+    </div>
+    <nav aria-label="...">
+        <ul class="pagination list mt-0">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            @for (int p = 1; p <= ViewBag.TotalPages; p++)
+            {
+                <li class="page-item">
+                    <a class="@(p == ViewBag.currentPage ? "btn btn-default" : "") page-link"
+                       href="@Url.Action("DirectoryList", "CommonSetup", new {Area="Admin", page = p })">@p</a>
+                </li>
             }
-        });
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+</section>
 
-    });
-</script>
+
 

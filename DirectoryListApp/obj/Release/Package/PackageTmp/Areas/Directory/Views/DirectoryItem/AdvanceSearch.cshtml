@@ -103,59 +103,58 @@
         });
     });
 </script>
-<fieldset>
-    <legend>Advanced Search</legend>
-    <div class="well well-small">
+<section>
+    <div class="container">
         <div class="row">
-            <div class="span11">
-                <div class="span3">
-                    @Html.Label("Category")
-                </div>
-                <div class="span7">
-                    @Html.DropDownListFor(model => model.DirectoryCategoryId, DirectoryListApp.Utility.GetAllDirectoryCategory(), "--Select Category--", new { @class = "span6" })
-                </div>
-            </div>
-            <div class="span11">
-                <div class="span3">
-                    @Html.Label("Sub Category")
-                </div>
-                <div class="span7">
-                    @Html.DropDownListFor(model => model.DirectorySubCategoryId, DirectoryListApp.Utility.GetAllDirectorySubCategory(), "--Select SubCategory--", new { @class = "span6" })
+            <div class="col-lg-12">
+                <div class="sec-title">
+                    <h2>Advanced Search</h2>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="span11">
-                <div class="span3">
-                    @Html.Label("State")
+                <div class="form-group">
+                    @Html.Label("Category")
+                    @Html.DropDownListFor(model => model.DirectoryCategoryId, DirectoryListApp.Utility.GetAllDirectoryCategory(), "--Select Category--", new { @class = "span6" })
                 </div>
-                <div class="span7">
+
+            </div>
+            <div class="span11">
+                <div class="form-group">
+                    @Html.Label("Sub Category")
+                    @Html.DropDownListFor(model => model.DirectorySubCategoryId, DirectoryListApp.Utility.GetAllDirectorySubCategory(), "--Select SubCategory--", new { @class = "span6" })
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="span11">
+                <div class="form-group">
+                    @Html.Label("State")
                     @Html.DropDownListFor(model => model.AddressState, DirectoryListApp.Utility.GetAllState(), "--Select State--", new { @class = "span6" })
                 </div>
+
             </div>
             <div class="span11">
-                <div class="span3">
+                <div class="form-group">
                     @Html.Label("District")
-                </div>
-                <div class="span7">
                     @Html.DropDownListFor(model => model.AddressDistrict, DirectoryListApp.Utility.GetAllDistrict(), "--Select District--", new { @class = "span6" })
                 </div>
+
             </div>
             <div class="span11">
-                <div class="span3">
+                <div class="form-group">
                     @Html.Label("Municipality")
-                </div>
-                <div class="span7">
                     @Html.DropDownListFor(model => model.AddressPalika, DirectoryListApp.Utility.GetAllPalika(), "--Select Municipality--", new { @class = "span6" })
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="form-group button">
             <button id="Search" class="btn" type="button"><i class="fa fa-search-plus"></i>Search</button>
         </div>
     </div>
-</fieldset>
-
+</section>
 
 <div id="ResultDisplay"></div>
 

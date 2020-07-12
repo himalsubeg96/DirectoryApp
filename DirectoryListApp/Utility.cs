@@ -9,7 +9,7 @@ namespace DirectoryListApp
 {
     public class Utility
     {
-        public static int PageSize { get { return 25; } }
+        public static int PageSize { get { return 10; } }
         public static SelectList GetAllDistrict()
         {
             using (var ent = new DirectoryEntities())

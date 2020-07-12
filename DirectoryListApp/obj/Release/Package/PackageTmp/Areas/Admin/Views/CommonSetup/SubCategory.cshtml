@@ -8,61 +8,65 @@
 <link href="~/Scripts/DataTable/datatables.min.css" rel="stylesheet" />
 <script src="~/Scripts/DataTable/datatables.min.js"></script>
 <br />
-<div class="row">
-    <div class="span4">
-        <h4>Directory SubCategory</h4>
-    </div>
-
-    <div class="pull-right">
-        <a class="btn btn-primary" href="~/Admin/CommonSetup/InsertUpdateSubCategory">
-            Create New
-        </a>
-    </div>
-
-
-</div>
-<br />
-<div class="well well-small">
-    @if (Model.SubCategorySetupViewModelList.Count > 0)
-    {
-        int Sno = ViewBag.currentPage == 1 ? 0 : (ViewBag.currentPage - 1) * 20;
-        <table id="ItemCategory" class="table table-bordered table-striped table-condensed">
-            <thead>
-                <tr>
-                    <th class="span1"><label>S.N</label> </th>
-                    <th> @Html.Label("Directory SubCategory Name")</th>
-                    <th>@Html.Label("Directory Category")</th>
-                    <th></th>
-
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.SubCategorySetupViewModelList)
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="sec-title">
+                <h3>Directory SubCategory List</h3>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-primary" href="~/Admin/CommonSetup/InsertUpdateSubCategory">
+                    Create New
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="well well-small">
+                @if (Model.SubCategorySetupViewModelList.Count > 0)
                 {
+                    int Sno = ViewBag.currentPage == 1 ? 0 : (ViewBag.currentPage - 1) * 20;
+                    <table id="ItemCategory" class="table table-bordered table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th class="span1"><label>S.N</label> </th>
+                                <th> @Html.Label("Directory SubCategory Name")</th>
+                                <th>@Html.Label("Directory Category")</th>
+                                <th></th>
 
-                    <tr class="@(Sno++ % 2 == 0 ? "success" : "warning")">
-                        <td class="span1l">
-                            @Sno.ToString()
-                        </td>
-                        <td>@item.DirectorySubCategoryName</td>
-                        <td>@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</td>
-                        <td>
-                            <a href="~/Admin/CommonSetup/InsertUpdateSubCategory/@item.DirectorySubCategoryId" title="Edit"><i class="fa fa-edit" style="color:blue;"></i></a>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.SubCategorySetupViewModelList)
+                            {
 
-                        </td>
+                                <tr class="@(Sno++ % 2 == 0 ? "success" : "warning")">
+                                    <td class="span1l">
+                                        @Sno.ToString()
+                                    </td>
+                                    <td>@item.DirectorySubCategoryName</td>
+                                    <td>@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</td>
+                                    <td>
+                                        <a href="~/Admin/CommonSetup/InsertUpdateSubCategory/@item.DirectorySubCategoryId" title="Edit"><i class="fa fa-edit" style="color:blue;"></i></a>
+
+                                    </td>
 
 
-                    </tr>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 }
-            </tbody>
-        </table>
-    }
-    else
-    {
-        <h4>No records found!</h4>
-    }
+                else
+                {
+                    <h4>No records found!</h4>
+                }
 
-</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <script>
     var table = $('#ItemCategory').DataTable({
         "order": false,

@@ -96,6 +96,26 @@ namespace DirectoryListApp.Areas.Directory.Providers
                                            }).OrderBy(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
             return result;
         }
+        public List<DirectoryModel> NewRegistered(int page,int pagesize)
+        {
+            var baseUrl = Utility.GetUrlForImage();
+            List<DirectoryModel> result = (from a in ent.tblDirectoryItems
+                                           join b in ent.tblDirectoryDetails on a.DirectoryItemId equals b.DirectoryItemId
+                                           select new DirectoryModel
+                                           {
+                                               DirectoryItemId = a.DirectoryItemId,
+                                               DirectoryItemName = a.DirectoryItemName,
+                                               DirectoryCategoryId = a.DirectoryCategoryId,
+                                               DirectorySubCategoryId = a.DirectorySubCategoryId,
+                                               Specification = a.Specification,
+                                               AddressState = b.AddressState,
+                                               AddressDistrict = b.AddressDistrict,
+                                               AddressPalika = b.AddressPalika,
+                                               AddressWard = b.AddressWard,
+                                               PhotoLogo = baseUrl + b.PhotoLogo
+                                           }).OrderByDescending(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
+            return result;
+        }
         public DirectoryModel GetDirectoryData(int Id)
         {
             var baseUrl = Utility.GetUrlForImage();
@@ -169,9 +189,10 @@ namespace DirectoryListApp.Areas.Directory.Providers
             }
             return result;
         }
-        public List<DirectoryModel> GetDirectoryCategory(int Id)
+        public List<DirectoryModel> GetDirectoryCategory(int Id,int page,int pagesize)
         {
             List<DirectoryModel> result = (from a in ent.tblDirectoryItems
+                                           join b in ent.tblDirectoryDetails on a.DirectoryItemId equals b.DirectoryItemId
                                            where a.DirectoryCategoryId == Id
                                            select new DirectoryModel
                                            {
@@ -182,12 +203,17 @@ namespace DirectoryListApp.Areas.Directory.Providers
                                                IssueDate = a.IssueDate,
                                                Status = a.Status,
                                                Specification = a.Specification,
-                                           }).ToList();
+                                               AddressState = b.AddressState,
+                                               AddressDistrict = b.AddressDistrict,
+                                               AddressPalika = b.AddressPalika,
+                                               AddressWard = b.AddressWard,
+                                           }).OrderBy(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
             return result;
         }
-        public List<DirectoryModel> GetDirectorySubCategory(int Id)
+        public List<DirectoryModel> GetDirectorySubCategory(int Id,int page,int pagesize)
         {
             List<DirectoryModel> result = (from a in ent.tblDirectoryItems
+                                           join b in ent.tblDirectoryDetails on a.DirectoryItemId equals b.DirectoryItemId
                                            where a.DirectorySubCategoryId == Id
                                            select new DirectoryModel
                                            {
@@ -198,7 +224,11 @@ namespace DirectoryListApp.Areas.Directory.Providers
                                                IssueDate = a.IssueDate,
                                                Status = a.Status,
                                                Specification = a.Specification,
-                                           }).ToList();
+                                               AddressState = b.AddressState,
+                                               AddressDistrict = b.AddressDistrict,
+                                               AddressPalika = b.AddressPalika,
+                                               AddressWard = b.AddressWard,
+                                           }).OrderBy(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
             return result;
         }
     }

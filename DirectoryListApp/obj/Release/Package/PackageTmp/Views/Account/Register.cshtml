@@ -1,53 +1,63 @@
 ﻿@model DirectoryListApp.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!DOCTYPE html>
+<html lang="en">
 
-<h2>@ViewBag.Title.</h2>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="html 5 template">
+    <meta name="author" content="">
+    <title>Register</title>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- ARCHIVES CSS -->
+    <link href="~/Content/CSS/animate.css" rel="stylesheet" />
+    <link href="~/Content/CSS/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/CSS/menu.css" rel="stylesheet" />
+    <link href="~/Content/CSS/styles.css" rel="stylesheet" />
+    <link href="~/Content/CSS/default.css" rel="stylesheet" id="color" />
+</head>
 
-    if (Request.IsAuthenticated && User.IsInRole("SuperAdmin"))
-    {
-        <div class="form-group">
-            @Html.LabelFor(m => m.Role, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(m => m.Role, DirectoryListApp.Utility.GetRoleList(), "Select Role", new { @class = "form-control" })
+<body class="inner-pages">
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- START SECTION HEADINGS -->
+        
+        <section class="headings" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(Content/images/slider1.jpeg) no-repeat center center;">
+            <div class="text-heading text-center">
+                <div class="container">
+                    <h1>Register</h1>
+                </div>
             </div>
-        </div>
-    }
+        </section>
+        <!-- END SECTION HEADINGS -->
+        <!-- START SECTION REGISTER -->
+        @Html.Partial("_Register", new DirectoryListApp.Models.RegisterViewModel())
+        <!-- END SECTION REGISTER -->
+        
 
+        <!-- ARCHIVES JS -->
+        <script src="~/Scripts/JS/jquery.min.js"></script>
+        <script src="~/Scripts/JS/tether.min.js"></script>
+        <script src="~/Scripts/JS/bootstrap.min.js"></script>
+        <script src="~/Scripts/JS/mmenu.min.js"></script>
+        <script src="~/Scripts/JS/mmenu.js"></script>
+        <script src="~/Scripts/JS/smooth-scroll.min.js"></script>
+        <script src="~/Scripts/JS/ajaxchimp.min.js"></script>
+        <script src="~/Scripts/JS/newsletter.js"></script>
+        <script src="~/Scripts/JS/inner.js"></script>
+        <script src="~/Scripts/JS/color-switcher.js"></script>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
     </div>
-}
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+
+
+</body>
+</html>

@@ -16,11 +16,9 @@ namespace DirectoryListApp.Areas.Directory.Controllers
         DirectoryEntities ent = new DirectoryEntities();
         public ActionResult Index(int page = 1)
         {
-            int pagesize = 10000;
+            int pagesize = Utility.PageSize;
             var model = new DirectoryModel();
-            model.DirectoryModelList = pro.GetList(page, pagesize);
-            ViewBag.currentPage = page;
-            ViewBag.TotalPages = Math.Ceiling((double)pro.GetTotalItemCount() / pagesize);
+            model.DirectoryModelList = pro.NewRegistered(page, pagesize);
             return View(model);
         }
 
@@ -150,17 +148,24 @@ namespace DirectoryListApp.Areas.Directory.Controllers
             model.DirectoryModelList = pro.GetFilterList(category, subcategory, state, district, palika);
             return PartialView("VUC_AdvanceSearch", model);
         }
-        public ActionResult GetDirectoryCategory(int id)
+        public ActionResult GetDirectoryCategory(int id,int page=1)
         {
+            int pagesize = Utility.PageSize;
             var model = new DirectoryModel();
-            model.DirectoryModelList = pro.GetDirectoryCategory(id);
+            model.DirectoryModelList = pro.GetDirectoryCategory(id,page,pagesize);
+            ViewBag.currentPage = page;
+            ViewBag.TotalPages = Math.Ceiling((double)pro.GetTotalItemCount() / pagesize);
             return View(model);
         }
-        public ActionResult GetDirectorySubCategory(int id)
+        public ActionResult GetDirectorySubCategory(int id,int page=1)
         {
+            int pagesize = Utility.PageSize;
             var model = new DirectoryModel();
-            model.DirectoryModelList = pro.GetDirectorySubCategory(id);
+            model.DirectoryModelList = pro.GetDirectorySubCategory(id,page,pagesize);
+            ViewBag.currentPage = page;
+            ViewBag.TotalPages = Math.Ceiling((double)pro.GetTotalItemCount() / pagesize);
             return View(model);
         }
+        
     }
 }
