@@ -38,5 +38,6 @@ namespace DirectoryListApp
         public virtual DbSet<tblPalika> tblPalikas { get; set; }
         public virtual DbSet<tblState> tblStates { get; set; }
         public virtual DbSet<UsersDetail> UsersDetails { get; set; }
+        public virtual DbSet<tblReview> tblReviews { get; set; }
     }
 }

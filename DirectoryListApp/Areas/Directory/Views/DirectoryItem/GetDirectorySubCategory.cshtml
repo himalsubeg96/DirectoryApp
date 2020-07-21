@@ -11,17 +11,46 @@
     {
         foreach (var item in Model.DirectoryModelList)
         {
-            <div>
-                <ul>
-                    <li>
-                        <p><strong>@item.DirectoryItemName</strong></p>
-                        <p>@item.PermanentAddress</p>
-                        <p>Category: <span style="color:green;">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</span></p>
-                        <a class="details" href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId" title="View Details"><i class="fa fa-pinterest" style="color:lightseagreen;" ></i></a>
-                        <hr style="border:dashed 0.2px;" />
-                    </li>
-                </ul>
+            <div class="row portfolio-items">
+
+                <div class="item col-lg-4 col-md-6 col-xs-12 landscapes sale">
+                    <div class="project-single">
+                        <div class="project-inner project-head">
+                            <div class="homes">
+                                <a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId" class="homes-img hover-effect">
+
+                                    <img src="@item.PhotoLogo" class="img-responsive" style="height:250px;width:100%" />
+
+                                    <div class="overlay"></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="homes-content">
+                            <a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId"><h3>@item.DirectoryItemName</h3></a>
+                            <ul class="homes-list clearfix">
+                                <li>
+                                    <i class="fa fa-map-marker"></i>
+                                    <span>
+                                        @item.PermanentAddress
+                                    </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <span>Call Us @item.DirectoryPhone </span>
+                                </li>
+                            </ul>
+                            <div class="footer mt-3 img-2">
+                                <a href="#">
+                                    <img src="~/Content/images/icons/category.png" width="20" class="mr-2" alt="" />@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
+            
         }
     }
     else

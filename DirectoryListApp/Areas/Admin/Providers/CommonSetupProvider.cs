@@ -228,7 +228,8 @@ namespace DirectoryListApp.Areas.Admin.Providers
                                                AddressDistrict = b.AddressDistrict,
                                                AddressPalika = b.AddressPalika,
                                                AddressWard = b.AddressWard,
-                                               PhotoLogo =baseUrl + b.PhotoLogo
+                                               PhotoLogo =baseUrl + b.PhotoLogo,
+                                               DirectoryPhone = b.DirectoryPhone
                                            }).OrderBy(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
             return result;
         }

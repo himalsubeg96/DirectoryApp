@@ -18,6 +18,7 @@ namespace DirectoryListApp
         public tblDirectoryItem()
         {
             this.tblDirectoryDetails = new HashSet<tblDirectoryDetail>();
+            this.tblReviews = new HashSet<tblReview>();
         }
     
         public int DirectoryItemId { get; set; }
@@ -32,5 +33,7 @@ namespace DirectoryListApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblDirectoryDetail> tblDirectoryDetails { get; set; }
         public virtual tblDirectorySubCategory tblDirectorySubCategory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblReview> tblReviews { get; set; }
     }
 }

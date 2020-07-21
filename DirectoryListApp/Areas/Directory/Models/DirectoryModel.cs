@@ -47,6 +47,8 @@ namespace DirectoryListApp.Areas.Directory.Models
             [DisplayName("Permanent Address")]
             public string PermanentAddress { get { return Utility.GetPalikaName(Convert.ToInt32(AddressPalika)) + "-" + AddressWard + ", " + Utility.GetDistrictName(Convert.ToInt32(AddressDistrict)) + ", " + Utility.GetStateName(Convert.ToInt32(AddressState)); } }
             public List<DirectoryModel> DirectoryModelList { get; set; }
+
+        //reviews
         }
         public class DirectoryCategoryModel
         {

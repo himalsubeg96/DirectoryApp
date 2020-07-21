@@ -276,6 +276,9 @@
     <Compile Include="tblPalika.cs">
       <DependentUpon>Directories.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblReview.cs">
+      <DependentUpon>Directories.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblState.cs">
       <DependentUpon>Directories.tt</DependentUpon>
     </Compile>
@@ -390,6 +393,7 @@
     <Content Include="Content\images\icons\9.png" />
     <Content Include="Content\images\icons\bank.png" />
     <Content Include="Content\images\icons\car.svg" />
+    <Content Include="Content\images\icons\category.png" />
     <Content Include="Content\images\icons\cross.png" />
     <Content Include="Content\images\icons\i-1.svg" />
     <Content Include="Content\images\icons\i-2.svg" />

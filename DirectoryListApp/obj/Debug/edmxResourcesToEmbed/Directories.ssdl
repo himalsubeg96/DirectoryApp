@@ -131,6 +131,19 @@
     <Property Name="PalikaName" Type="nvarchar" MaxLength="50" />
     <Property Name="PalikaName-Nep" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="tblReview">
+    <Key>
+      <PropertyRef Name="ReviewId" />
+    </Key>
+    <Property Name="ReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DirectoryItemId" Type="int" />
+    <Property Name="RevFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="RevLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="RevEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReviewDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="Review" Type="nvarchar(max)" />
+    <Property Name="ReviewRating" Type="int" />
+  </EntityType>
   <EntityType Name="tblState">
     <Key>
       <PropertyRef Name="StateId" />
@@ -271,6 +284,18 @@ warning 6002: The table/view 'Directory.dbo.UsersDetail' does not have a primary
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tblReview_tblDirectoryItem">
+    <End Role="tblDirectoryItem" Type="Self.tblDirectoryItem" Multiplicity="0..1" />
+    <End Role="tblReview" Type="Self.tblReview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDirectoryItem">
+        <PropertyRef Name="DirectoryItemId" />
+      </Principal>
+      <Dependent Role="tblReview">
+        <PropertyRef Name="DirectoryItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tblState_tblState">
     <End Role="tblState" Type="Self.tblState" Multiplicity="1" />
     <End Role="tblState1" Type="Self.tblState" Multiplicity="0..1" />
@@ -296,6 +321,7 @@ warning 6002: The table/view 'Directory.dbo.UsersDetail' does not have a primary
     <EntitySet Name="tblDirectorySubCategory" EntityType="Self.tblDirectorySubCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblDistrict" EntityType="Self.tblDistrict" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblPalika" EntityType="Self.tblPalika" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblReview" EntityType="Self.tblReview" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblState" EntityType="Self.tblState" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersDetail" EntityType="Self.UsersDetail" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -342,6 +368,10 @@ warning 6002: The table/view 'Directory.dbo.UsersDetail' does not have a primary
     <AssociationSet Name="FK_tblDistrict_tblDistrict" Association="Self.FK_tblDistrict_tblDistrict">
       <End Role="tblState" EntitySet="tblState" />
       <End Role="tblDistrict" EntitySet="tblDistrict" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblReview_tblDirectoryItem" Association="Self.FK_tblReview_tblDirectoryItem">
+      <End Role="tblDirectoryItem" EntitySet="tblDirectoryItem" />
+      <End Role="tblReview" EntitySet="tblReview" />
     </AssociationSet>
     <AssociationSet Name="FK_tblState_tblState" Association="Self.FK_tblState_tblState">
       <End Role="tblState" EntitySet="tblState" />

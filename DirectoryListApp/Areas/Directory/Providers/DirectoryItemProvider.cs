@@ -92,7 +92,7 @@ namespace DirectoryListApp.Areas.Directory.Providers
                                                AddressDistrict = b.AddressDistrict,
                                                AddressPalika = b.AddressPalika,
                                                AddressWard = b.AddressWard,
-                                               PhotoLogo =baseUrl + b.PhotoLogo
+                                               PhotoLogo =baseUrl + (b.PhotoLogo ?? "/Images/NoImage (1).png")
                                            }).OrderBy(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
             return result;
         }
@@ -112,7 +112,8 @@ namespace DirectoryListApp.Areas.Directory.Providers
                                                AddressDistrict = b.AddressDistrict,
                                                AddressPalika = b.AddressPalika,
                                                AddressWard = b.AddressWard,
-                                               PhotoLogo = baseUrl + b.PhotoLogo
+                                               PhotoLogo = baseUrl + (b.PhotoLogo ?? "/Images/NoImage (1).png"),
+                                               DirectoryPhone =b.DirectoryPhone
                                            }).OrderByDescending(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
             return result;
         }
@@ -145,7 +146,7 @@ namespace DirectoryListApp.Areas.Directory.Providers
                                          ContactPersonPhone = b.ContactPersonPhone,
                                          Details = b.Details,
                                          Email = b.Email,
-                                         PhotoLogo =baseUrl + b.PhotoLogo
+                                         PhotoLogo =baseUrl + (b.PhotoLogo ?? "/Images/NoImage (1).png")
                                      }).SingleOrDefault();
             return result;
         }
@@ -165,7 +166,8 @@ namespace DirectoryListApp.Areas.Directory.Providers
                                                AddressDistrict = b.AddressDistrict,
                                                AddressPalika = b.AddressPalika,
                                                AddressWard = b.AddressWard,
-                                               PhotoLogo =baseUrl + b.PhotoLogo
+                                               PhotoLogo =baseUrl + (b.PhotoLogo ?? "/Images/NoImage (1).png"),
+                                               DirectoryPhone=b.DirectoryPhone
                                            }).OrderBy(x => x.DirectoryItemId).ToList();
             if (category != null)
             {
@@ -191,6 +193,7 @@ namespace DirectoryListApp.Areas.Directory.Providers
         }
         public List<DirectoryModel> GetDirectoryCategory(int Id,int page,int pagesize)
         {
+            var baseUrl = Utility.GetUrlForImage();
             List<DirectoryModel> result = (from a in ent.tblDirectoryItems
                                            join b in ent.tblDirectoryDetails on a.DirectoryItemId equals b.DirectoryItemId
                                            where a.DirectoryCategoryId == Id
@@ -207,11 +210,14 @@ namespace DirectoryListApp.Areas.Directory.Providers
                                                AddressDistrict = b.AddressDistrict,
                                                AddressPalika = b.AddressPalika,
                                                AddressWard = b.AddressWard,
+                                               PhotoLogo = baseUrl + (b.PhotoLogo ?? "/Images/NoImage (1).png"),
+                                               DirectoryPhone = b.DirectoryPhone
                                            }).OrderBy(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
             return result;
         }
         public List<DirectoryModel> GetDirectorySubCategory(int Id,int page,int pagesize)
         {
+            var baseUrl = Utility.GetUrlForImage();
             List<DirectoryModel> result = (from a in ent.tblDirectoryItems
                                            join b in ent.tblDirectoryDetails on a.DirectoryItemId equals b.DirectoryItemId
                                            where a.DirectorySubCategoryId == Id
@@ -228,6 +234,8 @@ namespace DirectoryListApp.Areas.Directory.Providers
                                                AddressDistrict = b.AddressDistrict,
                                                AddressPalika = b.AddressPalika,
                                                AddressWard = b.AddressWard,
+                                               PhotoLogo = baseUrl + (b.PhotoLogo ?? "/Images/NoImage (1).png"),
+                                               DirectoryPhone = b.DirectoryPhone
                                            }).OrderBy(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
             return result;
         }

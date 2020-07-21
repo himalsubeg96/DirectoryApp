@@ -16,9 +16,11 @@ namespace DirectoryListApp.Areas.Directory.Controllers
         DirectoryEntities ent = new DirectoryEntities();
         public ActionResult Index(int page = 1)
         {
-            int pagesize = Utility.PageSize;
+            int pagesize = 9;
             var model = new DirectoryModel();
             model.DirectoryModelList = pro.NewRegistered(page, pagesize);
+            ViewBag.currentPage = page;
+            ViewBag.TotalPages = Math.Ceiling((double)pro.GetTotalItemCount() / pagesize);
             return View(model);
         }
 

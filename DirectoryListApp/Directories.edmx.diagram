@@ -27,6 +27,8 @@
         <AssociationConnector Association="DirectoryModel.FK_tblDistrict_tblDistrict" />
         <AssociationConnector Association="DirectoryModel.FK_tblState_tblState" />
         <AssociationConnector Association="DirectoryModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="DirectoryModel.tblReview" Width="1.5" PointX="7.5" PointY="13.875" />
+        <AssociationConnector Association="DirectoryModel.FK_tblReview_tblDirectoryItem" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

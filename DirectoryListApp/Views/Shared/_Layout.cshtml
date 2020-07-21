@@ -2,7 +2,7 @@
 @{
     var ent = new DirectoryEntities();
     var result = ent.tblDirectoryCategories.Where(x => true).ToList();
-
+    var newregister = ent.tblDirectoryItems.Where(x => true).OrderByDescending(x => x.DirectoryItemId).Take(6).ToList();
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -164,7 +164,7 @@
         <div class="clearfix"></div>
         <!-- Header Container / End -->
         <!-- STAR HEADER SEARCH -->
-        <section id="hero-area" class="parallax-search overlay" data-stellar-background-ratio="0.5" style="background: linear-gradient(rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.63)), url(Content/images/slider.jpeg) no-repeat center top;">
+        <section id="hero-area" class="parallax-search overlay" data-stellar-background-ratio="0.5" style="background: linear-gradient(rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.63)), url(/Content/images/slider.jpeg) no-repeat center top;">
             <div class="hero-main" id="heading">
                 <div class="container">
                     <div class="row">
@@ -415,7 +415,83 @@
             </div>
         </section>
         <!-- END SECTION FEATURE CATEGORIES -->
-        
+        <!--START SECTION NEWLY REGISTERED-->
+        <section class="popular listings portfolio bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sec-title">
+                            <h2><span>Newly Registered</span></h2>
+                        </div>
+                        <div class="sec-title float-right">
+                            <a class="btn btn-outline-primary" href="~/Directory/DirectoryItem/Create">Free Registration</a>
+                        </div>
+                    </div>
+                </div>
+                <!--row-->
+                <div class="row portfolio-items">
+                    @if (newregister.Count > 0)
+                    {
+                        foreach (var item in newregister)
+                        {
+                            var eachitem = ent.tblDirectoryDetails.Where(x => x.DirectoryItemId == item.DirectoryItemId).ToList();
+
+                            <div class="item col-lg-4 col-md-6 col-xs-12 landscapes sale">
+                                <div class="project-single">
+                                    @foreach (var itm in eachitem)
+                                    {
+                                        <div class="project-inner project-head">
+                                            <div class="homes">
+                                                <a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId" class="homes-img hover-effect">
+                                                    @if (itm.PhotoLogo != null)
+                                                        {
+                                                            <img src="@itm.PhotoLogo" class="img-responsive" style="height:250px;width:100%" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/Images/NoImage (1).png" alt="Photo" class="img-responsive" style="height:200px;width:100%" />
+                                                        }
+                                                    <div class="overlay"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="homes-content">
+                                            <a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId"><h3>@item.DirectoryItemName</h3></a>
+                                            <ul class="homes-list clearfix">
+                                                <li>
+                                                    <i class="fa fa-map-marker"></i>
+                                                    <span>
+                                                        @Utility.GetPalikaName(Convert.ToInt32(itm.AddressPalika))- @itm.AddressWard, @Utility.GetDistrictName(Convert.ToInt32(itm.AddressDistrict)),@Utility.GetStateName(Convert.ToInt32(itm.AddressState))
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                                    <span>Call Us @itm.DirectoryPhone </span>
+                                                </li>
+                                            </ul>
+                                            <div class="footer mt-3 img-2">
+                                                <a href="#">
+                                                    <img src="~/Content/images/icons/category.png" width="20" class="mr-2" alt="" />@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)
+                                                </a>
+                                            </div>
+                                        </div>
+                                    }
+
+                               </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <h4>No Records Found !</h4>
+                    }
+                </div>
+                <div class="bg-all">
+                    <a href="~/Directory/DirectoryItem/Index" class="btn btn-outline-light">View All</a>
+                </div>
+            </div>
+        </section>
+        <!-- END SECTION NEWLY REGISTERED-->
         <!-- START FOOTER -->
         <footer class="first-footer">
             <div class="top-footer">

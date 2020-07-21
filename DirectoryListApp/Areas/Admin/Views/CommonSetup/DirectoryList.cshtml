@@ -9,66 +9,83 @@
 <script src="~/Scripts/DataTable/datatables.min.js"></script>
 <section>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="sec-title">
-                    <h2>Directory List</h2>
-                </div>
-                <div class="pull-right">
-                    <a class="btn btn-primary" href="~/Admin/CommonSetup/InsertDirectory">
-                        Create`New
-                    </a>
-                </div>
-            </div>
-            
+        <div class="sec-title">
+            <h3>Directory List</h3>
         </div>
-        
-    </div>
-    <br />
-    <div id="ResultDisplay" class="well well-small" style="background-color:white;">
+        <div class="row" style="margin-bottom:15px;">
+            <div class="col-md-6">
+                <a class="btn btn-outline-primary" href="~/Admin/CommonSetup/InsertDirectory">
+                    Create New
+                </a>
+            </div>
+        </div>
+        <div id="ResultDisplay" class="well well-small">
 
-        @if (Model.DirectoryViewModelList.Count > 0)
-        {
-            foreach (var item in Model.DirectoryViewModelList)
+            @if (Model.DirectoryViewModelList.Count > 0)
             {
-                <div>
-                    <ul>
-                        <li>
-                            <p><strong>@item.DirectoryItemName</strong></p>
-                            <p>@item.PermanentAddress</p>
-                            <p>Category:<span style="color:green;">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</span> </p>
-                            <a class="details" href="~/Admin/CommonSetup/DirectoryDetail/@item.DirectoryItemId" title="View Details"><i class="fa fa-pinterest" style="color:lightseagreen;"></i></a>
-                            <a href="~/Admin/CommonSetup/UpdateDirectory/@item.DirectoryItemId " title="Edit"><i class="fa fa-edit" style="color:blue;"></i></a>
-                            <hr style="border:dashed 0.2px;" />
-                        </li>
-                    </ul>
-                </div>
-            }
-        }
-        else
-        {
-            <h4>No records found!</h4>
-        }
+                int Sno = ViewBag.currentPage == 1 ? 0 : (ViewBag.currentPage - 1) * 20;
+                <table id="DirectoryItem" class="table table-bordered table-striped table-condensed">
+                    <thead>
+                        <tr>
+                            <th class="span1"><label>S.N</label> </th>
+                            <th> @Html.Label("Directory Name")</th>
+                            <th>@Html.Label("Address")</th>
+                            <th>@Html.Label("Directory Phone")</th>
+                            <th>@Html.Label("Category")</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.DirectoryViewModelList)
+                        {
 
-    </div>
-    <nav aria-label="...">
-        <ul class="pagination list mt-0">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            @for (int p = 1; p <= ViewBag.TotalPages; p++)
-            {
-                <li class="page-item">
-                    <a class="@(p == ViewBag.currentPage ? "btn btn-default" : "") page-link"
-                       href="@Url.Action("DirectoryList", "CommonSetup", new {Area="Admin", page = p })">@p</a>
-                </li>
+                            <tr class="@(Sno++ % 2 == 0 ? "success" : "warning")">
+                                <td class="span1l">
+                                    @Sno.ToString()
+                                </td>
+                                <td>@item.DirectoryItemName</td>
+                                <td>@item.PermanentAddress</td>
+                                <td>@item.DirectoryPhone</td>
+                                <td>@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</td>
+                                <td>
+                                    <a href="~/Admin/CommonSetup/UpdateDirectory/@item.DirectoryItemId" title="Edit"><i class="fa fa-edit" style="color:blue;"></i></a>
+                                    <a class="details" href="~/Admin/CommonSetup/DirectoryDetail/@item.DirectoryItemId" title="View Details"><i class="fa fa-pinterest" style="color:lightseagreen;"></i></a>
+
+                                </td>
+
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             }
-            <li class="page-item disabled">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-    </nav>
+            else
+            {
+                <h4>No records found!</h4>
+            }
+
+        </div>
+    </div>
+    
+    
 </section>
-
+<script>
+    var table = $('#DirectoryItem').DataTable({
+        "order": false,
+        "pageLength": 25,
+        "language": {
+            "lengthMenu": "Display _MENU_ records per page",
+            "zeroRecords": "No records available!",
+            "info": " Page _PAGE_ of _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(filtered from _MAX_ total records)",
+            "paginate":
+            {
+                "previous": "Previous",
+                "next": "Next"
+            }
+        }
+    });
+</script>
 
 
