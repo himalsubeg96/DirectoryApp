@@ -239,5 +239,35 @@ namespace DirectoryListApp.Areas.Directory.Providers
                                            }).OrderBy(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
             return result;
         }
+        public void InsertReview(DirectoryModel model)
+        {
+            var objToSave = new tblReview()
+            {
+                DirectoryItemId = model.DirectoryItemId,
+                RevFirstName = model.revmodel.RevFirstName,
+                RevLastName = model.revmodel.RevLastName,
+                RevEmail = model.revmodel.RevEmail,
+                ReviewDate = DateTime.Now.ToShortDateString().ToString(),
+                Review = model.revmodel.Review,
+                ReviewRating = model.revmodel.ReviewRating
+            };
+            ent.tblReviews.Add(objToSave);
+            ent.SaveChanges();
+        }
+        public List<DirectoryReviewModel> GetReviewList(int Id)
+        {
+            List<DirectoryReviewModel> result = ent.tblReviews.Where(x => x.DirectoryItemId == Id).Select(x => new DirectoryReviewModel
+            {
+                ReviewId=x.ReviewId,
+                DirectoryItemId=x.DirectoryItemId,
+                RevFirstName=x.RevFirstName,
+                RevLastName=x.RevLastName,
+                RevEmail=x.RevEmail,
+                ReviewDate=x.ReviewDate,
+                Review=x.Review,
+                ReviewRating=x.ReviewRating
+            }).ToList();
+            return result;
+        }
     }
 }

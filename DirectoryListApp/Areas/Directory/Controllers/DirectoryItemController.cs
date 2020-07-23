@@ -123,6 +123,7 @@ namespace DirectoryListApp.Areas.Directory.Controllers
         {
             var model = new DirectoryModel();
             model = pro.GetDirectoryData(id);
+            model.DirectoryReviewModelList = pro.GetReviewList(id);
             return PartialView("VUC_Details", model);
         }
         public ActionResult SearchList(string anydata)
@@ -167,6 +168,12 @@ namespace DirectoryListApp.Areas.Directory.Controllers
             ViewBag.currentPage = page;
             ViewBag.TotalPages = Math.Ceiling((double)pro.GetTotalItemCount() / pagesize);
             return View(model);
+        }
+        [HttpPost]
+        public ActionResult AddReview(DirectoryModel model)
+        {
+            pro.InsertReview(model);
+            return RedirectToAction("Details",new{ id = model.DirectoryItemId});
         }
         
     }

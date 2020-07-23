@@ -10,6 +10,12 @@ namespace DirectoryListApp.Areas.Directory.Models
    
         public class DirectoryModel
         {
+        public DirectoryModel()
+        {
+            DirectoryModelList = new List<DirectoryModel>();
+            revmodel = new DirectoryReviewModel();
+            DirectoryReviewModelList = new List<DirectoryReviewModel>();
+        }
             public int DirectoryItemId { get; set; }
             [DisplayName("Directory Name")]
             [Required(ErrorMessage = "*")]
@@ -47,8 +53,10 @@ namespace DirectoryListApp.Areas.Directory.Models
             [DisplayName("Permanent Address")]
             public string PermanentAddress { get { return Utility.GetPalikaName(Convert.ToInt32(AddressPalika)) + "-" + AddressWard + ", " + Utility.GetDistrictName(Convert.ToInt32(AddressDistrict)) + ", " + Utility.GetStateName(Convert.ToInt32(AddressState)); } }
             public List<DirectoryModel> DirectoryModelList { get; set; }
+        public DirectoryReviewModel revmodel { get; set; }
+        public List<DirectoryReviewModel> DirectoryReviewModelList { get; set; }
 
-        //reviews
+
         }
         public class DirectoryCategoryModel
         {
@@ -69,5 +77,16 @@ namespace DirectoryListApp.Areas.Directory.Models
             public string CreatedDate { get; set; }
             public List<DirectorySubCategoryModel> DirectorySubCategoryModelList { get; set; }
         }
+    public class DirectoryReviewModel
+    {
+        public int ReviewId { get; set; }
+        public Nullable<int> DirectoryItemId { get; set; }
+        public string RevFirstName { get; set; }
+        public string RevLastName { get; set; }
+        public string RevEmail { get; set; }
+        public string ReviewDate { get; set; }
+        public string Review { get; set; }
+        public Nullable<int> ReviewRating { get; set; }
+    }
     
 }

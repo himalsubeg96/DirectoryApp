@@ -203,7 +203,7 @@
                     @Html.ValidationMessageFor(model => model.PhotoLogo, "Only jpg,jpeg,png image")
                 </div>
                 <div class="form-group col-md-6">
-                    @Html.LabelFor(model => model.Details)
+                    @Html.Label("Overview")
                     @Html.TextAreaFor(model => model.Details, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Details)
                 </div>

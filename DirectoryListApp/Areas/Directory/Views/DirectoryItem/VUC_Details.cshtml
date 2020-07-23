@@ -173,8 +173,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-12 blog-pots">
-                        <!-- Block heading end -->
-                        @Html.HiddenFor(model => model.DirectoryItemId)
+                        <!-- Block heading end -->                       
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="detail-wrapper">
@@ -185,7 +184,70 @@
                                                 <a href="#listing-location" class="listing-address">
                                                     <i class="fa fa-map-marker pr-2 ti-location-pin mrg-r-5"></i> @Model.PermanentAddress
                                                 </a>
-                                                
+                                                @if (Model.DirectoryReviewModelList.Count > 0)
+                                                {
+                                                    double count = Model.DirectoryReviewModelList.Count;
+                                                    double rate = 0;
+                                                    foreach (var item in Model.DirectoryReviewModelList)
+                                                    {
+                                                        rate += (double)item.ReviewRating;
+                                                    }
+                                                    var avg = Math.Round(rate / count);
+                                                    <div class="rating-box mt-3">
+                                                        @if (avg == 1)
+                                                        {
+                                                        <div class="detail-list-rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        }
+                                                        @if (avg == 2)
+                                                        {
+                                                            <div class="detail-list-rating">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                            </div>
+                                                        }
+                                                        @if (avg == 3)
+                                                        {
+                                                            <div class="detail-list-rating">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                            </div>
+                                                        }
+                                                        @if (avg == 4)
+                                                        {
+                                                            <div class="detail-list-rating">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                            </div>
+                                                        }
+                                                        @if (avg == 5)
+                                                        {
+                                                            <div class="detail-list-rating">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                        }
+                                                        
+                                                    </div>
+                                                    
+                                                }
                                             </div>
                                         </div>
                                     </div>
@@ -195,7 +257,7 @@
                                     <h5 class="mb-4">Gallery</h5>
                                     <div class="carousel-inner">
                                         <div class="active item carousel-item" data-slide-number="0">
-                                            <img src="../Content/images/slider.jpeg" class="img-fluid" alt="slider-listing">
+                                            <img src="@Model.PhotoLogo" class="img-fluid" alt="slider-listing">
                                         </div>
                                        
                                     </div>
@@ -214,32 +276,83 @@
                         <section class="reviews comments">
                             <h3 class="mb-5">Reviews</h3>
                             <div class="row mb-5">
-                                @for (int i = 0; i < 3; i++)
+                                @if (Model.DirectoryReviewModelList.Any())
+	                            {
+		                            foreach (var item in Model.DirectoryReviewModelList)
+                                    {
+                                     <ul class="col-12 commented pl-0" style="margin-left:50px;">
+                <li class="comm-inf">
+                    <div class="col-md-10 comments-info">
+                        <div class="conra">
+                            <h5 class="mb-2">@item.RevFirstName @item.RevLastName</h5>
+                            <div class="rating-box">
+                                @if (item.ReviewRating == 1)
                                 {
-                                    <ul class="col-12 commented pl-0" style="margin-left:50px;">
-                                        <li class="comm-inf">
-                                            <div class="col-md-10 comments-info">
-                                                <div class="conra">
-                                                    <h5 class="mb-2">Mary Smith</h5>
-                                                    <div class="rating-box">
-                                                        <div class="detail-list-rating mr-0">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <p class="mb-4 rest">May 30 2020</p>
-                                                <p>sed.</p>
-
-                                            </div>
-                                        </li>
-
-                                    </ul>
+                                    <div class="detail-list-rating mr-0">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
                                 }
-                               
+                                @if (item.ReviewRating == 2 )
+                                {
+                                    <div class="detail-list-rating mr-0">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                }
+                                @if (item.ReviewRating == 3)
+                                {
+                                    <div class="detail-list-rating mr-0">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                }
+                                @if (item.ReviewRating == 4)
+                                {
+                                    <div class="detail-list-rating mr-0">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                }
+                                @if (item.ReviewRating == 5)
+                                {
+                                    <div class="detail-list-rating mr-0">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                }
+                                
+                            </div>
+                        </div>
+                        <p class="mb-4 rest">@Convert.ToDateTime(@item.ReviewDate).ToLongDateString()</p>
+                        <p>@item.Review</p>
+
+                    </div>
+                </li>
+
+            </ul>
+                                    }
+                                }
+                                else
+                                {
+                                    <h4>No Reviews!</h4>
+                                }
+
                             </div>
                             
                         </section>
@@ -249,53 +362,58 @@
                                 <h3 class="listing-desc-headline margin-bottom-20 mb-4">Add Review</h3>
                                 <span class="leave-rating-title mb-3">Your rating for this listing</span>
                                 <!-- Rating / Upload Button -->
+                                @using (Html.BeginForm("AddReview", "DirectoryItem"))
+                                {
+                                    @Html.HiddenFor(model => model.DirectoryItemId)
                                 <div class="row mb-4">
                                     <div class="col-md-6">
                                         <!-- Leave Rating -->
                                         <div class="clearfix"></div>
                                         <div class="leave-rating margin-bottom-30 mr-2">
-                                            <input type="radio" name="rating" id="rating-1" value="1" />
-                                            <label for="rating-1" class="fa fa-star"></label>
-                                            <input type="radio" name="rating" id="rating-2" value="2" />
-                                            <label for="rating-2" class="fa fa-star"></label>
-                                            <input type="radio" name="rating" id="rating-3" value="3" />
-                                            <label for="rating-3" class="fa fa-star"></label>
-                                            <input type="radio" name="rating" id="rating-4" value="4" />
-                                            <label for="rating-4" class="fa fa-star"></label>
-                                            <input type="radio" name="rating" id="rating-5" value="5" />
+                                            <input type="radio" name="revmodel.ReviewRating" id="rating-5" value="5" />
                                             <label for="rating-5" class="fa fa-star"></label>
+                                            <input type="radio" name="revmodel.ReviewRating" id="rating-4" value="4" />
+                                            <label for="rating-4" class="fa fa-star"></label>
+                                            <input type="radio" name="revmodel.ReviewRating" id="rating-3" value="3" />
+                                            <label for="rating-3" class="fa fa-star"></label>
+                                            <input type="radio" name="revmodel.ReviewRating" id="rating-2" value="2" />
+                                            <label for="rating-2" class="fa fa-star"></label>
+                                            <input type="radio" name="revmodel.ReviewRating" id="rating-1" value="1" />
+                                            <label for="rating-1" class="fa fa-star"></label>
                                         </div>
-                                        <div class="clearfix">
-                                            <p>0 / 5</p>
-                                        </div>
+                                        
                                     </div>
                                     
                                 </div>
+                                
                                 <div class="row">
                                     <div class="col-md-12 data">
-                                        <form action="#">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <input type="text" name="name" class="form-control" placeholder="First Name" required>
+                                                    @Html.TextBoxFor(model => model.revmodel.RevFirstName, new { @class = "form-control", @placeholder = "First Name" })                                                    
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <input type="text" name="name" class="form-control" placeholder="Last Name" required>
+                                                    @Html.TextBoxFor(model => model.revmodel.RevLastName, new { @class = "form-control", @placeholder = "Last Name" })
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <input type="email" name="email" class="form-control" placeholder="Email" required>
+                                                    @Html.TextBoxFor(model => model.revmodel.RevEmail, new { @class = "form-control", @placeholder = "Email" })
                                                 </div>
                                             </div>
                                             <div class="col-md-12 form-group">
-                                                <textarea class="form-control" id="exampleTextarea" rows="8" placeholder="Review" required></textarea>
+                                                @Html.TextAreaFor(model => model.revmodel.Review, new { @class = "form-control", @placeholder = "Review" })
                                             </div>
-                                            <button type="submit" class="btn btn-primary btn-lg mt-2">Submit Review</button>
-                                        </form>
+                                            <a href="~/Directory/DirectoryItem/AddReview">
+                                                <input type="submit" value="Submit Review" class="btn btn-primary btn-lg mt-2" />
+                                                @*<button type="submit" class="btn btn-primary btn-lg mt-2">Submit Review</button>*@
+                                            </a>
+                                            
                                     </div>
                                 </div>
+                                }
                             </div>
                         </section>
                         <!-- END SECTION ASSIGNED AGENTS -->
@@ -336,6 +454,7 @@
                                             var eachitem = ent.tblDirectoryDetails.Where(x => x.DirectoryItemId == item.DirectoryItemId).ToList();
                                             foreach (var itm in eachitem)
                                             {
+                                                var rating = ent.tblReviews.Where(x => x.DirectoryItemId == item.DirectoryItemId).ToList();
                                                 <li>
                                                     <a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId">
                                                         @if (itm.PhotoLogo != null)
@@ -350,13 +469,69 @@
                                                     <div class="overflow-hidden">
                                                         <span class="cat mt-0"><a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId">@item.DirectoryItemName</a></span>
                                                         <h4><a href="#">@Utility.GetPalikaName(Convert.ToInt32(itm.AddressPalika))- @itm.AddressWard, @Utility.GetDistrictName(Convert.ToInt32(itm.AddressDistrict)),@Utility.GetStateName(Convert.ToInt32(itm.AddressState))</a></h4>
-                                                        <span class="rating__star">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </span>
+                                                        @if (rating.Count > 0)
+                                                        {
+                                                            double count = rating.Count;
+                                                            double rate = 0;
+                                                            foreach (var i in rating)
+                                                            {
+                                                                rate += (double)i.ReviewRating;
+                                                            }
+                                                            var avg = Math.Round(rate / count);
+
+                                                            if (avg == 1)
+                                                            {
+                                                                <span class="rating__star">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                </span>
+                                                            }
+                                                            if (avg == 2)
+                                                            {
+                                                                <span class="rating__star">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                </span>
+                                                            }
+                                                            if (avg == 3)
+                                                            {
+                                                                <span class="rating__star">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                </span>
+                                                            }
+                                                            if (avg == 4)
+                                                            {
+                                                                <span class="rating__star">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                </span>
+                                                            }
+                                                            if (avg == 5)
+                                                            {
+                                                                <span class="rating__star">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                </span>
+                                                            }
+                                                        }
+                                                        
+                                                       
                                                     </div>
                                                 </li>
                                             }
@@ -378,19 +553,19 @@
                                     </div>
                                     <div class="tags">
                                         <span><a href="#" class="btn btn-outline-primary mr-2">Cafe</a></span>
-                                        <span><a href="#" class="btn btn-outline-primary">Hotels</a></span>
+                                        <span><a href="~/Directory/DirectoryItem/GetDirectoryCategory/1" class="btn btn-outline-primary">Hotels</a></span>
                                     </div>
                                     <div class="tags">
                                         <span><a href="#" class="btn btn-outline-primary mr-2">Gym</a></span>
-                                        <span><a href="#" class="btn btn-outline-primary">Cinema</a></span>
+                                        <span><a href="~/Directory/DirectoryItem/GetDirectoryCategory/3" class="btn btn-outline-primary">Stationery</a></span>
                                     </div>
                                     <div class="tags">
                                         <span><a href="#" class="btn btn-outline-primary mr-2">Real Estates</a></span>
-                                        <span><a href="#" class="btn btn-outline-primary">Store</a></span>
+                                        <span><a href="~/Directory/DirectoryItem/GetDirectoryCategory/8" class="btn btn-outline-primary">Bank</a></span>
                                     </div>
                                     <div class="tags no-mb">
                                         <span><a href="#" class="btn btn-outline-primary mr-2">Conference</a></span>
-                                        <span><a href="#" class="btn btn-outline-primary">Places</a></span>
+                                        <span><a href="~/Directory/DirectoryItem/GetDirectoryCategory/6" class="btn btn-outline-primary">Clinic</a></span>
                                     </div>
                                 </div>
                             </div>
