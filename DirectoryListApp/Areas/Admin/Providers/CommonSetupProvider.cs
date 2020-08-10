@@ -83,7 +83,7 @@ namespace DirectoryListApp.Areas.Admin.Providers
                         {
                             record.DirectoryCategoryId = model.DirectoryCategoryId;
                             record.DirectoryCategoryName = model.DirectoryCategoryName;
-
+                            record.CategoryIcon = model.CategoryIcon;
                             con.Entry(record).State = System.Data.Entity.EntityState.Modified;
                         }
                     }
@@ -93,7 +93,7 @@ namespace DirectoryListApp.Areas.Admin.Providers
                         {
                             DirectoryCategoryId = model.DirectoryCategoryId,
                             DirectoryCategoryName = model.DirectoryCategoryName,
-
+                            CategoryIcon=model.CategoryIcon
                         };
                         //category.CreatedBy = Utility.GetCurrentLoginUser();
                         category.CreatedDate = DateTime.Now.ToShortDateString().ToString();

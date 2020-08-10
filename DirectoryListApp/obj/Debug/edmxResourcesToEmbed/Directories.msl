@@ -59,6 +59,7 @@
     <EntitySetMapping Name="tblDirectoryCategories">
       <EntityTypeMapping TypeName="DirectoryModel.tblDirectoryCategory">
         <MappingFragment StoreEntitySet="tblDirectoryCategory">
+          <ScalarProperty Name="CategoryIcon" ColumnName="CategoryIcon" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="DirectoryCategoryName" ColumnName="DirectoryCategoryName" />

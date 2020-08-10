@@ -3,6 +3,7 @@
     var ent = new DirectoryEntities();
     var result = ent.tblDirectoryCategories.Where(x => true).ToList();
     var newregister = ent.tblDirectoryItems.Where(x => true).OrderByDescending(x => x.DirectoryItemId).Take(6).ToList();
+    var category = ent.tblDirectoryCategories.Where(x => true).ToList();
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -228,190 +229,30 @@
                 </div>
                 <!-- /row -->
                 <div class="row">
+                    @if (category.Count > 0)
+                    {
+                        foreach (var itmCategory in category)
+                        {
+                            var count = ent.tblDirectoryItems.Where(x => x.DirectoryCategoryId == itmCategory.DirectoryCategoryId).Count();
+                         <!-- Single category -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="small-category-2">
+                                    <div class="small-category-2-thumb img-1">
+                                        <a href="listing-detail.html">
+                                            <img src="~/Content/images/icons/1.png" width="50" height="50" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="sc-2-detail">
+                                        <h4 class="sc-jb-title"><a href="~/Directory/DirectoryItem/GetDirectoryCategory/@itmCategory.DirectoryCategoryId">@itmCategory.DirectoryCategoryName</a></h4>
+                                        <span>@count Listings</span>
+                                    </div>
+                                </div>
+                            </div>
                     <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-1">
-                                <a href="listing-detail.html">
-                                    <img src="~/Content/images/icons/1.png" width="50" height="50" alt="">
-                                </a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="~/Directory/DirectoryItem/GetDirectoryCategory/1">Hotels</a></h4>
-                                <span>50 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-2">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/bank.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="~/Directory/DirectoryItem/GetDirectoryCategory/8">Bank</a></h4>
-                                <span>35 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-3">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/stationery.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="~/Directory/DirectoryItem/GetDirectoryCategory/3">Stationery</a></h4>
-                                <span>23 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-1">
-                                <a href="listing-detail.html">
-                                    <img src="~/Content/images/icons/cross.png" width="50" height="50" alt="">
-                                </a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="~/Directory/DirectoryItem/GetDirectoryCategory/6">Clinic</a></h4>
-                                <span>50 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-2">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/2.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="#">Restaurant</a></h4>
-                                <span>35 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-3">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/3.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="#">Fitness</a></h4>
-                                <span>23 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-4">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/4.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="#">Coffee Shop</a></h4>
-                                <span>87 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-5">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/5.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="#">Cinema</a></h4>
-                                <span>54 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-6">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/6.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="#">Disco</a></h4>
-                                <span>23 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-7">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/7.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="#">Rent a Car</a></h4>
-                                <span>12 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-9">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/9.png" width="26" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="#">Fast Food</a></h4>
-                                <span>18 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2 no-mb mob-mt">
-                            <div class="small-category-2-thumb img-8">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/8.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="#">Shopping</a></h4>
-                                <span>25 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2 no-mb">
-                            <div class="small-category-2-thumb img-10">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/10.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="#">Real Estate</a></h4>
-                                <span>12 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2 no-mb si-mt">
-                            <div class="small-category-2-thumb img-11">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/11.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="#">Beauty Salon</a></h4>
-                                <span>54 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2 no-mb si-mt">
-                            <div class="small-category-2-thumb img-12">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/12.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="#">Pizza Pala</a></h4>
-                                <span>36 Listings</span>
-                            </div>
-                        </div>
-                    </div>
+                        }
+
+                    }
+                    
                 </div>
                 <!-- /row -->
             </div>

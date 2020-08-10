@@ -10,57 +10,72 @@
 <br />
 <section>
     <div class="container">
-        <div class="row">
-            <div class="sec-title">
-                <h3>Directory Category List</h3>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="~/Admin/CommonSetup/InsertUpdateCategory">
+        <div class="sec-title">
+            <h3>Directory Category List</h3>
+        </div>
+        <div class="row" style="margin-bottom:15px;">
+
+            <div class="col-md-6">
+                <a class="btn btn-outline-primary" href="~/Admin/CommonSetup/InsertUpdateCategory">
                     Create New
                 </a>
             </div>
+            @*<div class="col-md-6">
+                <form method="post" enctype="multipart/form-data">
+
+                    <div class="col-md-4">
+
+                        <input name="file" type="file" required />
+
+                        <button type="submit">Import Excel</button>
+
+                    </div>
+
+                </form>
+
+            </div>*@
         </div>
-        <div class="row">
-            <div class="well well-small">
-                @if (Model.CategorySetupViewModelList.Count > 0)
+        @*<div class="row">*@
+        <div class="well well-small">
+            @if (Model.CategorySetupViewModelList.Count > 0)
+            {
+                int Sno = ViewBag.currentPage == 1 ? 0 : (ViewBag.currentPage - 1) * 20;
+                <table id="ItemCategory" class="table table-bordered table-striped table-condensed">
+                    <thead>
+                        <tr>
+                            <th class="span1"><label>S.N</label> </th>
+                            <th> @Html.Label("Directory Category Name")</th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.CategorySetupViewModelList)
                 {
-                    int Sno = ViewBag.currentPage == 1 ? 0 : (ViewBag.currentPage - 1) * 20;
-                    <table id="ItemCategory" class="table table-bordered table-striped table-condensed">
-                        <thead>
-                            <tr>
-                                <th class="span1"><label>S.N</label> </th>
-                                <th> @Html.Label("Directory Category Name")</th>
-                                <th></th>
+
+                            <tr class="@(Sno++ % 2 == 0 ? "success" : "warning")">
+                                <td class="span1l">
+                                    @Sno.ToString()
+                                </td>
+                                <td>@item.DirectoryCategoryName</td>
+                                <td>
+                                    <a href="~/Admin/CommonSetup/InsertUpdateCategory/@item.DirectoryCategoryId" title="Edit"><i class="fa fa-edit" style="color:blue;"></i></a>
+
+                                </td>
+
 
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.CategorySetupViewModelList)
-                {
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <h4>No records found!</h4>
+            }
 
-                                <tr class="@(Sno++ % 2 == 0 ? "success" : "warning")">
-                                    <td class="span1l">
-                                        @Sno.ToString()
-                                    </td>
-                                    <td>@item.DirectoryCategoryName</td>
-                                    <td>
-                                        <a href="~/Admin/CommonSetup/InsertUpdateCategory/@item.DirectoryCategoryId" title="Edit"><i class="fa fa-edit" style="color:blue;"></i></a>
-
-                                    </td>
-
-
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                }
-                else
-                {
-                    <h4>No records found!</h4>
-                }
-
-            </div>
         </div>
+        @*</div>*@
     </div>
 </section>
 
@@ -83,5 +98,6 @@
         }
     });
 </script>
+
 
 

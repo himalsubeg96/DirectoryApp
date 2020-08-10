@@ -1,81 +1,666 @@
 ﻿@model DirectoryListApp.Areas.Directory.Models.DirectoryModel
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout =null;
 }
-<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
-<link href="~/Content/CSS/bootstrap.css" rel="stylesheet" />
-<link href="~/Content/CSS/menu.css" rel="stylesheet" />
-<link href="~/Content/CSS/styles.css" rel="stylesheet" />
-<link href="~/Content/CSS/default.css" rel="stylesheet" id="color" />
-@Html.HiddenFor(model => model.DirectoryItemId)
-<!-- START SECTION LISTING RIGHT -->
-<section class="listings-right popular list featured portfolio blog">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9 col-md-12 blog-pots">
-               
-                <div class="row featured portfolio-items">
-                    <div class="item col-lg-5 col-md-12 col-xs-12 landscapes sale pr-0 pb-0">
-                        <div class="project-single mb-0 bb-0">
-                            <div class="project-inner project-head">
-                                <div class="homes">
-                                    <!-- homes img -->
-                                    <a href="#" class="homes-img hover-effect">
-                                        @if (Model.PhotoLogo != null)
-                                        {
-                                            <img src="@Model.PhotoLogo" class="img-responsive" />
-                                        }
-                                        else
-                                        {
-                                            <img src="~/Images/NoImage (1).png" alt="Photo" class="img-responsive" />
-                                        }
-                                        <div class="overlay"></div>
-                                    </a>
-                                </div>
+@{
+    var ent = new DirectoryEntities();
+    var result = ent.tblDirectoryCategories.Where(x => true).ToList();
+    var newregister = ent.tblDirectoryItems.Where(x => true).OrderByDescending(x => x.DirectoryItemId).Take(4).ToList();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- ARCHIVES CSS -->
+    <link href="~/Content/CSS/jquery-ui.css" rel="stylesheet" />
+    @*<link href="~/Content/CSS/all5.0.css" rel="stylesheet" />*@
+    <link href="~/Content/CSS/search.css" rel="stylesheet" />
+    <link href="~/Content/CSS/animate.css" rel="stylesheet" />
+    <link href="~/Content/CSS/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Content/CSS/lightcase.css" rel="stylesheet" />
+    <link href="~/Content/CSS/owl-carousel.css" rel="stylesheet" />
+    <link href="~/Content/CSS/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/CSS/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/CSS/menu.css" rel="stylesheet" />
+    <link href="~/Content/CSS/slick.css" rel="stylesheet" />
+    <link href="~/Content/CSS/map-animation.css" rel="stylesheet" />
+    <link href="~/Content/CSS/styles.css" rel="stylesheet" />
+    <link href="~/Content/CSS/default.css" rel="stylesheet" id="color" />
+
+    <link href="~/Content/CSS/timedropper.css" rel="stylesheet" />
+    <link href="~/Content/CSS/datedropper.css" rel="stylesheet" />
+
+    <link href="~/Content/CSS/leaflet.css" rel="stylesheet" />
+    <link href="~/Content/CSS/leaflet-gesture-handling.min.css" rel="stylesheet" />
+    <link href="~/Content/CSS/leaflet.markercluster.css" rel="stylesheet" />
+    <link href="~/Content/CSS/leaflet.markercluster.default.css" rel="stylesheet" />
+    <!-- ARCHIVES JS -->
+    <script src="~/Scripts/JS/jquery.min.js"></script>
+    <script src="~/Scripts/JS/jquery-ui.js"></script>
+    <script src="~/Scripts/JS/bootstrap.min.js"></script>
+    <script src="~/Scripts/JS/mmenu.min.js"></script>
+    <script src="~/Scripts/JS/mmenu.js"></script>
+    <script src="~/Scripts/JS/smooth-scroll.min.js"></script>
+    <script src="~/Scripts/JS/search.js"></script>
+    <script src="~/Scripts/JS/slick.min.js"></script>
+    <script src="~/Scripts/JS/slick.js"></script>
+    <script src="~/Scripts/JS/owl.carousel.js"></script>
+    <script src="~/Scripts/JS/jquery.form.js"></script>
+    <script src="~/Scripts/JS/searched.js"></script>
+    <!-- MAIN JS -->
+    <script src="~/Scripts/JS/script.js"></script>
+
+   <style>
+       #map-contact { 
+            height: 500px;    
+            width: 680px;            
+          }
+   </style>
+</head>
+<body class="inner-pages">
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- START SECTION HEADINGS -->
+        <!-- Header Container
+        ================================================== -->
+        <header id="header-container">
+            <!-- Topbar -->
+            <div class="header-top">
+                <div class="container">
+                    <div class="top-info hidden-sm-down">
+                        <div class="call-header">
+                            <p><i class="fa fa-phone" aria-hidden="true"></i> 123456789</p>
+                        </div>
+                        <div class="address-header">
+                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Baneshwor</p>
+                        </div>
+                        <div class="mail-header">
+                            <p><i class="fa fa-envelope" aria-hidden="true"></i> info@listing.com</p>
+                        </div>
+                    </div>
+                    <div class="top-social hidden-sm-down">
+                        <div class="login-wrap">
+                            <ul class="d-flex">
+                                <li><a href="~/Account/Login"><i class="fa fa-user"></i> Login</a></li>
+                                <li><a href="~/Account/Register"><i class="fa fa-sign-in"></i> Register</a></li>
+                            </ul>
+                        </div>
+                        <div class="social-icons-header">
+                            <div class="social-icons">
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
-                    <!-- homes content -->
-                    <div class="col-lg-7 col-md-12 homes-content pb-0 mb-44">
-                        <!-- homes address -->
-                        <div class="enty">
-                            <a href="#">
-                                <h3 class="mb-4">@Html.DisplayFor(model => model.DirectoryItemName)</h3>
-                            </a>
-                            <ul class="homes-list clearfix">
-                                <li>
-                                    <i class="fa fa-map-marker"></i>
-                                    <span>@Html.DisplayFor(model => model.PermanentAddress)</span>
-                                </li>
-                                <li>
-                                    <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <span>@Html.DisplayFor(model => model.DirectoryPhone)</span>
-                                </li>
-                                <li>
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    <span>@Html.DisplayFor(model => model.ContactPersonName)</span>
-                                </li>
-                                <li>
-                                    <i class="fa fa-mobile-phone" aria-hidden="true"></i>
-                                    <span>@Html.DisplayFor(model => model.ContactPersonPhone)</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Price -->
-                        <div class="price-properties">
-                            <ul class="starts text-left mb-0">
-                                <li class="mt-3">
-                                    @Html.DisplayFor(model => model.Details)
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-             
                 </div>
             </div>
-            
-        </div>
+            <div class="clearfix"></div>
+            <!-- Topbar / End -->
+            <!-- Header -->
+            <div id="header" >
+                <div class="container">
+                    <!-- Left Side Content -->
+                    <div class="left-side">
+                        <!-- Logo -->
+                        <div id="logo">
+                            <span class="text-center" style="color: black;font-size: 24px;">
+                                LISTING
+                            </span>
+                        </div>
+                        <!-- Mobile Navigation -->
+                        <div class="mmenu-trigger">
+                            <button class="hamburger hamburger--collapse" type="button">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                        <!-- Main Navigation -->
+                        <nav id="navigation" class="style-1">
+                            <ul id="responsive">
+                                <li>
+                                    <a class="current" href="~/Home/Index">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#">Listings</a>
+                                    <ul>
+                                        @foreach (var item in result)
+                                        {
+                                            <li>
+                                                <a href="~/Directory/DirectoryItem/GetDirectoryCategory/@item.DirectoryCategoryId">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</a>
+                                                @{
+                                                    var sub = ent.tblDirectorySubCategories.Where(x => x.DirectoryCategoryId == item.DirectoryCategoryId).ToList();
+                                                }
+                                                <ul>
+                                                    @foreach (var itemSub in sub)
+                                                    {
+                                                        <li><a href="~/Directory/DirectoryItem/GetDirectorySubCategory/@itemSub.DirectorySubCategoryId">@Utility.GetDirectorySubCategoryName(itemSub.DirectorySubCategoryId)</a></li>
+                                                    }
+
+
+                                                </ul>
+                                            </li>
+                                                    }
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Pages</a>
+                                </li>
+                                <li><a href="#">Blog</a></li>
+                                <li>
+                                    <a href="#">Contact</a>
+                                </li>
+
+                            </ul>
+                        </nav>
+
+                        <div class="clearfix"></div>
+                        <!-- Main Navigation / End -->
+                    </div>
+                    <!-- Left Side Content / End -->
+                </div>
+            </div>
+            <!-- Header / End -->
+
+        </header>
+        <div class="clearfix"></div>
+        <!-- Header Container / End -->
+        <!-- START SECTION LISTING DETAIL-->
+        <section class="listing blog details"style="margin-top:0px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-12 blog-pots">
+                        <!-- Block heading end -->                       
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="detail-wrapper">
+                                    <div class="detail-wrapper-body">
+                                        <div class="listing-title-bar">
+                                            <h3>@Model.DirectoryItemName </h3>
+                                            <div class"mt-3">
+                                                <a href="#listing-location" class="listing-address">
+                                                    <i class="fa fa-map-marker pr-2 ti-location-pin mrg-r-5"></i> @Model.PermanentAddress
+                                                </a>
+                                                @if (Model.DirectoryReviewModelList.Count > 0)
+                                                {
+                                                    double count = Model.DirectoryReviewModelList.Count;
+                                                    double rate = 0;
+                                                    foreach (var item in Model.DirectoryReviewModelList)
+                                                    {
+                                                        rate += (double)item.ReviewRating;
+                                                    }
+                                                    var avg = Math.Round(rate / count);
+                                                    <div class="rating-box mt-3">
+                                                        @if (avg == 1)
+                                                        {
+                                                        <div class="detail-list-rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        }
+                                                        @if (avg == 2)
+                                                        {
+                                                            <div class="detail-list-rating">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                            </div>
+                                                        }
+                                                        @if (avg == 3)
+                                                        {
+                                                            <div class="detail-list-rating">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                            </div>
+                                                        }
+                                                        @if (avg == 4)
+                                                        {
+                                                            <div class="detail-list-rating">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                            </div>
+                                                        }
+                                                        @if (avg == 5)
+                                                        {
+                                                            <div class="detail-list-rating">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                        }
+                                                        
+                                                    </div>
+                                                    
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- main slider carousel items -->
+                                <div id="listingDetailsSlider" class="carousel listing-details-sliders slide mb-30">
+                                    <h5 class="mb-4">Gallery</h5>
+                                    <div class="carousel-inner">
+                                        <div class="active item carousel-item" data-slide-number="0">
+                                            <img src="@Model.PhotoLogo" class="img-fluid" alt="slider-listing">
+                                        </div>
+                                       
+                                    </div>
+                                    
+                                </div>
+                                <div class="blog-info details overview">
+                                    <h5 class="mb-4">Overview</h5>
+                                    <p class="mb-3">@Model.Details</p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- cars content -->
+                        <div class="property-location mp">
+                            <h5>Location</h5>
+                            <div class="divider-fade"></div>
+                            <div id="map-contact" class="contact-map">
+                            </div>
+                        </div>
+                        <!-- START SECTION ASSIGNED AGENTS -->
+                        <section class="reviews comments">
+                            <h3 class="mb-5">Reviews</h3>
+                            <div class="row mb-5">
+                                @if (Model.DirectoryReviewModelList.Any())
+	                            {
+		                            foreach (var item in Model.DirectoryReviewModelList)
+                                    {
+                                     <ul class="col-12 commented pl-0" style="margin-left:50px;">
+                <li class="comm-inf">
+                    <div class="col-md-10 comments-info">
+                        <div class="conra">
+                            <h5 class="mb-2">@item.RevFirstName @item.RevLastName</h5>
+                            <div class="rating-box">
+                                @if (item.ReviewRating == 1)
+                                {
+                                    <div class="detail-list-rating mr-0">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                }
+                                @if (item.ReviewRating == 2 )
+                                {
+                                    <div class="detail-list-rating mr-0">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                }
+                                @if (item.ReviewRating == 3)
+                                {
+                                    <div class="detail-list-rating mr-0">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                }
+                                @if (item.ReviewRating == 4)
+                                {
+                                    <div class="detail-list-rating mr-0">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                }
+                                @if (item.ReviewRating == 5)
+                                {
+                                    <div class="detail-list-rating mr-0">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                }
+                                
+                            </div>
+                        </div>
+                        <p class="mb-4 rest">@Convert.ToDateTime(@item.ReviewDate).ToLongDateString()</p>
+                        <p>@item.Review</p>
+
+                    </div>
+                </li>
+
+            </ul>
+                                    }
+                                }
+                                else
+                                {
+                                    <h4>No Reviews!</h4>
+                                }
+
+                            </div>
+                            
+                        </section>
+                        <section class="reviews leve-comments details">
+                            <div id="add-review" class="add-review-box">
+                                <!-- Add Review -->
+                                <h3 class="listing-desc-headline margin-bottom-20 mb-4">Add Review</h3>
+                                <span class="leave-rating-title mb-3">Your rating for this listing</span>
+                                <!-- Rating / Upload Button -->
+                                @using (Html.BeginForm("AddReview", "DirectoryItem"))
+                                {
+                                    @Html.HiddenFor(model => model.DirectoryItemId)
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <!-- Leave Rating -->
+                                        <div class="clearfix"></div>
+                                        <div class="leave-rating margin-bottom-30 mr-2">
+                                            <input type="radio" name="revmodel.ReviewRating" id="rating-5" value="5" />
+                                            <label for="rating-5" class="fa fa-star"></label>
+                                            <input type="radio" name="revmodel.ReviewRating" id="rating-4" value="4" />
+                                            <label for="rating-4" class="fa fa-star"></label>
+                                            <input type="radio" name="revmodel.ReviewRating" id="rating-3" value="3" />
+                                            <label for="rating-3" class="fa fa-star"></label>
+                                            <input type="radio" name="revmodel.ReviewRating" id="rating-2" value="2" />
+                                            <label for="rating-2" class="fa fa-star"></label>
+                                            <input type="radio" name="revmodel.ReviewRating" id="rating-1" value="1" />
+                                            <label for="rating-1" class="fa fa-star"></label>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-12 data">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    @Html.TextBoxFor(model => model.revmodel.RevFirstName, new { @class = "form-control", @placeholder = "First Name" })                                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    @Html.TextBoxFor(model => model.revmodel.RevLastName, new { @class = "form-control", @placeholder = "Last Name" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    @Html.TextBoxFor(model => model.revmodel.RevEmail, new { @class = "form-control", @placeholder = "Email" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 form-group">
+                                                @Html.TextAreaFor(model => model.revmodel.Review, new { @class = "form-control", @placeholder = "Review" })
+                                            </div>
+                                            <a href="~/Directory/DirectoryItem/AddReview">
+                                                <input type="submit" value="Submit Review" class="btn btn-primary btn-lg mt-2" />
+                                                @*<button type="submit" class="btn btn-primary btn-lg mt-2">Submit Review</button>*@
+                                            </a>
+                                            
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </section>
+                        <!-- END SECTION ASSIGNED AGENTS -->
+                    </div>
+                    <aside class="col-lg-4 col-md-12 car">
+                        <div class="widget">
+                            <!-- Start Agent Information -->
+                            <div class="sidebar widget-boxed mt-33 mt-5">
+                                <div class="widget-boxed-header">
+                                    <h4><i class="far fa-user pr-3"></i>Contact Person Info</h4>
+                                </div>
+                                <div class="widget-boxed-body">
+                                    <div class="sidebar-widget author-widget2">
+                                        <div class="author-box clearfix">
+                                            <img src="~/Content/images/no-person.jpg" alt="author-image" class="author__img">
+                                            <h4 class="author__title">@Model.ContactPersonName</h4>
+                                            @*<p class="author__meta">Posted 3 days ago</p>*@
+                                        </div>
+                                        <ul class="author__contact">
+                                            <li><span class="la la-map-marker"><i class="fa fa-map-marker"></i></span>@Utility.GetPalikaName(Model.AddressPalika)-@Model.AddressWard,@Utility.GetDistrictName(Model.AddressDistrict)</li>
+                                            <li><span class="la la-phone"><i class="fa fa-phone" aria-hidden="true"></i></span><a href="#">@Model.ContactPersonPhone</a></li>
+                                            <li><span class="la la-envelope-o"><i class="fa fa-envelope" aria-hidden="true"></i></span><a href="#">@Model.Email</a></li>
+                                        </ul>    
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Agent Information -->
+
+                            <div class="widget widget_listings my-5">
+                                <div class="widget-boxed-header">
+                                    <h4><i class="fa fa-map-marker pr-3"></i>Latest Listings</h4>
+                                </div>
+                                <div class="widget-boxed-body">
+                                    <ul>
+                                        @foreach (var item in newregister)
+                                        {
+                                            var eachitem = ent.tblDirectoryDetails.Where(x => x.DirectoryItemId == item.DirectoryItemId).ToList();
+                                            foreach (var itm in eachitem)
+                                            {
+                                                var rating = ent.tblReviews.Where(x => x.DirectoryItemId == item.DirectoryItemId).ToList();
+                                                <li>
+                                                    <a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId">
+                                                        @if (itm.PhotoLogo != null)
+                                                        {
+                                                            <img src="@itm.PhotoLogo" class="img-responsive" alt=""/>
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/Images/NoImage (1).png" alt="Photo" class="img-responsive"/>
+                                                        }
+                                                    </a>
+                                                    <div class="overflow-hidden">
+                                                        <span class="cat mt-0"><a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId">@item.DirectoryItemName</a></span>
+                                                        <h4><a href="#">@Utility.GetPalikaName(Convert.ToInt32(itm.AddressPalika))- @itm.AddressWard, @Utility.GetDistrictName(Convert.ToInt32(itm.AddressDistrict)),@Utility.GetStateName(Convert.ToInt32(itm.AddressState))</a></h4>
+                                                        @if (rating.Count > 0)
+                                                        {
+                                                            double count = rating.Count;
+                                                            double rate = 0;
+                                                            foreach (var i in rating)
+                                                            {
+                                                                rate += (double)i.ReviewRating;
+                                                            }
+                                                            var avg = Math.Round(rate / count);
+
+                                                            if (avg == 1)
+                                                            {
+                                                                <span class="rating__star">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                </span>
+                                                            }
+                                                            if (avg == 2)
+                                                            {
+                                                                <span class="rating__star">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                </span>
+                                                            }
+                                                            if (avg == 3)
+                                                            {
+                                                                <span class="rating__star">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                </span>
+                                                            }
+                                                            if (avg == 4)
+                                                            {
+                                                                <span class="rating__star">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                </span>
+                                                            }
+                                                            if (avg == 5)
+                                                            {
+                                                                <span class="rating__star">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                </span>
+                                                            }
+                                                        }
+                                                        
+                                                       
+                                                    </div>
+                                                </li>
+                                            }
+
+
+                                        }
+                                       
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="recent-post tags">
+                                <div class="widget-boxed-header">
+                                    <h4><i class="fas fa-tags pr-3"></i>Popular Tags</h4>
+                                </div>
+                                <div class="widget-boxed-body">
+                                    <div class="tags">
+                                        <span><a href="#" class="btn btn-outline-primary mr-2">Business</a></span>
+                                        <span><a href="#" class="btn btn-outline-primary">Restaurant</a></span>
+                                    </div>
+                                    <div class="tags">
+                                        <span><a href="#" class="btn btn-outline-primary mr-2">Cafe</a></span>
+                                        <span><a href="~/Directory/DirectoryItem/GetDirectoryCategory/1" class="btn btn-outline-primary">Hotels</a></span>
+                                    </div>
+                                    <div class="tags">
+                                        <span><a href="#" class="btn btn-outline-primary mr-2">Gym</a></span>
+                                        <span><a href="~/Directory/DirectoryItem/GetDirectoryCategory/3" class="btn btn-outline-primary">Stationery</a></span>
+                                    </div>
+                                    <div class="tags">
+                                        <span><a href="#" class="btn btn-outline-primary mr-2">Real Estates</a></span>
+                                        <span><a href="~/Directory/DirectoryItem/GetDirectoryCategory/8" class="btn btn-outline-primary">Bank</a></span>
+                                    </div>
+                                    <div class="tags no-mb">
+                                        <span><a href="#" class="btn btn-outline-primary mr-2">Conference</a></span>
+                                        <span><a href="~/Directory/DirectoryItem/GetDirectoryCategory/6" class="btn btn-outline-primary">Clinic</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+        <!-- END SECTION LISTING DETAIL -->
+        
     </div>
-</section>
-<!-- END SECTION LIST-->
- 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAus9_M-59f9xBR4JK7_dH2MdWeSGmVS6M&callback=initMap"
+            async defer></script>
+  <script>
+      var map;
+
+      function initMap() {
+          //var latitude = 27.7172453; // YOUR LATITUDE VALUE
+          //var longitude = 85.3239605; // YOUR LONGITUDE VALUE
+          var latitude = 27.700508; // YOUR LATITUDE VALUE
+          var longitude = 85.3550694; // YOUR LONGITUDE VALUE
+
+          var myLatLng = { lat: latitude, lng: longitude };
+
+          map = new google.maps.Map(document.getElementById('map-contact'), {
+              center: myLatLng,
+              zoom: 14,
+              disableDoubleClickZoom: true, // disable the default map zoom on double click
+          });
+
+          // Update lat/long value of div when anywhere in the map is clicked    
+          google.maps.event.addListener(map, 'click', function (event) {
+              document.getElementById('latclicked').innerHTML = event.latLng.lat();
+              document.getElementById('longclicked').innerHTML = event.latLng.lng();
+          });
+
+          // Update lat/long value of div when you move the mouse over the map
+          google.maps.event.addListener(map, 'mousemove', function (event) {
+              document.getElementById('latmoved').innerHTML = event.latLng.lat();
+              document.getElementById('longmoved').innerHTML = event.latLng.lng();
+          });
+
+          var marker = new google.maps.Marker({
+              position: myLatLng,
+              map: map,
+              //title: 'Hello World'
+
+              // setting latitude & longitude as title of the marker
+              // title is shown when you hover over the marker
+              title: latitude + ', ' + longitude
+          });
+
+          // Update lat/long value of div when the marker is clicked
+          marker.addListener('click', function (event) {
+              document.getElementById('latclicked').innerHTML = event.latLng.lat();
+              document.getElementById('longclicked').innerHTML = event.latLng.lng();
+          });
+
+          // Create new marker on double click event on the map
+          google.maps.event.addListener(map, 'dblclick', function (event) {
+              var marker = new google.maps.Marker({
+                  position: event.latLng,
+                  map: map,
+                  title: event.latLng.lat() + ', ' + event.latLng.lng()
+              });
+
+              // Update lat/long value of div when the marker is clicked
+              marker.addListener('click', function () {
+                  document.getElementById('latclicked').innerHTML = event.latLng.lat();
+                  document.getElementById('longclicked').innerHTML = event.latLng.lng();
+              });
+          });
+
+          // Create new marker on single click event on the map
+          /*google.maps.event.addListener(map,'click',function(event) {
+              var marker = new google.maps.Marker({
+                position: event.latLng, 
+                map: map, 
+                title: event.latLng.lat()+', '+event.latLng.lng()
+              });                
+          });*/
+      }
+  </script>
+    
+</body>
+
+</html>
+

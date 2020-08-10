@@ -69,6 +69,7 @@
     <Property Name="DirectoryCategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CreatedBy" Type="int" />
     <Property Name="CreatedDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="CategoryIcon" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="tblDirectoryDetails">
     <Key>

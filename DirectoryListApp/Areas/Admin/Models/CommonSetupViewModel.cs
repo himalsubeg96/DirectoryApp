@@ -17,6 +17,7 @@ namespace DirectoryListApp.Areas.Admin.Models
         public string DirectoryCategoryName { get; set; }
         public Nullable<int> CreatedBy { get; set; }
         public string CreatedDate { get; set; }
+        public string CategoryIcon { get; set; }
         public List<CategorySetupViewModel> CategorySetupViewModelList { get; set; }
     }
     public class SubCategorySetupViewModel

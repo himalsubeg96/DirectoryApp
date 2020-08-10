@@ -1,23 +1,28 @@
 ﻿@model DirectoryListApp.Areas.Directory.Models.DirectoryModel
 
-@if (Model.DirectoryModelList.Count > 0)
-{
-    foreach (var item in Model.DirectoryModelList)
-    {
-        <div>
-            <ul>
-                <li>
-                    <p><strong>@item.DirectoryItemName</strong></p>
-                    <p>Category: <span style="color:green;">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</span></p>
-                    <a class="details" href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId" title="View Details"><i class="fa fa-pinterest" style="color:lightseagreen;" data-toggle="modal" data-target="#myModal"></i></a>
-                    <hr style="border:dashed 0.5px;" />
-                </li>
-            </ul>
-        </div>
-    }
-}
-else
-{
-    <h4>No records found!</h4>
-}
+<section class="popular listings portfolio bg-gray">
+    <div class="container">
+        @if (Model.DirectoryModelList.Count > 0)
+        {
+            foreach (var item in Model.DirectoryModelList)
+            {
+
+                <ul>
+                    <li>
+                        <p><strong>@item.DirectoryItemName</strong></p>
+                        <p>Category: <span style="color:green;">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</span></p>
+                        <a class="details" href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId" title="View Details"><i class="fa fa-pinterest" style="color:lightseagreen;"></i></a>
+                        <hr style="border:dashed 0.5px;" />
+                    </li>
+                </ul>
+
+            }
+        }
+        else
+        {
+            <h4>No records found!</h4>
+        }
+
+    </div>
+</section>
 

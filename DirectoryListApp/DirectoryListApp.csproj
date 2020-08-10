@@ -201,6 +201,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AjaxRequestController.cs" />
     <Compile Include="Areas\Admin\Controllers\CommonSetupController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Models\CommonSetupViewModel.cs" />
     <Compile Include="Areas\Admin\Providers\CommonSetupProvider.cs" />
     <Compile Include="Areas\Directory\Controllers\AjaxRequestController.cs" />
@@ -583,8 +584,10 @@
     <Content Include="Content\CSS\src\datedropper.woff" />
     <Content Include="Content\CSS\src\datedropperd41d.eot" />
     <Content Include="Areas\Admin\Views\CommonSetup\GetDirectoryCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <None Include="Properties\PublishProfiles\DirectoryListApp.pubxml" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
     <Content Include="Scripts\jquery-3.0.0.slim.js" />
@@ -593,6 +596,7 @@
     <Content Include="Scripts\jquery-3.0.0.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-1.8.3.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -654,6 +658,7 @@
     <Content Include="Scripts\JS\transition.min.js" />
     <Content Include="Scripts\JS\typed.min.js" />
     <Content Include="Scripts\JS\under.js" />
+    <Content Include="Scripts\locationpicker.jquery.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\nepali.datepicker%28old%29.js" />
     <Content Include="Scripts\nepali.datepicker.js" />

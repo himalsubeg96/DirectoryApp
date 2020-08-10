@@ -77,6 +77,6 @@ D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\Micros
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\Microsoft.Owin.Security.Google.xml
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\Microsoft.Owin.Security.Twitter.xml
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\obj\Debug\DirectoryListApp.csprojResolveAssemblyReference.cache
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\obj\Debug\DirectoryListApp.dll
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\obj\Debug\DirectoryListApp.pdb
-D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\obj\Debug\DirectoryListApp.csprojResolveAssemblyReference.cache

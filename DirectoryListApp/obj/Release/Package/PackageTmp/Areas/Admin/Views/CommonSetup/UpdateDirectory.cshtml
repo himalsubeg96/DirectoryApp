@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<div class="well well-small">
+<div class="container">
     @Html.HiddenFor(model => model.DirectoryItemId)
     @using (Html.BeginForm("UpdateDirectory", "CommonSetup", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {

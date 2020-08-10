@@ -1,8 +1,8 @@
 ﻿@model DirectoryListApp.Areas.Admin.Models.CategorySetupViewModel
 
-<section>
+
     <div class="container">
-        <form>
+       
             @Html.HiddenFor(model => model.CreatedBy)
             @Html.HiddenFor(model => model.CreatedDate)
             <div class="row">
@@ -11,19 +11,48 @@
                 </div>
             </div>
             <div class="row">
-                <div class="row">
-                    <div class="form-group">
+               
+                    <div>
                         @Html.HiddenFor(model => model.DirectoryCategoryId)
                         @Html.HiddenFor(model => model.DirectoryCategoryId, new { @class = "form-control", @data_name = "DirectoryCategoryId" })
                         @Html.ValidationMessageFor(model => model.DirectoryCategoryId)
                     </div>
-                    <div class="form-group">
+                    <div class="col-md-3">
                         @Html.LabelFor(model => model.DirectoryCategoryName)
                         @Html.TextBoxFor(model => model.DirectoryCategoryName, new { @class = "form-control", @data_name = "DirectoryCategoryName" })
                         @Html.ValidationMessageFor(model => model.DirectoryCategoryName)
                     </div>
-                </div>
+                    <div class="col-md-3">
+                        @Html.Label("Upload Icon")
+                        <figure style="margin-bottom:2px;border:1px solid #eee;padding:2px;display:inline-block;">
+                            @if (Model.CategoryIcon != null)
+                            {
+                                <img src="@Model.CategoryIcon" height="70" width="70" class="thumbnail" />
+                            }
+                            else
+                            {
+                                <img id="imgPreview" src="~/Images/NoImage (1).png" width="70" height="70" alt="Photo" />
+                            }
+
+                        </figure>
+                        @Html.TextBoxFor(model => model.CategoryIcon, new { Type = "file", onchange = "showPreview(this)" })
+                        @Html.ValidationMessageFor(model => model.CategoryIcon, "Only jpg,jpeg,png image")
+                    </div>
+                
             </div>
-        </form>
+       
     </div>
-</section>
+
+@*for image preview before upload*@
+<script>
+    //debugger;
+    function showPreview(input) {
+        if (input.files && input.files[0]) {
+            var img = new FileReader();
+            img.onload = function (e) {
+                $('#imgPreview').attr('src', e.target.result);
+            }
+            img.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

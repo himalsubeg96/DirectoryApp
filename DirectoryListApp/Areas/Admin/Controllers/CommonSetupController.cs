@@ -20,8 +20,8 @@ namespace DirectoryListApp.Areas.Admin.Controllers
         DirectoryEntities ent = new DirectoryEntities();
         // GET: Admin/CommonSetup
         //Add Connection string for SQL Server and OLEDB
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-        OleDbConnection Econ;
+        //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+        //OleDbConnection Econ;
         public CommonSetupController()
         {
             CommonSetupProvider _proCommon = new CommonSetupProvider();
@@ -37,42 +37,42 @@ namespace DirectoryListApp.Areas.Admin.Controllers
             ViewBag.currentPage = page;
             return View(model);
         }
-        [HttpPost]
-        public ActionResult Category(HttpPostedFileBase file)
-        {
-            string filename = Guid.NewGuid() + Path.GetExtension(file.FileName);
-            string filepath = "/Content/Upload/" + filename;
-            file.SaveAs(Path.Combine(Server.MapPath("/Content/Upload"), filename));
-            InsertExceldata(filepath, filename);
-            return View();
-        }
-        //for excel upload
-        public void ExcelConn(string filepath)
-        {
-            string constr = string.Format(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=""Excel 12.0 Xml;HDR=YES;""", filepath);
-           Econ = new OleDbConnection(constr);
-        }
-        public void InsertExceldata(string fileepath,string filename)
-        {
-            string fullpath = Server.MapPath("/Content/Upload/")+filename;
-            ExcelConn(fullpath);
-            string query = string.Format("Select * from [{0}]", "Sheet1$");
-            OleDbCommand Ecom = new OleDbCommand(query, Econ);
-            Econ.Open();
-            DataSet ds = new DataSet();
-            OleDbDataAdapter oda = new OleDbDataAdapter(query, Econ);
-            Econ.Close();
-            oda.Fill(ds);
-            DataTable dt = ds.Tables[0];
-            SqlBulkCopy objbulk = new SqlBulkCopy(con);
-            objbulk.DestinationTableName = "tblDirectoryCategory";
-            objbulk.ColumnMappings.Add("DirectoryCategoryName", "DirectoryCategoryName");
-            objbulk.ColumnMappings.Add("CreatedBy", "CreatedBy");
-            objbulk.ColumnMappings.Add("CreatedDate", "CreatedDate");
-            con.Open();
-            objbulk.WriteToServer(dt);
-            con.Close();
-        }
+        //[HttpPost]
+        //public ActionResult Category(HttpPostedFileBase file)
+        //{
+        //    string filename = Guid.NewGuid() + Path.GetExtension(file.FileName);
+        //    string filepath = "/Content/Upload/" + filename;
+        //    file.SaveAs(Path.Combine(Server.MapPath("/Content/Upload"), filename));
+        //    InsertExceldata(filepath, filename);
+        //    return View();
+        //}
+        ////for excel upload
+        //public void ExcelConn(string filepath)
+        //{
+        //    string constr = string.Format(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=""Excel 12.0 Xml;HDR=YES;""", filepath);
+        //   Econ = new OleDbConnection(constr);
+        //}
+        //public void InsertExceldata(string fileepath,string filename)
+        //{
+        //    string fullpath = Server.MapPath("/Content/Upload/")+filename;
+        //    ExcelConn(fullpath);
+        //    string query = string.Format("Select * from [{0}]", "Sheet1$");
+        //    OleDbCommand Ecom = new OleDbCommand(query, Econ);
+        //    Econ.Open();
+        //    DataSet ds = new DataSet();
+        //    OleDbDataAdapter oda = new OleDbDataAdapter(query, Econ);
+        //    Econ.Close();
+        //    oda.Fill(ds);
+        //    DataTable dt = ds.Tables[0];
+        //    SqlBulkCopy objbulk = new SqlBulkCopy(con);
+        //    objbulk.DestinationTableName = "tblDirectoryCategory";
+        //    objbulk.ColumnMappings.Add("DirectoryCategoryName", "DirectoryCategoryName");
+        //    objbulk.ColumnMappings.Add("CreatedBy", "CreatedBy");
+        //    objbulk.ColumnMappings.Add("CreatedDate", "CreatedDate");
+        //    con.Open();
+        //    objbulk.WriteToServer(dt);
+        //    con.Close();
+        //}
         public ActionResult InsertUpdateCategory(int? id)
         {
             var model = _proCommon.GetCategoryById(id);
@@ -87,12 +87,41 @@ namespace DirectoryListApp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult InsertUpdateCategory(CategorySetupViewModel model)
+        public ActionResult InsertUpdateCategory(CategorySetupViewModel model,HttpPostedFileBase CategoryIcon)
         {
+            var tb = ent.tblDirectoryCategories.Where(x => x.DirectoryCategoryId == model.DirectoryCategoryId).FirstOrDefault();
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
+            if (CategoryIcon != null)
+            {
+                try
+                {
+                    var supportedType = new[] { "jpg", "jpeg", "png" };
+                    var fileExtn = System.IO.Path.GetExtension(CategoryIcon.FileName).Substring(1);
+                    if (!supportedType.Contains(fileExtn))
+                    {
+                        ViewBag.message = "invalid file extension";
+                    }
+                    else
+                    {                       
+                        var image = Utility.GetUploadedImagePath(CategoryIcon, "CategoryIcons");
+                        model.CategoryIcon = image.RelativePath;
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+            }
+            else if (tb.CategoryIcon!=null)
+            {
+                model.CategoryIcon = tb.CategoryIcon;
+            }
+            else { model.CategoryIcon = "/Images/NoImage(1).png"; }
             if (_proCommon.InsertUpdateCategory(model))
             {
                 return RedirectToAction("Category");

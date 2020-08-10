@@ -74,6 +74,7 @@
           <Property Name="DirectoryCategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CreatedBy" Type="int" />
           <Property Name="CreatedDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="CategoryIcon" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tblDirectoryDetails">
           <Key>
@@ -512,6 +513,7 @@ warning 6002: The table/view 'Directory.dbo.UsersDetail' does not have a primary
           <Property Name="CreatedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tblDirectoryItems" Relationship="DirectoryModel.FK_tblDirectoryItem_tblDirectoryCategory" FromRole="tblDirectoryCategory" ToRole="tblDirectoryItem" />
           <NavigationProperty Name="tblDirectorySubCategories" Relationship="DirectoryModel.FK_tblDirectorySubCategory_tblDirectoryCategory" FromRole="tblDirectoryCategory" ToRole="tblDirectorySubCategory" />
+          <Property Name="CategoryIcon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tblDirectoryDetail">
           <Key>
@@ -801,6 +803,7 @@ warning 6002: The table/view 'Directory.dbo.UsersDetail' does not have a primary
           <EntitySetMapping Name="tblDirectoryCategories">
             <EntityTypeMapping TypeName="DirectoryModel.tblDirectoryCategory">
               <MappingFragment StoreEntitySet="tblDirectoryCategory">
+                <ScalarProperty Name="CategoryIcon" ColumnName="CategoryIcon" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="DirectoryCategoryName" ColumnName="DirectoryCategoryName" />

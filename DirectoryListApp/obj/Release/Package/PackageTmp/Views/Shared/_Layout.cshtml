@@ -2,7 +2,8 @@
 @{
     var ent = new DirectoryEntities();
     var result = ent.tblDirectoryCategories.Where(x => true).ToList();
-
+    var newregister = ent.tblDirectoryItems.Where(x => true).OrderByDescending(x => x.DirectoryItemId).Take(6).ToList();
+    var category = ent.tblDirectoryCategories.Where(x => true).ToList();
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -164,11 +165,11 @@
         <div class="clearfix"></div>
         <!-- Header Container / End -->
         <!-- STAR HEADER SEARCH -->
-        <section id="hero-area" class="parallax-search overlay" data-stellar-background-ratio="0.5" style="background: linear-gradient(rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.63)), url(Content/images/slider.jpeg) no-repeat center top;">
+        <section id="hero-area" class="parallax-search overlay" data-stellar-background-ratio="0.5" style="background: linear-gradient(rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.63)), url(/Content/images/slider.jpeg) no-repeat center top;">
             <div class="hero-main" id="heading">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-8" style="margin-left:200px;">
                             <div class="hero-inner">
                                 <!-- Welcome Text -->
                                 <div class="welcome-text">
@@ -212,8 +213,10 @@
             </div>
         </section>
         <!-- END HEADER SEARCH -->
-        <div id="ResultDisplay"class="well well-small"></div>
+        <div id="ResultDisplay"class="well well-small">
             @RenderBody()
+        </div>
+            
         <!-- START SECTION FEATURE CATEGORIES -->
         <section class="feature-categories">
             <div class="container">
@@ -226,196 +229,112 @@
                 </div>
                 <!-- /row -->
                 <div class="row">
+                    @if (category.Count > 0)
+                    {
+                        foreach (var itmCategory in category)
+                        {
+                            var count = ent.tblDirectoryItems.Where(x => x.DirectoryCategoryId == itmCategory.DirectoryCategoryId).Count();
+                         <!-- Single category -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="small-category-2">
+                                    <div class="small-category-2-thumb img-1">
+                                        <a href="listing-detail.html">
+                                            <img src="~/Content/images/icons/1.png" width="50" height="50" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="sc-2-detail">
+                                        <h4 class="sc-jb-title"><a href="~/Directory/DirectoryItem/GetDirectoryCategory/@itmCategory.DirectoryCategoryId">@itmCategory.DirectoryCategoryName</a></h4>
+                                        <span>@count Listings</span>
+                                    </div>
+                                </div>
+                            </div>
                     <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-1">
-                                <a href="listing-detail.html">
-                                    <img src="~/Content/images/icons/1.png" width="50" height="50" alt="">
-                                </a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="~/Directory/DirectoryItem/GetDirectoryCategory/1">Hotels</a></h4>
-                                <span>50 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-2">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/bank.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="~/Directory/DirectoryItem/GetDirectoryCategory/8">Bank</a></h4>
-                                <span>35 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-3">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/stationery.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="~/Directory/DirectoryItem/GetDirectoryCategory/3">Stationery</a></h4>
-                                <span>23 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-1">
-                                <a href="listing-detail.html">
-                                    <img src="~/Content/images/icons/cross.png" width="50" height="50" alt="">
-                                </a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="~/Directory/DirectoryItem/GetDirectoryCategory/6">Clinic</a></h4>
-                                <span>50 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-2">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/2.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="listing-detail.html">Restaurant</a></h4>
-                                <span>35 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-3">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/3.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="listing-detail.html">Fitness</a></h4>
-                                <span>23 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-4">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/4.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="listing-detail.html">Coffee Shop</a></h4>
-                                <span>87 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-5">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/5.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="listing-detail.html">Cinema</a></h4>
-                                <span>54 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-6">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/6.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="listing-detail.html">Disco</a></h4>
-                                <span>23 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-7">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/7.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="listing-detail.html">Rent a Car</a></h4>
-                                <span>12 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-9">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/9.png" width="26" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="listing-detail.html">Fast Food</a></h4>
-                                <span>18 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2 no-mb mob-mt">
-                            <div class="small-category-2-thumb img-8">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/8.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="listing-detail.html">Shopping</a></h4>
-                                <span>25 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2 no-mb">
-                            <div class="small-category-2-thumb img-10">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/10.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="listing-detail.html">Real Estate</a></h4>
-                                <span>12 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2 no-mb si-mt">
-                            <div class="small-category-2-thumb img-11">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/11.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="listing-detail.html">Beauty Salon</a></h4>
-                                <span>54 Listings</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single category -->
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="small-category-2 no-mb si-mt">
-                            <div class="small-category-2-thumb img-12">
-                                <a href="listing-detail.html"><img src="~/Content/images/icons/12.png" width="50" height="50" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="listing-detail.html">Pizza Pala</a></h4>
-                                <span>36 Listings</span>
-                            </div>
-                        </div>
-                    </div>
+                        }
+
+                    }
+                    
                 </div>
                 <!-- /row -->
             </div>
         </section>
         <!-- END SECTION FEATURE CATEGORIES -->
-        
+        <!--START SECTION NEWLY REGISTERED-->
+        <section class="popular listings portfolio bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sec-title">
+                            <h2><span>Newly Registered</span></h2>
+                        </div>
+                        <div class="sec-title float-right">
+                            <a class="btn btn-outline-primary" href="~/Directory/DirectoryItem/Create">Free Registration</a>
+                        </div>
+                    </div>
+                </div>
+                <!--row-->
+                <div class="row portfolio-items">
+                    @if (newregister.Count > 0)
+                    {
+                        foreach (var item in newregister)
+                        {
+                            var eachitem = ent.tblDirectoryDetails.Where(x => x.DirectoryItemId == item.DirectoryItemId).ToList();
+
+                            <div class="item col-lg-4 col-md-6 col-xs-12 landscapes sale">
+                                <div class="project-single">
+                                    @foreach (var itm in eachitem)
+                                    {
+                                        <div class="project-inner project-head">
+                                            <div class="homes">
+                                                <a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId" class="homes-img hover-effect">
+                                                    @if (itm.PhotoLogo != null)
+                                                        {
+                                                            <img src="@itm.PhotoLogo" class="img-responsive" style="height:250px;width:100%" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/Images/NoImage (1).png" alt="Photo" class="img-responsive" style="height:200px;width:100%" />
+                                                        }
+                                                    <div class="overlay"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="homes-content">
+                                            <a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId"><h3>@item.DirectoryItemName</h3></a>
+                                            <ul class="homes-list clearfix">
+                                                <li>
+                                                    <i class="fa fa-map-marker"></i>
+                                                    <span>
+                                                        @Utility.GetPalikaName(Convert.ToInt32(itm.AddressPalika))- @itm.AddressWard, @Utility.GetDistrictName(Convert.ToInt32(itm.AddressDistrict)),@Utility.GetStateName(Convert.ToInt32(itm.AddressState))
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                                    <span>Call Us @itm.DirectoryPhone </span>
+                                                </li>
+                                            </ul>
+                                            <div class="footer mt-3 img-2">
+                                                <a href="#">
+                                                    <img src="~/Content/images/icons/category.png" width="20" class="mr-2" alt="" />@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)
+                                                </a>
+                                            </div>
+                                        </div>
+                                    }
+
+                               </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <h4>No Records Found !</h4>
+                    }
+                </div>
+                <div class="bg-all">
+                    <a href="~/Directory/DirectoryItem/Index" class="btn btn-outline-light">View All</a>
+                </div>
+            </div>
+        </section>
+        <!-- END SECTION NEWLY REGISTERED-->
         <!-- START FOOTER -->
         <footer class="first-footer">
             <div class="top-footer">

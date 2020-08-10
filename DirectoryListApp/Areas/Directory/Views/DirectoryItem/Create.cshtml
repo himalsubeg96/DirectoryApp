@@ -1,11 +1,11 @@
 ﻿@model DirectoryListApp.Areas.Directory.Models.DirectoryModel
-<script src="~/Scripts/jquery-1.8.3.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="well well-small">
+<div class="container">
 
     @using (Html.BeginForm("Create", "DirectoryItem", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {

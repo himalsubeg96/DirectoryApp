@@ -52,7 +52,12 @@ namespace DirectoryListApp.Areas.Directory.Models
             public string PhotoLogo { get; set; }
             [DisplayName("Permanent Address")]
             public string PermanentAddress { get { return Utility.GetPalikaName(Convert.ToInt32(AddressPalika)) + "-" + AddressWard + ", " + Utility.GetDistrictName(Convert.ToInt32(AddressDistrict)) + ", " + Utility.GetStateName(Convert.ToInt32(AddressState)); } }
-            public List<DirectoryModel> DirectoryModelList { get; set; }
+        public decimal Latitude { get; set; }
+        public decimal Longitude { get; set; }
+        public string city { get; set; }      
+        public string Address { get; set; }
+
+        public List<DirectoryModel> DirectoryModelList { get; set; }
         public DirectoryReviewModel revmodel { get; set; }
         public List<DirectoryReviewModel> DirectoryReviewModelList { get; set; }
 

@@ -1,8 +1,13 @@
 ﻿@using DirectoryListApp.Models
 @model LoginViewModel
 @{
+    var ent = new DirectoryEntities();
+    var result = ent.tblDirectoryCategories.Where(x => true).ToList();
+
+}
+@{
     ViewBag.Title = "Log in";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -21,19 +26,130 @@
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- ARCHIVES CSS -->
+    <link href="~/Content/CSS/jquery-ui.css" rel="stylesheet" />
+    @*<link href="~/Content/CSS/all5.0.css" rel="stylesheet" />*@
+    <link href="~/Content/CSS/search.css" rel="stylesheet" />
     <link href="~/Content/CSS/animate.css" rel="stylesheet" />
+    <link href="~/Content/CSS/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Content/CSS/lightcase.css" rel="stylesheet" />
+    <link href="~/Content/CSS/owl-carousel.css" rel="stylesheet" />
+    <link href="~/Content/CSS/owl.carousel.min.css" rel="stylesheet" />
     <link href="~/Content/CSS/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/CSS/menu.css" rel="stylesheet" />
+    <link href="~/Content/CSS/slick.css" rel="stylesheet" />
+    <link href="~/Content/CSS/map-animation.css" rel="stylesheet" />
     <link href="~/Content/CSS/styles.css" rel="stylesheet" />
-    <link href="~/Content/CSS/default.css" rel="stylesheet" id="color" />
 </head>
 
 <body class="inner-pages">
     <!-- Wrapper -->
     <div id="wrapper">
         <!-- START SECTION HEADINGS -->
-      
-        <section class="headings" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(Content/images/slider1.jpeg) no-repeat center center;">
+        <!-- Header Container
+      ================================================== -->
+        <header id="header-container" class="header head-tr">
+            <!-- Topbar -->
+            <div class="header-top head-tr">
+                <div class="container">
+                    <div class="top-info hidden-sm-down">
+                        <div class="call-header">
+                            <p><i class="fa fa-phone" aria-hidden="true"></i> 123456789</p>
+                        </div>
+                        <div class="address-header">
+                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Baneshwor</p>
+                        </div>
+                        <div class="mail-header">
+                            <p><i class="fa fa-envelope" aria-hidden="true"></i> info@listing.com</p>
+                        </div>
+                    </div>
+                    <div class="top-social hidden-sm-down">
+                        <div class="login-wrap">
+                            <ul class="d-flex">
+                                <li><a href="~/Account/Login"><i class="fa fa-user"></i> Login</a></li>
+                                <li><a href="~/Account/Register"><i class="fa fa-sign-in"></i> Register</a></li>
+                            </ul>
+                        </div>
+                        <div class="social-icons-header">
+                            <div class="social-icons">
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <!-- Topbar / End -->
+            <!-- Header -->
+            <div id="header" class="head-tr bottom">
+                <div class="container">
+                    <!-- Left Side Content -->
+                    <div class="left-side">
+                        <!-- Logo -->
+                        <div id="logo">
+                            <span class="text-center" style="color: white;font-size: 24px;">
+                                LISTING
+                            </span>
+                        </div>
+                        <!-- Mobile Navigation -->
+                        <div class="mmenu-trigger">
+                            <button class="hamburger hamburger--collapse" type="button">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                        <!-- Main Navigation -->
+                        <nav id="navigation" class="style-1 head-tr">
+                            <ul id="responsive">
+                                <li>
+                                    <a class="current" href="~/Home/Index">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#">Listings</a>
+                                    <ul>
+                                        @foreach (var item in result)
+                                        {
+                                            <li>
+                                                <a href="~/Directory/DirectoryItem/GetDirectoryCategory/@item.DirectoryCategoryId">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</a>
+                                                @{
+                                                    var sub = ent.tblDirectorySubCategories.Where(x => x.DirectoryCategoryId == item.DirectoryCategoryId).ToList();
+                                                }
+                                                <ul>
+                                                    @foreach (var itemSub in sub)
+                                                    {
+                                                        <li><a href="~/Directory/DirectoryItem/GetDirectorySubCategory/@itemSub.DirectorySubCategoryId">@Utility.GetDirectorySubCategoryName(itemSub.DirectorySubCategoryId)</a></li>
+                                                    }
+
+
+                                                </ul>
+                                            </li>
+                                                    }
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Pages</a>
+                                </li>
+                                <li><a href="#">Blog</a></li>
+                                <li>
+                                    <a href="#">Contact</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="clearfix"></div>
+                        <!-- Main Navigation / End -->
+                    </div>
+                    <!-- Left Side Content / End -->
+                </div>
+            </div>
+            <!-- Header / End -->
+
+        </header>
+        <div class="clearfix"></div>
+        <!-- Header Container / End -->
+        <section class="headings" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../Content/images/slider1.jpeg) no-repeat center center;">
             <div class="text-heading text-center">
                 <div class="container">
                     <h1>Login</h1>
@@ -44,7 +160,98 @@
         <!-- START SECTION LOGIN -->
         @Html.Partial("_Login", new DirectoryListApp.Models.LoginViewModel())
         <!-- END SECTION LOGIN -->
-        
+        <!-- START FOOTER -->
+        <footer class="first-footer">
+            <div class="top-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6">
+                            <div class="netabout">
+                                <a href="index.html" class="logo">
+                                    <span style="font-size: xx-large;color: white;">
+                                        LISTING
+                                    </span>
+                                </a>
+                                <p></p>
+                            </div>
+                            <div class="contactus">
+                                <ul>
+                                    <li>
+                                        <div class="info">
+                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                            <p class="in-p">Baneshwor</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="info">
+                                            <i class="fa fa-phone" aria-hidden="true"></i>
+                                            <p class="in-p">123456789</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="info">
+                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                            <p class="in-p ti">support@listing.com</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget quick-link clearfix">
+                                <h3 class="widget-title">Quick Links</h3>
+                                <div class="quick-links">
+                                    <ul class="one-half mr-5">
+                                        <li><a href="~/Home/Index">Home</a></li>
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="#">Listing Details</a></li>
+                                        <li><a href="dashboard.html">Dashboard</a></li>
+                                        <li><a href="register.html">Register</a></li>
+                                        <li class="no-pb"><a href="blog-list.html">Blog List</a></li>
+                                    </ul>
+                                    <ul class="one-half">
+                                        <li><a href="blog-grid.html">Blog</a></li>
+                                        <li><a href="pricing-table.html">Pricing</a></li>
+                                        <li><a href="contact-us.html">Contact</a></li>
+                                        <li><a href="#">Support</a></li>
+                                        <li><a href="faq.html">Our Faq</a></li>
+                                        <li class="no-pb"><a href="listings-full-grid.html">Listings</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="newsletters">
+                                <h3>Newsletters</h3>
+                                <p>Sign Up for Our Newsletter to get Latest Updates and Offers. Subscribe to receive news in your inbox.</p>
+                            </div>
+                            <form class="bloq-email mailchimp form-inline" method="post">
+                                <label for="subscribeEmail" class="error"></label>
+                                <div class="email">
+                                    <input type="email" id="subscribeEmail" name="EMAIL" placeholder="Enter Your Email">
+                                    <input type="submit" value="Subscribe">
+                                    <p class="subscription-success"></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="second-footer">
+                <div class="container">
+                    <p>Softech Foundation Pvt. Ltd. ©2020 All rights reserved. </p>
+                    <ul class="netsocials">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+        <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
+        <!-- END FOOTER -->
 
             <!-- ARCHIVES JS -->
             <script src="~/Scripts/JS/jquery.min.js"></script>

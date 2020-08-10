@@ -50,6 +50,11 @@
       <End Role="AspNetRole" EntitySet="AspNetRoles" />
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
     </AssociationSet>
+    <EntitySet Name="tblReviews" EntityType="DirectoryModel.tblReview" />
+    <AssociationSet Name="FK_tblReview_tblDirectoryItem" Association="DirectoryModel.FK_tblReview_tblDirectoryItem">
+      <End Role="tblDirectoryItem" EntitySet="tblDirectoryItems" />
+      <End Role="tblReview" EntitySet="tblReviews" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="C__MigrationHistory">
     <Key>
@@ -120,6 +125,7 @@
     <Property Name="CreatedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tblDirectoryItems" Relationship="DirectoryModel.FK_tblDirectoryItem_tblDirectoryCategory" FromRole="tblDirectoryCategory" ToRole="tblDirectoryItem" />
     <NavigationProperty Name="tblDirectorySubCategories" Relationship="DirectoryModel.FK_tblDirectorySubCategory_tblDirectoryCategory" FromRole="tblDirectoryCategory" ToRole="tblDirectorySubCategory" />
+    <Property Name="CategoryIcon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="tblDirectoryDetail">
     <Key>
@@ -155,6 +161,7 @@
     <NavigationProperty Name="tblDirectoryCategory" Relationship="DirectoryModel.FK_tblDirectoryItem_tblDirectoryCategory" FromRole="tblDirectoryItem" ToRole="tblDirectoryCategory" />
     <NavigationProperty Name="tblDirectoryDetails" Relationship="DirectoryModel.FK_tblDirectoryDetails_tblDirectoryItem" FromRole="tblDirectoryItem" ToRole="tblDirectoryDetail" />
     <NavigationProperty Name="tblDirectorySubCategory" Relationship="DirectoryModel.FK_tblDirectoryItem_tblDirectorySubCategory" FromRole="tblDirectoryItem" ToRole="tblDirectorySubCategory" />
+    <NavigationProperty Name="tblReviews" Relationship="DirectoryModel.FK_tblReview_tblDirectoryItem" FromRole="tblDirectoryItem" ToRole="tblReview" />
   </EntityType>
   <EntityType Name="tblDirectorySubCategory">
     <Key>
@@ -317,5 +324,31 @@
   <Association Name="AspNetUserRoles">
     <End Type="DirectoryModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
     <End Type="DirectoryModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityType Name="tblReview">
+    <Key>
+      <PropertyRef Name="ReviewId" />
+    </Key>
+    <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DirectoryItemId" Type="Int32" />
+    <Property Name="RevFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RevLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RevEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReviewDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Review" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReviewRating" Type="Int32" />
+    <NavigationProperty Name="tblDirectoryItem" Relationship="DirectoryModel.FK_tblReview_tblDirectoryItem" FromRole="tblReview" ToRole="tblDirectoryItem" />
+  </EntityType>
+  <Association Name="FK_tblReview_tblDirectoryItem">
+    <End Type="DirectoryModel.tblDirectoryItem" Role="tblDirectoryItem" Multiplicity="0..1" />
+    <End Type="DirectoryModel.tblReview" Role="tblReview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDirectoryItem">
+        <PropertyRef Name="DirectoryItemId" />
+      </Principal>
+      <Dependent Role="tblReview">
+        <PropertyRef Name="DirectoryItemId" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
 </Schema>

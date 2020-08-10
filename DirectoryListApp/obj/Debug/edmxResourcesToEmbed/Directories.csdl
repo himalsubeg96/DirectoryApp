@@ -125,6 +125,7 @@
     <Property Name="CreatedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tblDirectoryItems" Relationship="DirectoryModel.FK_tblDirectoryItem_tblDirectoryCategory" FromRole="tblDirectoryCategory" ToRole="tblDirectoryItem" />
     <NavigationProperty Name="tblDirectorySubCategories" Relationship="DirectoryModel.FK_tblDirectorySubCategory_tblDirectoryCategory" FromRole="tblDirectoryCategory" ToRole="tblDirectorySubCategory" />
+    <Property Name="CategoryIcon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="tblDirectoryDetail">
     <Key>

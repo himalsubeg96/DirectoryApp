@@ -25,6 +25,7 @@ namespace DirectoryListApp
         public string DirectoryCategoryName { get; set; }
         public Nullable<int> CreatedBy { get; set; }
         public string CreatedDate { get; set; }
+        public string CategoryIcon { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblDirectoryItem> tblDirectoryItems { get; set; }
