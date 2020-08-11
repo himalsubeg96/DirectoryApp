@@ -146,7 +146,10 @@ namespace DirectoryListApp.Areas.Directory.Providers
                                          ContactPersonPhone = b.ContactPersonPhone,
                                          Details = b.Details,
                                          Email = b.Email,
-                                         PhotoLogo =baseUrl + (b.PhotoLogo ?? "/Images/NoImage (1).png")
+                                         PhotoLogo =baseUrl + (b.PhotoLogo ?? "/Images/NoImage (1).png"),
+                                         Address=b.Address,
+                                         Latitude=b.Latitude??0,
+                                         Longitude=b.Longitude??0
                                      }).SingleOrDefault();
             return result;
         }

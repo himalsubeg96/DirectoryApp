@@ -94,6 +94,9 @@
           <Property Name="Details" Type="nvarchar(max)" />
           <Property Name="Email" Type="nvarchar" MaxLength="150" />
           <Property Name="PhotoLogo" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="Latitude" Type="decimal" Precision="18" Scale="15" />
+          <Property Name="Longitude" Type="decimal" Precision="18" Scale="15" />
         </EntityType>
         <EntityType Name="tblDirectoryItem">
           <Key>
@@ -534,6 +537,9 @@ warning 6002: The table/view 'Directory.dbo.UsersDetail' does not have a primary
           <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="PhotoLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tblDirectoryItem" Relationship="DirectoryModel.FK_tblDirectoryDetails_tblDirectoryItem" FromRole="tblDirectoryDetail" ToRole="tblDirectoryItem" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Decimal" Precision="18" Scale="15" />
+          <Property Name="Longitude" Type="Decimal" Precision="18" Scale="15" />
         </EntityType>
         <EntityType Name="tblDirectoryItem">
           <Key>
@@ -814,6 +820,9 @@ warning 6002: The table/view 'Directory.dbo.UsersDetail' does not have a primary
           <EntitySetMapping Name="tblDirectoryDetails">
             <EntityTypeMapping TypeName="DirectoryModel.tblDirectoryDetail">
               <MappingFragment StoreEntitySet="tblDirectoryDetails">
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="PhotoLogo" ColumnName="PhotoLogo" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Details" ColumnName="Details" />

@@ -146,6 +146,9 @@
     <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="PhotoLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tblDirectoryItem" Relationship="DirectoryModel.FK_tblDirectoryDetails_tblDirectoryItem" FromRole="tblDirectoryDetail" ToRole="tblDirectoryItem" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="Decimal" Precision="18" Scale="15" />
+    <Property Name="Longitude" Type="Decimal" Precision="18" Scale="15" />
   </EntityType>
   <EntityType Name="tblDirectoryItem">
     <Key>

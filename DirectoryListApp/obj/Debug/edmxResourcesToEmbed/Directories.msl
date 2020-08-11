@@ -70,6 +70,9 @@
     <EntitySetMapping Name="tblDirectoryDetails">
       <EntityTypeMapping TypeName="DirectoryModel.tblDirectoryDetail">
         <MappingFragment StoreEntitySet="tblDirectoryDetails">
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="PhotoLogo" ColumnName="PhotoLogo" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Details" ColumnName="Details" />

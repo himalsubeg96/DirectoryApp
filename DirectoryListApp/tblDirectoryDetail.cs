@@ -28,6 +28,9 @@ namespace DirectoryListApp
         public string Details { get; set; }
         public string Email { get; set; }
         public string PhotoLogo { get; set; }
+        public string Address { get; set; }
+        public Nullable<decimal> Latitude { get; set; }
+        public Nullable<decimal> Longitude { get; set; }
     
         public virtual tblDirectoryItem tblDirectoryItem { get; set; }
     }

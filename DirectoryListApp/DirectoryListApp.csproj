@@ -201,7 +201,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AjaxRequestController.cs" />
     <Compile Include="Areas\Admin\Controllers\CommonSetupController.cs" />
-    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeAdminController.cs" />
     <Compile Include="Areas\Admin\Models\CommonSetupViewModel.cs" />
     <Compile Include="Areas\Admin\Providers\CommonSetupProvider.cs" />
     <Compile Include="Areas\Directory\Controllers\AjaxRequestController.cs" />
@@ -322,6 +322,8 @@
     <Content Include="Content\CSS\all5.0.css" />
     <Content Include="Content\CSS\all5.min.css" />
     <Content Include="Content\CSS\animate.css" />
+    <Content Include="Content\CSS\bootstrap-select.min.css" />
+    <Content Include="Content\CSS\bootstrap-submenu.css" />
     <Content Include="Content\CSS\bootstrap.css" />
     <Content Include="Content\CSS\colors\dark-blue.css" />
     <Content Include="Content\CSS\colors\dark-orange.css" />
@@ -329,7 +331,9 @@
     <Content Include="Content\CSS\colors\green.css" />
     <Content Include="Content\CSS\colors\light-black.css" />
     <Content Include="Content\CSS\datedropper.css" />
+    <Content Include="Content\CSS\daterangepicker.css" />
     <Content Include="Content\CSS\default.css" />
+    <Content Include="Content\CSS\dropzone.css" />
     <Content Include="Content\CSS\font-awesome.min.css" />
     <Content Include="Content\CSS\fontawesome-all.min.css" />
     <Content Include="Content\CSS\images copy\contact.png" />
@@ -357,6 +361,7 @@
     <Content Include="Content\CSS\images\ui-icons_ffffff_256x240.html" />
     <Content Include="Content\CSS\invoice.css" />
     <Content Include="Content\CSS\jquery-ui.css" />
+    <Content Include="Content\CSS\jquery.mCustomScrollbar.css" />
     <Content Include="Content\CSS\leaflet-gesture-handling.min.css" />
     <Content Include="Content\CSS\leaflet.css" />
     <Content Include="Content\CSS\leaflet.markercluster.css" />
@@ -364,12 +369,14 @@
     <Content Include="Content\CSS\lightcase.css" />
     <Content Include="Content\CSS\magnific-popup.css" />
     <Content Include="Content\CSS\map-animation.css" />
+    <Content Include="Content\CSS\map.css" />
     <Content Include="Content\CSS\maps.css" />
     <Content Include="Content\CSS\menu.css" />
     <Content Include="Content\CSS\nice-select.css" />
     <Content Include="Content\CSS\owl-carousel.css" />
     <Content Include="Content\CSS\owl.carousel.min.css" />
     <Content Include="Content\CSS\search.css" />
+    <Content Include="Content\CSS\skins\default.css" />
     <Content Include="Content\CSS\slick.css" />
     <Content Include="Content\CSS\slider-home18.css" />
     <Content Include="Content\CSS\src\datedropper.svg" />
@@ -377,6 +384,8 @@
     <Content Include="Content\CSS\swiper.min.css" />
     <Content Include="Content\CSS\timedropper.css" />
     <Content Include="Content\DataTable.css" />
+    <Content Include="Content\flaticon\flaticon.css" />
+    <Content Include="Content\flaticon\Flaticon.svg" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\bg.gif" />
@@ -418,6 +427,7 @@
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\Nepal-Election-Committee.jpg" />
     <Content Include="Content\img\shoppingicons.PNG" />
+    <Content Include="Content\linearicon\style.css" />
     <Content Include="Content\nepali.datepicker%28old%29.css" />
     <Content Include="Content\nepali.datepicker.css" />
     <Content Include="Content\PagedList.css" />
@@ -585,6 +595,10 @@
     <Content Include="Content\CSS\src\datedropperd41d.eot" />
     <Content Include="Areas\Admin\Views\CommonSetup\GetDirectoryCategory.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Content\flaticon\Flaticon.eot" />
+    <Content Include="Content\flaticon\Flaticon.ttf" />
+    <Content Include="Content\flaticon\Flaticon.woff" />
+    <Content Include="Content\flaticon\Flaticond41d.eot" />
     <None Include="Properties\PublishProfiles\DirectoryListApp.pubxml" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
