@@ -234,11 +234,35 @@
                         @Html.ValidationMessageFor(model => model.Email)
                     </div>
             </div>
-      
+      <br />
+        <div class="row">
+            <div class="sec-title">
+                <h3>Location</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(Model => Model.Latitude)
+                @Html.TextBoxFor(Model => Model.Latitude, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-4">
+                @Html.LabelFor(Model => Model.Longitude)
+                @Html.TextBoxFor(Model => Model.Longitude, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-4">
+                @Html.LabelFor(Model => Model.Address)
+                @Html.TextBoxFor(Model => Model.Address, new { @class = "form-control" })
+                @Html.ValidationMessageFor(Model => Model.Address)
+            </div>
+            <div class="form-group col-md-4">
+                @Html.Label("You have Latitude & Longitude")
+                <input type="checkbox" id="Manual" name="check" class="span1" style="height:18px; width:50px;" />
+            </div>
+            <div id="gmap" style="width:800px; height: 500px;"></div>
 
+        </div>
     </div>
-
-
+   
 </section>
 
 
@@ -259,4 +283,73 @@
             img.readAsDataURL(input.files[0]);
         }
     }
+</script>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAus9_M-59f9xBR4JK7_dH2MdWeSGmVS6M&callback=initMap"
+        async defer></script>
+<script>
+
+// Location enable to write
+$('#Manual').change(function ()
+{
+    if ($(this).prop("checked") == true)
+    {
+        $('#Latitude').attr('readonly', false);
+        $('#Longitude').attr('readonly', false);
+    }
+    else if ($(this).prop("checked") == false)
+    {
+        $('#Latitude').attr('readonly', true).val("");
+        $('#Longitude').attr('readonly', true).val("");
+    }
+});
+
+// Get Latitude and Longitude for using google map
+var map;
+function initMap()
+{
+    var latitude = $('#Latitude').val(); // YOUR LATITUDE VALUE
+    var longitude = $('#Longitude').val(); // YOUR LONGITUDE VALUE
+    debugger;
+    if (latitude == "0" && longitude == "0") {
+        latitude = 27.707575175;
+        longitude = 85.321166278;
+    } else {
+        latitude = parseFloat(latitude);
+        longitude = parseFloat(longitude);
+    }
+
+    var myLatLng = { lat: latitude, lng: longitude };
+
+    map = new google.maps.Map(document.getElementById('gmap'), {
+        center: myLatLng,
+        zoom: 14,
+        disableDoubleClickZoom: true, // disable the default map zoom on double click
+    });
+
+    // Update lat/long value of div when anywhere in the map is clicked
+    google.maps.event.addListener(map, 'click', function (event) {
+        $('#Latitude').val(event.latLng.lat());
+        $('#Longitude').val(event.latLng.lng());
+    });
+
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        //title: $('#Name').val(),
+
+        // setting latitude & longitude as title of the marker
+        // title is shown when you hover over the marker
+        title: latitude + ', ' + longitude
+    });
+
+    // Update lat/long value of div when the marker is clicked
+    marker.addListener('click', function (event) {
+        $('#Latitude').val(event.latLng.lat());
+        $('#Longitude').val(event.latLng.lng());
+    });
+
+}
+
 </script>

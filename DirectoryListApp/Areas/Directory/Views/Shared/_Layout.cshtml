@@ -1,0 +1,232 @@
+﻿@using DirectoryListApp
+@{
+    var ent = new DirectoryEntities();
+    var newregister = ent.tblDirectoryItems.Where(x => true).OrderByDescending(x => x.DirectoryItemId).Take(6).ToList();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- ARCHIVES CSS -->
+    <link href="~/Assests/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assests/css/animate.min.css" rel="stylesheet" />
+    <link href="~/Assests/css/bootstrap-submenu.css" rel="stylesheet" />
+    <link href="~/Assests/css/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="~/Assests/css/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Assests/css/daterangepicker.css" rel="stylesheet" />
+    <link href="~/Assests/css/leaflet.css" rel="stylesheet" />
+    <link href="~/Assests/css/map.css" rel="stylesheet" />
+
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Assests/flaticon/flaticon.css" rel="stylesheet" />
+    <link href="~/Assests/linearicon/style.css" rel="stylesheet" />
+    <link href="~/Assests/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+    <link href="~/Assests/css/dropzone.css" rel="stylesheet" />
+    <link href="~/Assests/css/slick.css" rel="stylesheet" />
+    <link href="~/Assests/css/styles.css" rel="stylesheet" />
+    <link href="~/Assests/skins/default.css" rel="stylesheet" id="style_sheet" />
+    
+
+</head>
+<body>
+    <div class="page_loader"></div>
+
+    @Html.Partial("Header")    
+    
+    <div class="iwrapper" style="margin-bottom:100px;">
+        <div class="row">
+            @Html.Partial("SidebarMenu")
+           
+            <!--latest listings-->
+            <div class="col-md-9">
+
+                <div id="ResultDisplay" class="well well-small">
+                    @RenderBody()
+                </div>
+                
+                <div class="latest">
+                    <div class="float-right">
+                        <a class="btn btn-outline-primary" href="~/Directory/DirectoryItem/Create">Free Registration</a>
+                    </div>
+                    <!-- Main title -->
+                    <div class="main-title">
+                        <h1>Latest Listings</h1>
+                        
+                    </div>
+                    
+                    <!-- Slick slider area start -->
+                    <div class="slick-slider-area">
+                        <div class="row slick-carousel" data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+
+    @if (newregister.Count > 0)
+    {
+        foreach (var item in newregister)
+        {
+            var eachitem = ent.tblDirectoryDetails.Where(x => x.DirectoryItemId == item.DirectoryItemId).ToList();
+            foreach (var itm in eachitem)
+            {
+                <div class="slick-slide-item">
+                    <div class="listing-item-box">
+                        <div class="listing-thumbnail">
+                            <a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId" class="listing-photo">
+                                <div class="tag">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</div>
+                                @if (itm.PhotoLogo != null)
+                                {
+                                    <img class="d-block w-100" src="@itm.PhotoLogo" alt="listing-photo" style="height:200px;width:100%">
+                                }
+                                else
+                                {
+                                    <img src="~/Images/NoImage (1).png" alt="Photo" class="d-block w-100" style="height:200px;width:100%" />
+                                }
+                               
+                            </a>
+                        </div>
+                        <div class="detail">
+                            <a class="icon">
+                                @*<img src="@item.CategoryLogo" alt="category-photo" />*@
+                                <i class="flaticon-cook"></i>
+                            </a>
+                            <h3 class="title">
+                                <a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId">@item.DirectoryItemName</a>
+                            </h3>
+                            <div class="locaton">
+                                <i class="flaticon-pin"></i>@Utility.GetPalikaName(Convert.ToInt32(itm.AddressPalika))- @itm.AddressWard, @Utility.GetDistrictName(Convert.ToInt32(itm.AddressDistrict)),@Utility.GetStateName(Convert.ToInt32(itm.AddressState))
+                            </div>
+                            <div class="phone">
+                                <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;Call Us: @itm.DirectoryPhone
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+    }
+    else
+    {
+        <h4>No Records Found !</h4>
+    }
+                    </div>
+                        <div class="slick-prev slick-arrow-buton">
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+                        <div class="slick-next slick-arrow-buton">
+                            <i class="fa fa-angle-right"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="~/Directory/DirectoryItem/Index" class="btn btn-outline-light">View All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("Footer")
+
+
+    <!-- ARCHIVES JS -->
+    <script src="~/Assests/js/jquery-2.2.0.min.js"></script>
+    <script src="~/Assests/js/popper.min.js"></script>
+    <script src="~/Assests/js/bootstrap.min.js"></script>
+    <script src="~/Assests/js/bootstrap-submenu.js"></script>
+    <script src="~/Assests/js/rangeslider.js"></script>
+    <script src="~/Assests/js/jquery.mb.YTPlayer.js"></script>
+    <script src="~/Assests/js/bootstrap-select.min.js"></script>
+    <script src="~/Assests/js/jquery.easing.1.3.js"></script>
+    <script src="~/Assests/js/jquery.scrollUp.js"></script>
+    <script src="~/Assests/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/Assests/js/leaflet.js"></script>
+    <script src="~/Assests/js/leaflet-providers.js"></script>
+    <script src="~/Assests/js/leaflet.markercluster.js"></script>
+    <script src="~/Assests/js/moment.min.js"></script>
+    <script src="~/Assests/js/daterangepicker.min.js"></script>
+    <script src="~/Assests/js/dropzone.js"></script>
+    <script src="~/Assests/js/slick.min.js"></script>
+    <script src="~/Assests/js/jquery.filterizr.js"></script>
+    <script src="~/Assests/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Assests/js/jquery.countdown.js"></script>
+    <script src="~/Assests/js/maps.js"></script>
+    <script src="~/Assests/js/app.js"></script>
+    <script src="~/Assests/js/ie10-viewport-bug-workaround.js"></script>
+    
+    <script src="~/Scripts/alertify.min.js"></script>
+    <script>
+        $(function () {
+
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+            var errorMessage = '@TempData["ErrorMessage"]'
+            if (errorMessage != '')
+                alertify.error(errorMessage)
+            var alertMessage = '@TempData["AlertMessage"]'
+            if (alertMessage != '')
+                alertify.alert(alertMessage)
+        });
+    </script>
+    @*<script type="text/javascript">
+        $(document).ready(function () {
+            $('.nepali-calendar').nepaliDatePicker(
+                {
+                    date: "dd/mm/yyyy"
+                }
+            );
+
+            //alert(getNepaliDate())
+            $('#DisplayTodayDate').html(getNepaliDate())
+            $('#submit')[0].reset();
+            $(window).on('popstate', function () {
+                location.reload(true);
+            });
+
+        });
+
+    </script>*@
+    @*<script>
+    $('#filter').on('click', '#SearchBtn', function () {
+        debugger;
+        var href = '/Directory/DirectoryItem/SearchList';
+        //var url = href;
+
+        var anydata = $('#SearchId').val();
+        $.get(href, { anydata }, function (data) {
+            debugger;
+            $('#ResultDisplay').html(data);
+        })
+    })
+
+    </script>*@
+    @*<script>
+        var form = document.querySelector("#search-form");
+        var searchbox = document.querySelector(".searchbox");
+
+        // Allows you to submit when you press Enter
+        form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        //Insert code here
+        });
+
+        // Adds the placeholder when the searchbox is in focus
+        searchbox.addEventListener("focus", function(e) {
+        searchbox.setAttribute("placeholder", "Search...");
+        });
+
+        // Removes Text and the placeholder when the search box is out of focus
+        searchbox.addEventListener("focusout", function(e) {
+        searchbox.value = null;
+        searchbox.removeAttribute("placeholder");
+        });
+    </script>*@
+</body>
+
+</html>
+
+
+
+
+

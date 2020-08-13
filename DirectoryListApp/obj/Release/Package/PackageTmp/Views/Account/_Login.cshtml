@@ -2,41 +2,32 @@
 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <div id="login">
-        <div class="login">
+
             <form>
                 <div class="form-group">
-                    <label>Email *</label>
+                   
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email Address" })
                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     <i class="icon_mail_alt"></i>
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
+                    
                     @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", @type = "password" })
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     <i class="icon_lock_alt"></i>
                 </div>
-                <div class="fl-wrap filter-tags clearfix add_bottom_30">
-                    <div class="checkboxes float-left">
-                        <div class="filter-tags-wrap">
-                            <input id="remember_me" type="checkbox">
-                            <label for="check-b">Remember me</label>
-                        </div>
+                <div class="checkbox">
+                    <div class="ez-checkbox pull-left">
+                        <label>
+                            <input id="remember_me" type="checkbox" class="ez-hide">Remember me
+                        </label>
                     </div>
 
                 </div>
-                <button type="submit" class="btn_1 rounded full-width">Login</button>
-                <div class="text-center add_top_10">
-                    New here? <strong>
-                        <a href="~/Account/Register">
-                            Sign
-                            up!
-                        </a>
-                    </strong>
+                <div class="form-group mb-0">
+                    <button type="submit" class="btn-md button-theme btn-block">Login</button>
                 </div>
             </form>
-        </div>
-    </div>
+            
 
 }

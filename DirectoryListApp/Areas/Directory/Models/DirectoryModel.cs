@@ -50,6 +50,7 @@ namespace DirectoryListApp.Areas.Directory.Models
             public string Details { get; set; }
             public string Email { get; set; }
             public string PhotoLogo { get; set; }
+        public string CategoryLogo { get; set; }
             [DisplayName("Permanent Address")]
             public string PermanentAddress { get { return Utility.GetPalikaName(Convert.ToInt32(AddressPalika)) + "-" + AddressWard + ", " + Utility.GetDistrictName(Convert.ToInt32(AddressDistrict)) + ", " + Utility.GetStateName(Convert.ToInt32(AddressState)); } }
         public decimal Latitude { get; set; }

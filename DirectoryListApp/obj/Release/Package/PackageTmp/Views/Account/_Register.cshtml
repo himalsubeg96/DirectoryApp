@@ -3,23 +3,22 @@
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <div id="login">
-        <div class="login">
+
             <form autocomplete="off">
                 <div class="form-group">
-                    <label>Email Address *</label>
+                    
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email Address" })
                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     <i class="icon_mail_alt"></i>
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
+                   
                     @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", @type = "password" })
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     <i class="icon_lock_alt"></i>
                 </div>
                 <div class="form-group">
-                    <label>Confirm Password</label>
+                    
                     @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password", @type = "password" })
                     @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
                     <i class="icon_lock_alt"></i>
@@ -33,11 +32,10 @@
                         </div>
                     </div>
                 }
-                <div id="pass-info" class="clearfix"></div>
-                <button type="submit" class="btn_1 rounded full-width add_top_30 mt-5">Register Now!</button>
-                <div class="text-center add_top_10">Already have an acccount? <strong><a href="~/Account/Login">Sign In</a></strong></div>
+                <div class="form-group mb-0">
+                    <button type="submit" class="btn-md button-theme btn-block">Signup</button>
+                </div>                
+                
             </form>
-        </div>
-    </div>
 
 }

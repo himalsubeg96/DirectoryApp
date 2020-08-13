@@ -1,0 +1,35 @@
+﻿@{
+    var ent = new DirectoryEntities();
+    var result = ent.tblDirectoryCategories.Where(x => true).ToList();    
+}
+<!--sidebar menu start-->
+<div class="col-md-3">
+    <div class="category-box">
+        <div class="cat-box-title">CATEGORIES </div>
+        <div class="side-cat-list">
+            <div id="primary-navigation">
+                <ul class="resp_catlist">
+                    @foreach (var item in result)
+                    {
+                        <li class="biz">
+                            <a href="~/Directory/DirectoryItem/GetDirectoryCategory/@item.DirectoryCategoryId">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</a>
+                            @{
+                                var sub = ent.tblDirectorySubCategories.Where(x => x.DirectoryCategoryId == item.DirectoryCategoryId).ToList();
+                            }
+                            <ul>
+                                @foreach (var itemSub in sub)
+                                {
+                                    <li><a href="~/Directory/DirectoryItem/GetDirectorySubCategory/@itemSub.DirectorySubCategoryId">@Utility.GetDirectorySubCategoryName(itemSub.DirectorySubCategoryId)</a></li>
+                                }
+
+
+                            </ul>
+                        </li>
+                                }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--sidebar menu end-->

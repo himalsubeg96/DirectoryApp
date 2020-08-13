@@ -1,15 +1,15 @@
+D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\roslyn\System.Reflection.Metadata.dll
+D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\roslyn\VBCSCompiler.exe
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\ApplicationInsights.config
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\roslyn\csc.exe
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\roslyn\Microsoft.CodeAnalysis.dll
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\roslyn\Microsoft.CSharp.Core.targets
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\roslyn\System.Collections.Immutable.dll
-D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\roslyn\System.Reflection.Metadata.dll
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\roslyn\vbc.exe
-D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\roslyn\VBCSCompiler.exe
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\roslyn\VBCSCompiler.exe.config
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\DirectoryListApp.dll.config
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\DirectoryListApp.dll
@@ -77,6 +77,5 @@ D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\Micros
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\Microsoft.Owin.Security.Google.xml
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\Microsoft.Owin.Security.Twitter.xml
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\obj\Debug\DirectoryListApp.csprojResolveAssemblyReference.cache
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\obj\Debug\DirectoryListApp.dll
 D:\softech project\DirectoryListApp\DirectoryListApp\DirectoryListApp\obj\Debug\DirectoryListApp.pdb

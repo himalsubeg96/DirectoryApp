@@ -1,114 +1,60 @@
 ﻿@using DirectoryListApp
 @using Microsoft.AspNet.Identity
-<style>
-    .dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  display: none;
-  float: left;
-  min-width: 10rem;
-  padding: 0.5rem 0;
-  margin: 0.125rem 0 0;
-  font-size: 1rem;
-  color: #212529;
-  text-align: left;
-  list-style: none;
-  background-color: #2460b9;
-  background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
-}
-    .dropdown-toggle::after {
-  display:none;
-  
-}
-        .dropdown-submenu {
-            position: relative;
-        }
 
-            .dropdown-submenu > .dropdown-menu {
-                top: 0;
-                left: 100%;
-                margin-top: -6px;
-                margin-left: -1px;
-                -webkit-border-radius: 0 6px 6px 6px;
-                -moz-border-radius: 0 6px 6px;
-                border-radius: 0 6px 6px 6px;
-            }
-
-            .dropdown-submenu:hover > .dropdown-menu {
-                display: block;
-            }
-
-            .dropdown-submenu > a:after {
-                display: block;
-                content: " ";
-                float: right;
-                width: 0;
-                height: 0;
-                border-color: transparent;
-                border-style: solid;
-                border-width: 5px 0 5px 5px;
-                border-left-color: #ccc;
-                margin-top: 5px;
-                margin-right: -10px;
-            }
-
-            .dropdown-submenu:hover > a:after {
-                border-left-color: #fff;
-            }
-
-            .dropdown-submenu.pull-left {
-                float: none;
-            }
-
-                .dropdown-submenu.pull-left > .dropdown-menu {
-                    left: -100%;
-                    margin-left: 10px;
-                    -webkit-border-radius: 6px 0 6px 6px;
-                    -moz-border-radius: 6px 0 6px 6px;
-                    border-radius: 6px 0 6px 6px;
-                }
-
-        .dd-left {
-            top: 0;
-            right: 100% !important;
-            left: auto !important;
-            margin-left: 0px !important;
-        }
-    </style>
-        <div class="navbar navbar-primary">
-        <div class="navbar-inner">
-            
-
-            <div class="container">
-                <div class="nav-collapse collapse">
-                    <ul class="nav">
-                        <li class="dropdown"><a  href="~/Home/Index"><i class="fa fa-home" style="color: white; font-size: medium"></i>Home</a>
-
-                        @*<li class="dropdown">
-                            <a  data-toggle="dropdown" href="#"><i class="fa fa-gears" style="color: white; font-size: medium"></i>Setup</a>
-                            <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Directory Category", "Index", "DirectoryCategory")</li>
-                                <li>@Html.ActionLink("Directory SubCategory", "Index", "DirectorySubCategory") </li>
-
-                            </ul>
-                        </li>*@
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" href="#"><i class="fa fa-list" style="color: white; font-size: medium"></i>Directories</a>
-                            <ul class="dropdown-menu">
-
-                                <li><a href="~/Directory/DirectoryItem/Index">Directory</a> </li>
-
-                            </ul>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
+<!-- Main header start -->
+<header class="main-header header-transparent sticky-header">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand logo" href="#">
+                @*<img src="~/Content/images/uno-logo.png" alt="logo" class="f-logo">*@
+                <p>Gold Privilege Card</p>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav header-ml">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="~/Home/Index" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="~/Directory/DirectoryItem/Category" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+                            Categories
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="~/Directory/DirectoryItem/Contact" id="dropdown01" aria-haspopup="true" aria-expanded="false">Contact Us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="~/Account/Login">
+                            <i class="flaticon-logout"></i>Sign In
+                        </a>
+                    </li>
+                </ul>
+                <ul class="form-group button">
+                    <li>
+                        <a class="btn" style="width:200px;" href="~/Directory/DirectoryItem/AdvanceSearch">
+                            Advanced Search
+                        </a>
+                    </li>                    
+                </ul>
+           </div>
+           
+        </nav>
     </div>
+</header>
+<!-- Main header end -->
 
 

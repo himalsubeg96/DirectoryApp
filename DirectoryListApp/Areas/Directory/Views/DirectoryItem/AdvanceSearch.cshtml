@@ -2,7 +2,7 @@
 <script src="~/Scripts/jquery-1.8.3.min.js"></script>
 @{
     ViewBag.Title = "AdvanceSearch";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout =null;
 }
 
 <script type="text/javascript">
@@ -102,68 +102,164 @@
 
         });
     });
+
+    function SearchFunction() {
+        var category = $("#DirectoryCategoryId").val();
+           var subcategory = $("#DirectorySubCategoryId").val();
+           var state = $("#AddressState").val();
+           var district = $("#AddressDistrict").val();
+           var palika = $("#AddressPalika").val();
+           var href = '/Directory/DirectoryItem/AdvanceSearchResult';
+           $.ajax({
+               url: href,
+               data: { category: category, subcategory: subcategory, state: state, district: district, palika: palika },
+               type: 'GET',
+               success: function (data) {
+                   $('#ResultDisplay').html(data);
+                   //var table = $('#ResultDisplay').find("#reportTable").DataTable();
+               }
+
+           })
+    }
 </script>
-<section>
-    <div class="container">
-        <div class="row">
-                <div class="sec-title">
-                    <h2 class="text-center">Advanced Search</h2>
-                </div>
-        </div>
-        <div class="row">
-                <div class="form-group col-md-4">
-                    @Html.Label("Category")
-                    @Html.DropDownListFor(model => model.DirectoryCategoryId, DirectoryListApp.Utility.GetAllDirectoryCategory(), "--Select Category--", new { @class = "form-control" })
-                </div>
 
-                <div class="form-group col-md-4">
-                    @Html.Label("Sub Category")
-                    @Html.DropDownListFor(model => model.DirectorySubCategoryId, DirectoryListApp.Utility.GetAllDirectorySubCategory(), "--Select SubCategory--", new { @class = "form-control" })
-                </div>
-        </div>
-        <div class="row">
-                <div class="form-group col-md-4">
-                    @Html.Label("State")
-                    @Html.DropDownListFor(model => model.AddressState, DirectoryListApp.Utility.GetAllState(), "--Select State--", new { @class = "form-control" })
-                </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- ARCHIVES CSS -->
+    <link href="~/Assests/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assests/css/animate.min.css" rel="stylesheet" />
+    <link href="~/Assests/css/bootstrap-submenu.css" rel="stylesheet" />
+    <link href="~/Assests/css/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="~/Assests/css/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Assests/css/daterangepicker.css" rel="stylesheet" />
+    <link href="~/Assests/css/leaflet.css" rel="stylesheet" />
+    <link href="~/Assests/css/map.css" rel="stylesheet" />
 
-                <div class="form-group col-md-4">
-                    @Html.Label("District")
-                    @Html.DropDownListFor(model => model.AddressDistrict, DirectoryListApp.Utility.GetAllDistrict(), "--Select District--", new { @class = "form-control" })
-                </div>
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Assests/flaticon/flaticon.css" rel="stylesheet" />
+    <link href="~/Assests/linearicon/style.css" rel="stylesheet" />
+    <link href="~/Assests/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+    <link href="~/Assests/css/dropzone.css" rel="stylesheet" />
+    <link href="~/Assests/css/slick.css" rel="stylesheet" />
+    <link href="~/Assests/css/styles.css" rel="stylesheet" />
+    <link href="~/Assests/skins/default.css" rel="stylesheet" id="style_sheet" />
 
-                <div class="form-group col-md-4">
-                    @Html.Label("Municipality")
-                    @Html.DropDownListFor(model => model.AddressPalika, DirectoryListApp.Utility.GetAllPalika(), "--Select Municipality--", new { @class = "form-control" })
-                </div>
 
-        </div>
-        <div class="form-group button">
-            <button id="Search" class="btn" type="button"><i class="fa fa-search-plus"></i>Search</button>
-        </div>
-    </div>
-</section>
+</head>
+<body>
+    <div class="page_loader"></div>
+    @Html.Partial("Header")
+   <div class="iwrapper" style="margin-bottom:100px;">
+       <div class="row">
+           @Html.Partial("SidebarMenu")
+           <div class="col-md-9">
 
-<div id="ResultDisplay"></div>
+               <div class="latest">
+                   <div class="main-title">
+                       <h1>Advanced Search</h1>
+                   </div>
+                   <div class="slick-slider-area">
+                       <div class="row">
+                           <div class="form-group col-md-4">
+                               @Html.Label("Category")
+                               @Html.DropDownListFor(model => model.DirectoryCategoryId, DirectoryListApp.Utility.GetAllDirectoryCategory(), "--Select Category--", new { @class = "form-control" })
+                           </div>
+
+                           <div class="form-group col-md-4">
+                               @Html.Label("Sub Category")
+                               @Html.DropDownListFor(model => model.DirectorySubCategoryId, DirectoryListApp.Utility.GetAllDirectorySubCategory(), "--Select SubCategory--", new { @class = "form-control" })
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="form-group col-md-4">
+                               @Html.Label("State")
+                               @Html.DropDownListFor(model => model.AddressState, DirectoryListApp.Utility.GetAllState(), "--Select State--", new { @class = "form-control" })
+                           </div>
+
+                           <div class="form-group col-md-4">
+                               @Html.Label("District")
+                               @Html.DropDownListFor(model => model.AddressDistrict, DirectoryListApp.Utility.GetAllDistrict(), "--Select District--", new { @class = "form-control" })
+                           </div>
+
+                           <div class="form-group col-md-4">
+                               @Html.Label("Municipality")
+                               @Html.DropDownListFor(model => model.AddressPalika, DirectoryListApp.Utility.GetAllPalika(), "--Select Municipality--", new { @class = "form-control" })
+                           </div>
+
+                       </div>
+                       <div class="form-group button">
+                           <button onclick="SearchFunction()" class="btn btn-default" type="button">Search</button>
+                       </div>
+                   </div>
+               </div>
+
+               <div id="ResultDisplay"></div>
+           </div>
+       </div>
+   </div>
+
+    @Html.Partial("Footer")
+
+    <!-- ARCHIVES JS -->
+    <script src="~/Assests/js/jquery-2.2.0.min.js"></script>
+    <script src="~/Assests/js/popper.min.js"></script>
+    <script src="~/Assests/js/bootstrap.min.js"></script>
+    <script src="~/Assests/js/bootstrap-submenu.js"></script>
+    <script src="~/Assests/js/rangeslider.js"></script>
+    <script src="~/Assests/js/jquery.mb.YTPlayer.js"></script>
+    <script src="~/Assests/js/bootstrap-select.min.js"></script>
+    <script src="~/Assests/js/jquery.easing.1.3.js"></script>
+    <script src="~/Assests/js/jquery.scrollUp.js"></script>
+    <script src="~/Assests/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/Assests/js/leaflet.js"></script>
+    <script src="~/Assests/js/leaflet-providers.js"></script>
+    <script src="~/Assests/js/leaflet.markercluster.js"></script>
+    <script src="~/Assests/js/moment.min.js"></script>
+    <script src="~/Assests/js/daterangepicker.min.js"></script>
+    <script src="~/Assests/js/dropzone.js"></script>
+    <script src="~/Assests/js/slick.min.js"></script>
+    <script src="~/Assests/js/jquery.filterizr.js"></script>
+    <script src="~/Assests/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Assests/js/jquery.countdown.js"></script>
+    <script src="~/Assests/js/maps.js"></script>
+    <script src="~/Assests/js/app.js"></script>
+    <script src="~/Assests/js/ie10-viewport-bug-workaround.js"></script>
+
+</body>
+
+</html>
+
+
+
 
 <script>
-    $("#Search").click(function () {
-        var category = $("#DirectoryCategoryId").val();
-        var subcategory = $("#DirectorySubCategoryId").val();
-        var state = $("#AddressState").val();
-        var district = $("#AddressDistrict").val();
-        var palika = $("#AddressPalika").val();
-        var href = '/Directory/DirectoryItem/AdvanceSearchResult';
-        $.ajax({
-            url: href,
-            data: { category: category, subcategory: subcategory, state: state, district: district, palika: palika },
-            type: 'GET',
-            success: function (data) {
-                $('#ResultDisplay').html(data);
-                //var table = $('#ResultDisplay').find("#reportTable").DataTable();
-            }
+    //$('#Seasdfsdrch').click(function () {
+    //    alert("ttttttttttttttt");
+    //});
+    //$("#Search").click(function () {
+    //    debugger;
+    //    var category = $("#DirectoryCategoryId").val();
+    //    var subcategory = $("#DirectorySubCategoryId").val();
+    //    var state = $("#AddressState").val();
+    //    var district = $("#AddressDistrict").val();
+    //    var palika = $("#AddressPalika").val();
+    //    var href = '/Directory/DirectoryItem/AdvanceSearchResult';
+    //    $.ajax({
+    //        url: href,
+    //        data: { category: category, subcategory: subcategory, state: state, district: district, palika: palika },
+    //        type: 'GET',
+    //        success: function (data) {
+    //            $('#ResultDisplay').html(data);
+    //            //var table = $('#ResultDisplay').find("#reportTable").DataTable();
+    //        }
 
-        })
-    });
+    //    })
+    //});
 </script>
 

@@ -1,0 +1,63 @@
+﻿@model DirectoryListApp.Areas.Directory.Models.DirectoryModel
+
+<div class="row">
+    @if (Model.DirectoryModelList.Count > 0)
+    {
+        foreach (var item in Model.DirectoryModelList)
+        {
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="listing-item-box">
+                    <div class="listing-thumbnail">
+                        <a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId" class="listing-photo">
+                            <div class="tag">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</div>
+                            <img class="d-block w-100" src="@item.PhotoLogo" alt="listing-photo" style="height:200px;width:100%">
+                        </a>
+                    </div>
+                    <div class="detail">
+                        <a class="icon">
+                            @*<img src="@item.CategoryLogo" alt="category-photo" />*@
+                            <i class="flaticon-cook"></i>
+                        </a>
+                        <h3 class="title">
+                            <a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId">@item.DirectoryItemName</a>
+                        </h3>
+                        <div class="locaton">
+                            <i class="flaticon-pin"></i>@Utility.GetPalikaName(Convert.ToInt32(item.AddressPalika))- @item.AddressWard, @Utility.GetDistrictName(Convert.ToInt32(item.AddressDistrict)),@Utility.GetStateName(Convert.ToInt32(item.AddressState))
+                        </div>
+                        <div class="phone">
+                            <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;Call Us: @item.DirectoryPhone
+                        </div>
+
+                        <p>@item.Details</p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <h4>No Records Found !</h4>
+    }
+</div>
+<!-- Page navigation start -->
+<div class="pagination-box p-box text-center">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="#">Prev</a>
+            </li>
+            @for (int p = 1; p <= ViewBag.TotalPages; p++)
+            {
+
+                <li class="page-item">
+                    <a class="@(p == ViewBag.currentPage ? "btn btn-default" : "") page-link"
+                       href="@Url.Action("Index", "DirectoryItem", new { Area = "Directory", page = p })">@p</a>
+                </li>
+            }
+            <li class="page-item">
+                <a class="page-link" href="grid-fullwidth.html">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+

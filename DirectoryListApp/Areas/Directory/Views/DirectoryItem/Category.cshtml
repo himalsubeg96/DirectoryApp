@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Areas/Directory/Views/Shared/_Layout.cshtml";
+}
+@{
+    var ent = new DirectoryEntities();   
+    var category = ent.tblDirectoryCategories.Where(x => true).ToList();
+}
+            <div class="latest">
+                <div class="main-title">
+                    <h1>CATEGORIES</h1>
+                </div>
+                <div class="slick-slider-area">
+                    <!-- /row -->
+                    <div class="row">
+                        @if (category.Count > 0)
+            {
+                foreach (var itmCategory in category)
+                {
+                    var count = ent.tblDirectoryItems.Where(x => x.DirectoryCategoryId == itmCategory.DirectoryCategoryId).Count();
+                         <!-- Single category -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="small-category-2">
+                                        <div class="small-category-2-thumb img-1">
+                                            <a href="~/Directory/DirectoryItem/GetDirectoryCategory/@itmCategory.DirectoryCategoryId">
+                                                @if (itmCategory.CategoryIcon != null)
+                                                {
+                                                    <img src="@itmCategory.CategoryIcon" height="50" width="50" />
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/Images/NoImage (1).png" alt="Photo" height="50" width="50" />
+                                                }
+
+                                            </a>
+
+                                        </div>
+                                        <div class="sc-2-detail">
+                                            <h4 class="sc-jb-title"><a href="~/Directory/DirectoryItem/GetDirectoryCategory/@itmCategory.DirectoryCategoryId">@itmCategory.DirectoryCategoryName</a></h4>
+                                            <span>@count Listings</span>
+                                        </div>
+                                    </div>
+                                </div>
+                    <!-- Single category -->
+                            }
+
+                        }
+
+                    </div>
+                    <!-- /row -->
+                </div>
+            </div>
+
+
+
+

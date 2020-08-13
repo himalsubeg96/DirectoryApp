@@ -15,46 +15,25 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <!-- FONT AWESOME -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- ARCHIVES CSS -->
-    <link href="~/Content/CSS/jquery-ui.css" rel="stylesheet" />
-    @*<link href="~/Content/CSS/all5.0.css" rel="stylesheet" />*@
-    <link href="~/Content/CSS/search.css" rel="stylesheet" />
-    <link href="~/Content/CSS/animate.css" rel="stylesheet" />
-    <link href="~/Content/CSS/magnific-popup.css" rel="stylesheet" />
-    <link href="~/Content/CSS/lightcase.css" rel="stylesheet" />
-    <link href="~/Content/CSS/owl-carousel.css" rel="stylesheet" />
-    <link href="~/Content/CSS/owl.carousel.min.css" rel="stylesheet" />
-    <link href="~/Content/CSS/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/CSS/menu.css" rel="stylesheet" />
-    <link href="~/Content/CSS/slick.css" rel="stylesheet" />
-    <link href="~/Content/CSS/map-animation.css" rel="stylesheet" />
-    <link href="~/Content/CSS/styles.css" rel="stylesheet" />
-    <link href="~/Content/CSS/default.css" rel="stylesheet" id="color" />
+    <link href="~/Assests/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assests/css/animate.min.css" rel="stylesheet" />
+    <link href="~/Assests/css/bootstrap-submenu.css" rel="stylesheet" />
+    <link href="~/Assests/css/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="~/Assests/css/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Assests/css/daterangepicker.css" rel="stylesheet" />
+    <link href="~/Assests/css/leaflet.css" rel="stylesheet" />
+    <link href="~/Assests/css/map.css" rel="stylesheet" />
 
-    <link href="~/Content/CSS/timedropper.css" rel="stylesheet" />
-    <link href="~/Content/CSS/datedropper.css" rel="stylesheet" />
-
-    <link href="~/Content/CSS/leaflet.css" rel="stylesheet" />
-    <link href="~/Content/CSS/leaflet-gesture-handling.min.css" rel="stylesheet" />
-    <link href="~/Content/CSS/leaflet.markercluster.css" rel="stylesheet" />
-    <link href="~/Content/CSS/leaflet.markercluster.default.css" rel="stylesheet" />
-    <!-- ARCHIVES JS -->
-    <script src="~/Scripts/JS/jquery.min.js"></script>
-    <script src="~/Scripts/JS/jquery-ui.js"></script>
-    <script src="~/Scripts/JS/bootstrap.min.js"></script>
-    <script src="~/Scripts/JS/mmenu.min.js"></script>
-    <script src="~/Scripts/JS/mmenu.js"></script>
-    <script src="~/Scripts/JS/smooth-scroll.min.js"></script>
-    <script src="~/Scripts/JS/search.js"></script>
-    <script src="~/Scripts/JS/slick.min.js"></script>
-    <script src="~/Scripts/JS/slick.js"></script>
-    <script src="~/Scripts/JS/owl.carousel.js"></script>
-    <script src="~/Scripts/JS/jquery.form.js"></script>
-    <script src="~/Scripts/JS/searched.js"></script>
-    <!-- MAIN JS -->
-    <script src="~/Scripts/JS/script.js"></script>
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Assests/flaticon/flaticon.css" rel="stylesheet" />
+    <link href="~/Assests/linearicon/style.css" rel="stylesheet" />
+    <link href="~/Assests/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+    <link href="~/Assests/css/dropzone.css" rel="stylesheet" />
+    <link href="~/Assests/css/slick.css" rel="stylesheet" />
+    <link href="~/Assests/css/styles.css" rel="stylesheet" />
+    <link href="~/Assests/skins/default.css" rel="stylesheet" id="style_sheet" />
+    
 
    <style>
        #map-contact { 
@@ -63,540 +42,503 @@
           }
    </style>
 </head>
-<body class="inner-pages">
-    <!-- Wrapper -->
-    <div id="wrapper">
-        <!-- START SECTION HEADINGS -->
-        <!-- Header Container
-        ================================================== -->
-        <header id="header-container">
-            <!-- Topbar -->
-            <div class="header-top">
-                <div class="container">
-                    <div class="top-info hidden-sm-down">
-                        <div class="call-header">
-                            <p><i class="fa fa-phone" aria-hidden="true"></i> 123456789</p>
-                        </div>
-                        <div class="address-header">
-                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Baneshwor</p>
-                        </div>
-                        <div class="mail-header">
-                            <p><i class="fa fa-envelope" aria-hidden="true"></i> info@listing.com</p>
-                        </div>
-                    </div>
-                    <div class="top-social hidden-sm-down">
-                        <div class="login-wrap">
-                            <ul class="d-flex">
-                                <li><a href="~/Account/Login"><i class="fa fa-user"></i> Login</a></li>
-                                <li><a href="~/Account/Register"><i class="fa fa-sign-in"></i> Register</a></li>
-                            </ul>
-                        </div>
-                        <div class="social-icons-header">
-                            <div class="social-icons">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <!-- Topbar / End -->
-            <!-- Header -->
-            <div id="header" >
-                <div class="container">
-                    <!-- Left Side Content -->
-                    <div class="left-side">
-                        <!-- Logo -->
-                        <div id="logo">
-                            <span class="text-center" style="color: black;font-size: 24px;">
-                                LISTING
-                            </span>
-                        </div>
-                        <!-- Mobile Navigation -->
-                        <div class="mmenu-trigger">
-                            <button class="hamburger hamburger--collapse" type="button">
-                                <span class="hamburger-box">
-                                    <span class="hamburger-inner"></span>
-                                </span>
-                            </button>
-                        </div>
-                        <!-- Main Navigation -->
-                        <nav id="navigation" class="style-1">
-                            <ul id="responsive">
-                                <li>
-                                    <a class="current" href="~/Home/Index">Home</a>
-                                </li>
-                                <li>
-                                    <a href="#">Listings</a>
-                                    <ul>
-                                        @foreach (var item in result)
-                                        {
-                                            <li>
-                                                <a href="~/Directory/DirectoryItem/GetDirectoryCategory/@item.DirectoryCategoryId">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</a>
-                                                @{
-                                                    var sub = ent.tblDirectorySubCategories.Where(x => x.DirectoryCategoryId == item.DirectoryCategoryId).ToList();
-                                                }
-                                                <ul>
-                                                    @foreach (var itemSub in sub)
-                                                    {
-                                                        <li><a href="~/Directory/DirectoryItem/GetDirectorySubCategory/@itemSub.DirectorySubCategoryId">@Utility.GetDirectorySubCategoryName(itemSub.DirectorySubCategoryId)</a></li>
-                                                    }
-
-
-                                                </ul>
-                                            </li>
-                                                    }
-
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Pages</a>
-                                </li>
-                                <li><a href="#">Blog</a></li>
-                                <li>
-                                    <a href="#">Contact</a>
-                                </li>
-
-                            </ul>
-                        </nav>
-
-                        <div class="clearfix"></div>
-                        <!-- Main Navigation / End -->
-                    </div>
-                    <!-- Left Side Content / End -->
-                </div>
-            </div>
-            <!-- Header / End -->
-
-        </header>
-        <div class="clearfix"></div>
-        <!-- Header Container / End -->
-        <!-- START SECTION LISTING DETAIL-->
-        <section class="listing blog details"style="margin-top:0px;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-md-12 blog-pots">
-                        <!-- Block heading end -->                       
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="detail-wrapper">
-                                    <div class="detail-wrapper-body">
-                                        <div class="listing-title-bar">
-                                            <h3>@Model.DirectoryItemName </h3>
-                                            <div class"mt-3">
-                                                <a href="#listing-location" class="listing-address">
-                                                    <i class="fa fa-map-marker pr-2 ti-location-pin mrg-r-5"></i> @Model.PermanentAddress
-                                                </a>
-                                                @if (Model.DirectoryReviewModelList.Count > 0)
-                                                {
-                                                    double count = Model.DirectoryReviewModelList.Count;
-                                                    double rate = 0;
-                                                    foreach (var item in Model.DirectoryReviewModelList)
-                                                    {
-                                                        rate += (double)item.ReviewRating;
-                                                    }
-                                                    var avg = Math.Round(rate / count);
-                                                    <div class="rating-box mt-3">
-                                                        @if (avg == 1)
-                                                        {
-                                                        <div class="detail-list-rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        }
-                                                        @if (avg == 2)
-                                                        {
-                                                            <div class="detail-list-rating">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                            </div>
-                                                        }
-                                                        @if (avg == 3)
-                                                        {
-                                                            <div class="detail-list-rating">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                            </div>
-                                                        }
-                                                        @if (avg == 4)
-                                                        {
-                                                            <div class="detail-list-rating">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                            </div>
-                                                        }
-                                                        @if (avg == 5)
-                                                        {
-                                                            <div class="detail-list-rating">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                            </div>
-                                                        }
-                                                        
-                                                    </div>
-                                                    
-                                                }
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- main slider carousel items -->
-                                <div id="listingDetailsSlider" class="carousel listing-details-sliders slide mb-30">
-                                    <h5 class="mb-4">Gallery</h5>
-                                    <div class="carousel-inner">
-                                        <div class="active item carousel-item" data-slide-number="0">
-                                            <img src="@Model.PhotoLogo" class="img-fluid" alt="slider-listing">
-                                        </div>
-                                       
-                                    </div>
-                                    
-                                </div>
-                                <div class="blog-info details overview">
-                                    <h5 class="mb-4">Overview</h5>
-                                    <p class="mb-3">@Model.Details</p>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <!-- cars content -->
-                        <div class="property-location mp">
-                            <h5>Location</h5>
-                            <div class="divider-fade"></div>
-                           
-                                <div id="gmap"> </div>
-  
-                        </div>
-                        <!-- START SECTION ASSIGNED AGENTS -->
-                        <section class="reviews comments">
-                            <h3 class="mb-5">Reviews</h3>
-                            <div class="row mb-5">
-                                @if (Model.DirectoryReviewModelList.Any())
-	                            {
-		                            foreach (var item in Model.DirectoryReviewModelList)
-                                    {
-                                     <ul class="col-12 commented pl-0" style="margin-left:50px;">
-                <li class="comm-inf">
-                    <div class="col-md-10 comments-info">
-                        <div class="conra">
-                            <h5 class="mb-2">@item.RevFirstName @item.RevLastName</h5>
-                            <div class="rating-box">
-                                @if (item.ReviewRating == 1)
+<body>
+    <div class="page_loader"></div>
+    <!-- Main header start -->
+    <header class="main-header header-transparent sticky-header">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand logo" href="#">
+                    <img src="~/Content/images/uno-logo.png" alt="logo" class="f-logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav header-ml">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="~/Home/Index" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Listings
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                @foreach (var item in result)
                                 {
-                                    <div class="detail-list-rating mr-0">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                }
-                                @if (item.ReviewRating == 2 )
-                                {
-                                    <div class="detail-list-rating mr-0">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                }
-                                @if (item.ReviewRating == 3)
-                                {
-                                    <div class="detail-list-rating mr-0">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                }
-                                @if (item.ReviewRating == 4)
-                                {
-                                    <div class="detail-list-rating mr-0">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                }
-                                @if (item.ReviewRating == 5)
-                                {
-                                    <div class="detail-list-rating mr-0">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                }
-                                
-                            </div>
-                        </div>
-                        <p class="mb-4 rest">@Convert.ToDateTime(@item.ReviewDate).ToLongDateString()</p>
-                        <p>@item.Review</p>
-
-                    </div>
-                </li>
-
-            </ul>
-                                    }
-                                }
-                                else
-                                {
-                                    <h4>No Reviews!</h4>
-                                }
-
-                            </div>
-                            
-                        </section>
-                        <section class="reviews leve-comments details">
-                            <div id="add-review" class="add-review-box">
-                                <!-- Add Review -->
-                                <h3 class="listing-desc-headline margin-bottom-20 mb-4">Add Review</h3>
-                                <span class="leave-rating-title mb-3">Your rating for this listing</span>
-                                <!-- Rating / Upload Button -->
-                                @using (Html.BeginForm("AddReview", "DirectoryItem"))
-                                {
-                                    @Html.HiddenFor(model => model.DirectoryItemId)
-                                <div class="row mb-4">
-                                    <div class="col-md-6">
-                                        <!-- Leave Rating -->
-                                        <div class="clearfix"></div>
-                                        <div class="leave-rating margin-bottom-30 mr-2">
-                                            <input type="radio" name="revmodel.ReviewRating" id="rating-5" value="5" />
-                                            <label for="rating-5" class="fa fa-star"></label>
-                                            <input type="radio" name="revmodel.ReviewRating" id="rating-4" value="4" />
-                                            <label for="rating-4" class="fa fa-star"></label>
-                                            <input type="radio" name="revmodel.ReviewRating" id="rating-3" value="3" />
-                                            <label for="rating-3" class="fa fa-star"></label>
-                                            <input type="radio" name="revmodel.ReviewRating" id="rating-2" value="2" />
-                                            <label for="rating-2" class="fa fa-star"></label>
-                                            <input type="radio" name="revmodel.ReviewRating" id="rating-1" value="1" />
-                                            <label for="rating-1" class="fa fa-star"></label>
-                                        </div>
-                                        
-                                    </div>
-                                    
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-12 data">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    @Html.TextBoxFor(model => model.revmodel.RevFirstName, new { @class = "form-control", @placeholder = "First Name" })                                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    @Html.TextBoxFor(model => model.revmodel.RevLastName, new { @class = "form-control", @placeholder = "Last Name" })
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    @Html.TextBoxFor(model => model.revmodel.RevEmail, new { @class = "form-control", @placeholder = "Email" })
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 form-group">
-                                                @Html.TextAreaFor(model => model.revmodel.Review, new { @class = "form-control", @placeholder = "Review" })
-                                            </div>
-                                            <a href="~/Directory/DirectoryItem/AddReview">
-                                                <input type="submit" value="Submit Review" class="btn btn-primary btn-lg mt-2" />
-                                                @*<button type="submit" class="btn btn-primary btn-lg mt-2">Submit Review</button>*@
-                                            </a>
-                                            
-                                    </div>
-                                </div>
-                                }
-                            </div>
-                        </section>
-                        <!-- END SECTION ASSIGNED AGENTS -->
-                    </div>
-                    <aside class="col-lg-4 col-md-12 car">
-                        <div class="widget">
-                            <!-- Start Agent Information -->
-                            <div class="sidebar widget-boxed mt-33 mt-5">
-                                <div class="widget-boxed-header">
-                                    <h4><i class="far fa-user pr-3"></i>Contact Person Info</h4>
-                                </div>
-                                <div class="widget-boxed-body">
-                                    <div class="sidebar-widget author-widget2">
-                                        <div class="author-box clearfix">
-                                            <img src="~/Content/images/no-person.jpg" alt="author-image" class="author__img">
-                                            <h4 class="author__title">@Model.ContactPersonName</h4>
-                                            @*<p class="author__meta">Posted 3 days ago</p>*@
-                                        </div>
-                                        <ul class="author__contact">
-                                            <li><span class="la la-map-marker"><i class="fa fa-map-marker"></i></span>@Utility.GetPalikaName(Model.AddressPalika)-@Model.AddressWard,@Utility.GetDistrictName(Model.AddressDistrict)</li>
-                                            <li><span class="la la-phone"><i class="fa fa-phone" aria-hidden="true"></i></span><a href="#">@Model.ContactPersonPhone</a></li>
-                                            <li><span class="la la-envelope-o"><i class="fa fa-envelope" aria-hidden="true"></i></span><a href="#">@Model.Email</a></li>
-                                        </ul>    
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Agent Information -->
-
-                            <div class="widget widget_listings my-5">
-                                <div class="widget-boxed-header">
-                                    <h4><i class="fa fa-map-marker pr-3"></i>Latest Listings</h4>
-                                </div>
-                                <div class="widget-boxed-body">
-                                    <ul>
-                                        @foreach (var item in newregister)
-                                        {
-                                            var eachitem = ent.tblDirectoryDetails.Where(x => x.DirectoryItemId == item.DirectoryItemId).ToList();
-                                            foreach (var itm in eachitem)
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item" href="~/Directory/DirectoryItem/GetDirectoryCategory/@item.DirectoryCategoryId">@Utility.GetDirectoryCategoryName(item.DirectoryCategoryId)</a>
+                                        @{
+                                            var sub = ent.tblDirectorySubCategories.Where(x => x.DirectoryCategoryId == item.DirectoryCategoryId).ToList();
+                                        }
+                                        <ul class="dropdown-menu">
+                                            @foreach (var itemSub in sub)
                                             {
-                                                var rating = ent.tblReviews.Where(x => x.DirectoryItemId == item.DirectoryItemId).ToList();
-                                                <li>
-                                                    <a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId">
-                                                        @if (itm.PhotoLogo != null)
-                                                        {
-                                                            <img src="@itm.PhotoLogo" class="img-responsive" alt=""/>
-                                                        }
-                                                        else
-                                                        {
-                                                            <img src="~/Images/NoImage (1).png" alt="Photo" class="img-responsive"/>
-                                                        }
-                                                    </a>
-                                                    <div class="overflow-hidden">
-                                                        <span class="cat mt-0"><a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId">@item.DirectoryItemName</a></span>
-                                                        <h4><a href="#">@Utility.GetPalikaName(Convert.ToInt32(itm.AddressPalika))- @itm.AddressWard, @Utility.GetDistrictName(Convert.ToInt32(itm.AddressDistrict)),@Utility.GetStateName(Convert.ToInt32(itm.AddressState))</a></h4>
-                                                        @if (rating.Count > 0)
-                                                        {
-                                                            double count = rating.Count;
-                                                            double rate = 0;
-                                                            foreach (var i in rating)
-                                                            {
-                                                                rate += (double)i.ReviewRating;
-                                                            }
-                                                            var avg = Math.Round(rate / count);
-
-                                                            if (avg == 1)
-                                                            {
-                                                                <span class="rating__star">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                </span>
-                                                            }
-                                                            if (avg == 2)
-                                                            {
-                                                                <span class="rating__star">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                </span>
-                                                            }
-                                                            if (avg == 3)
-                                                            {
-                                                                <span class="rating__star">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                </span>
-                                                            }
-                                                            if (avg == 4)
-                                                            {
-                                                                <span class="rating__star">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                </span>
-                                                            }
-                                                            if (avg == 5)
-                                                            {
-                                                                <span class="rating__star">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                </span>
-                                                            }
-                                                        }
-                                                        
-                                                       
-                                                    </div>
-                                                </li>
+                                                <li><a class="dropdown-item" href="~/Directory/DirectoryItem/GetDirectorySubCategory/@itemSub.DirectorySubCategoryId">@Utility.GetDirectorySubCategoryName(itemSub.DirectorySubCategoryId)</a></li>
                                             }
 
 
-                                        }
-                                       
-                                    </ul>
-                                </div>
+                                        </ul>
+                                    </li>
+                                            }
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="~/Account/Login">
+                                <i class="flaticon-logout"></i>Sign In
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- Main header end -->
+    <!-- Sub banner start -->
+    <div class="sub-banner overview-bgi">
+        
+    </div>
+    <!-- Sub Banner end -->
+
+    <!-- Listing details page start -->
+    <div class="listing-details-page content-area-6">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Heading listing 3 start -->
+                    <div class="heading-listing-3">
+                        <h2>@Model.DirectoryItemName</h2>
+                        <span class="rent">@Utility.GetDirectoryCategoryName(Model.DirectoryCategoryId)</span>
+                        <div class="clearfix"></div>
+                        <div class="mb-30">
+                            <div class="location clearfix">
+                                <i class="flaticon-pin"></i>@Model.PermanentAddress
                             </div>
-                            <div class="recent-post tags">
-                                <div class="widget-boxed-header">
-                                    <h4><i class="fas fa-tags pr-3"></i>Popular Tags</h4>
-                                </div>
-                                <div class="widget-boxed-body">
-                                    <div class="tags">
-                                        <span><a href="#" class="btn btn-outline-primary mr-2">Business</a></span>
-                                        <span><a href="#" class="btn btn-outline-primary">Restaurant</a></span>
+                            
+                                @if (Model.DirectoryReviewModelList.Count > 0)
+                                {
+                                    double count = Model.DirectoryReviewModelList.Count;
+                                    double rate = 0;
+                                    foreach (var item in Model.DirectoryReviewModelList)
+                                    {
+                                        rate += (double)item.ReviewRating;
+                                    }
+                                    var actualrating = rate / count;
+                                    var avg = Math.Round(rate / count);
+                                    <div class="ratings-2">
+                                        <span class="ratings-box">@actualrating/5</span>
+                                        @if (avg == 1)
+                                        {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>                                                
+                                        }
+                                        @if (avg == 2)
+                                        {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>                                                
+                                        }
+                                        @if (avg == 3)
+                                        {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>                                                
+                                        }
+                                        @if (avg == 4)
+                                        {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>                                               
+                                        }
+                                        @if (avg == 5)
+                                        {      
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                
+                                        }
+                                        <span>( @count Reviews )</span>
                                     </div>
-                                    <div class="tags">
-                                        <span><a href="#" class="btn btn-outline-primary mr-2">Cafe</a></span>
-                                        <span><a href="~/Directory/DirectoryItem/GetDirectoryCategory/1" class="btn btn-outline-primary">Hotels</a></span>
-                                    </div>
-                                    <div class="tags">
-                                        <span><a href="#" class="btn btn-outline-primary mr-2">Gym</a></span>
-                                        <span><a href="~/Directory/DirectoryItem/GetDirectoryCategory/3" class="btn btn-outline-primary">Stationery</a></span>
-                                    </div>
-                                    <div class="tags">
-                                        <span><a href="#" class="btn btn-outline-primary mr-2">Real Estates</a></span>
-                                        <span><a href="~/Directory/DirectoryItem/GetDirectoryCategory/8" class="btn btn-outline-primary">Bank</a></span>
-                                    </div>
-                                    <div class="tags no-mb">
-                                        <span><a href="#" class="btn btn-outline-primary mr-2">Conference</a></span>
-                                        <span><a href="~/Directory/DirectoryItem/GetDirectoryCategory/6" class="btn btn-outline-primary">Clinic</a></span>
-                                    </div>
+
+                                }
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <!-- main slider carousel items -->
+                    <div id="listingDetailsSlider" class="carousel listing-details-sliders slide mb-40">
+                        <div class="carousel-inner">
+                            <div class="active item carousel-item" data-slide-number="0">
+                                <img src="@Model.PhotoLogo" class="img-fluid" alt="slider-listing">
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    <!-- main slider carousel items -->
+
+                    <!-- listing description start -->
+                    <div class="listing-description mb-40">
+                        <h3 class="heading-2">
+                            Description
+                        </h3>
+                        <p>@Model.Details</p>
+                    </div>
+
+                    <!-- Location start -->
+                    <div class="location mb-50">
+                        <div class="map">
+                            <h3 class="heading-2">Location</h3>
+                            <div id="gmap"></div>
+                        </div>
+                    </div>
+
+                    <!-- Reviews start -->
+                    <div class="reviews">
+                        @{ 
+                            var countt = Model.DirectoryReviewModelList.Count();
+                        }
+                        <h3 class="heading-2">Reviews (@countt)</h3>
+                        @if (Model.DirectoryReviewModelList.Any())
+                        {
+                            foreach (var item in Model.DirectoryReviewModelList)
+                            {
+                                <ul class="comments">
+                                    <li>
+                                        <div class="comment">
+                                            <div class="comment-content">
+                                                <div class="comment-meta">
+                                                    <h5>@item.RevFirstName @item.RevLastName<span class="f-right">@Convert.ToDateTime(@item.ReviewDate).ToLongDateString()</span></h5>
+                                                </div>                                                
+                                                    <div class="ratings-2">
+                                                        @if (item.ReviewRating == 1)
+                                                        {
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                        }
+                                                        @if (item.ReviewRating == 2)
+                                                        {
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                        }
+                                                        @if (item.ReviewRating == 3)
+                                                        {
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                        }
+                                                        @if (item.ReviewRating == 4)
+                                                        {
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                        }
+                                                        @if (item.ReviewRating == 5)
+                                                        {
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                        }
+                                                    </div>
+                                               
+                                                <p>@item.Review</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            }
+                        }
+                        else
+                        {
+                            <h4>No Reviews!</h4>
+                        }
+                    </div>
+
+                    <!-- add review start -->
+                    <div class="contact-2 add-review ca mtb-50">
+                        <h3 class="heading-2 clearfix mb-0">Add Review</h3>
+@using (Html.BeginForm("AddReview", "DirectoryItem"))
+{
+    @Html.HiddenFor(model => model.DirectoryItemId)
+                        <div class="row mb-30">
+                            <div class="col-lg-8 col-md-8">
+                                <div class="add-review-text clearfix">
+                                    <span class="leave-rating-title">Your rating  for this listing : </span>
+                                        
+                                        <div class="row mb-4">
+                                            <div class="col-md-6">
+                                                <!-- Leave Rating -->
+                                                <div class="clearfix"></div>
+                                                <div class="ratings-3">
+                                                    <i class="fa fa-star" name="revmodel.ReviewRating" id="rating-5" value="5" ></i>
+                                                    <i class="fa fa-star" name="revmodel.ReviewRating" id="rating-4" value="4"></i>
+                                                    <i class="fa fa-star" name="revmodel.ReviewRating" id="rating-3" value="3"></i>
+                                                    <i class="fa fa-star" name="revmodel.ReviewRating" id="rating-2" value="2"></i>
+                                                    <i class="fa fa-star" name="revmodel.ReviewRating" id="rating-1" value="1"></i>
+
+
+
+                                                    @*<input type="radio" name="revmodel.ReviewRating" id="rating-5" value="5" />
+                                                    <label for="rating-5" class="fa fa-star"></label>
+                                                    <input type="radio" name="revmodel.ReviewRating" id="rating-4" value="4" />
+                                                    <label for="rating-4" class="fa fa-star"></label>
+                                                    <input type="radio" name="revmodel.ReviewRating" id="rating-3" value="3" />
+                                                    <label for="rating-3" class="fa fa-star"></label>
+                                                    <input type="radio" name="revmodel.ReviewRating" id="rating-2" value="2" />
+                                                    <label for="rating-2" class="fa fa-star"></label>
+                                                    <input type="radio" name="revmodel.ReviewRating" id="rating-1" value="1" />
+                                                    <label for="rating-1" class="fa fa-star"></label>*@
+                                                </div>
+
+                                            </div>
+
+                                        </div>
                                 </div>
                             </div>
                         </div>
-                    </aside>
+                        <div class="row">
+                           
+                                    <div class="form-group col-md-6">
+                                        @Html.TextBoxFor(model => model.revmodel.RevFirstName, new { @class = "form-control", @placeholder = "First Name" })
+                                    </div>
+                                
+                              
+                                    <div class="form-group col-md-6">
+                                        @Html.TextBoxFor(model => model.revmodel.RevLastName, new { @class = "form-control", @placeholder = "Last Name" })
+                                    </div>
+                              
+                               
+                                    <div class="form-group col-md-6">
+                                        @Html.TextBoxFor(model => model.revmodel.RevEmail, new { @class = "form-control", @placeholder = "Email" })
+                                    </div>
+                                
+                                <div class="form-group col-md-12">
+                                    @Html.TextAreaFor(model => model.revmodel.Review, new { @class = "form-control", @placeholder = "Review" })
+                                </div>
+                                <a href="~/Directory/DirectoryItem/AddReview">
+                                    <input type="submit" value="Submit Review" class="btn btn-md button-theme" />
+                                    @*<button type="submit" class="btn btn-primary btn-lg mt-2">Submit Review</button>*@
+                                </a>
+
+                        </div>
+}
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="sidebar-right">
+                        <!-- Our Team sidebar start -->
+                        <div class="our-agent-sidebar">
+                            <div class="p-20">
+                                <h3 class="sidebar-title">Contact Person Info</h3>
+                                <div class="s-border"></div>
+                            </div>
+                            <div id="carouselExampleIndicators5" class="carousel slide text-center" data-ride="carousel">
+                                <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <div class="team-1 team-3">                                              
+                                                    <div class="team-details text-left">
+                                                        <h5><a href="user-profile.html">@Model.ContactPersonName</a></h5>
+                                                        <div class="contact">
+                                                            <ul>
+                                                                <li>
+                                                                    <i class="flaticon-pin"></i><a>@Utility.GetPalikaName(Model.AddressPalika)-@Model.AddressWard,@Utility.GetDistrictName(Model.AddressDistrict)</a>
+                                                                </li>
+                                                                <li>
+                                                                    <i class="flaticon-mail-1"></i><a>&nbsp; @Model.Email</a>
+                                                                </li>
+                                                                <li>
+                                                                    <i class="flaticon-phone"></i><a>@Model.ContactPersonPhone</a>
+                                                                </li>
+                                                                <li>
+                                                                    <i class="flaticon-fax"></i><a></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent listing start -->
+                        <div class="widget recent-listing">
+                            <h3 class="sidebar-title">Recent Listing</h3>
+                            <div class="s-border"></div>
+                            @foreach (var item in newregister)
+                            {
+                                var eachitem = ent.tblDirectoryDetails.Where(x => x.DirectoryItemId == item.DirectoryItemId).ToList();
+                                foreach (var itm in eachitem)
+                                {
+                                    var rating = ent.tblReviews.Where(x => x.DirectoryItemId == item.DirectoryItemId).ToList();
+                                    <div class="media mb-4">
+                                        <a class="pr-3" href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId">
+                                            @if (itm.PhotoLogo != null)
+                                            {
+                                                <img src="@itm.PhotoLogo" class="media-object" alt="" />
+                                            }
+                                            else
+                                            {
+                                                <img src="~/Images/NoImage (1).png" alt="Photo" class="media-object" />
+                                            }                                        
+                                        </a>
+                                        <div class="media-body align-self-center">
+                                            <h5>
+                                                <a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId">@item.DirectoryItemName</a>
+                                            </h5>
+                                            <div class="listing-post-meta">
+                                               @Utility.GetPalikaName(Convert.ToInt32(itm.AddressPalika))- @itm.AddressWard, @Utility.GetDistrictName(Convert.ToInt32(itm.AddressDistrict)),@Utility.GetStateName(Convert.ToInt32(itm.AddressState))
+                                            </div>
+                                            @if (rating.Count > 0)
+                                            {
+                                                double count = rating.Count;
+                                                double rate = 0;
+                                                foreach (var i in rating)
+                                                {
+                                                    rate += (double)i.ReviewRating;
+                                                }
+                                                var avg = Math.Round(rate / count);
+
+                                                if (avg == 1)
+                                                {
+                                                    <span class="rating__star">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </span>
+                                                }
+                                                if (avg == 2)
+                                                {
+                                                    <span class="rating__star">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </span>
+                                                }
+                                                if (avg == 3)
+                                                {
+                                                    <span class="rating__star">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </span>
+                                                }
+                                                if (avg == 4)
+                                                {
+                                                    <span class="rating__star">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </span>
+                                                }
+                                                if (avg == 5)
+                                                {
+                                                    <span class="rating__star">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </span>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            }
+                           
+
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-        <!-- END SECTION LISTING DETAIL -->
-        
+        </div>
     </div>
+    <!-- Listing details page end -->
 
-    
-</body>
+    @Html.Partial("Footer")
 
-</html>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAus9_M-59f9xBR4JK7_dH2MdWeSGmVS6M&callback=initMap"
-        async defer></script>
-<script>
+    <!-- ARCHIVES JS -->
+    <script src="~/Assests/js/jquery-2.2.0.min.js"></script>
+    <script src="~/Assests/js/popper.min.js"></script>
+    <script src="~/Assests/js/bootstrap.min.js"></script>
+    <script src="~/Assests/js/bootstrap-submenu.js"></script>
+    <script src="~/Assests/js/rangeslider.js"></script>
+    <script src="~/Assests/js/jquery.mb.YTPlayer.js"></script>
+    <script src="~/Assests/js/bootstrap-select.min.js"></script>
+    <script src="~/Assests/js/jquery.easing.1.3.js"></script>
+    <script src="~/Assests/js/jquery.scrollUp.js"></script>
+    <script src="~/Assests/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/Assests/js/leaflet.js"></script>
+    <script src="~/Assests/js/leaflet-providers.js"></script>
+    <script src="~/Assests/js/leaflet.markercluster.js"></script>
+    <script src="~/Assests/js/moment.min.js"></script>
+    <script src="~/Assests/js/daterangepicker.min.js"></script>
+    <script src="~/Assests/js/dropzone.js"></script>
+    <script src="~/Assests/js/slick.min.js"></script>
+    <script src="~/Assests/js/jquery.filterizr.js"></script>
+    <script src="~/Assests/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Assests/js/jquery.countdown.js"></script>
+    <script src="~/Assests/js/maps.js"></script>
+    <script src="~/Assests/js/app.js"></script>
+    <script src="~/Assests/js/ie10-viewport-bug-workaround.js"></script>
+    <!-- MAIN JS -->
+    <script src="~/Scripts/JS/script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAus9_M-59f9xBR4JK7_dH2MdWeSGmVS6M&callback=initMap"
+            async defer></script>
+    <script>
 
 // Location enable to write
 $('#Manual').change(function ()
@@ -660,4 +602,8 @@ function initMap()
 
 }
 
-</script>
+    </script>
+</body>
+
+</html>
+

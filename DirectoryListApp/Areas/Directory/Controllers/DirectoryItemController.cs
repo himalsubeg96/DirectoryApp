@@ -14,16 +14,24 @@ namespace DirectoryListApp.Areas.Directory.Controllers
         // GET: Directory/DirectoryItem
         DirectoryItemProvider pro = new DirectoryItemProvider();
         DirectoryEntities ent = new DirectoryEntities();
-        public ActionResult Index(int page = 1)
+        public ActionResult Index(int? AllType = 1,int page = 1)
         {
-            int pagesize = 9;
+            int pagesize = 6;
             var model = new DirectoryModel();
-            model.DirectoryModelList = pro.NewRegistered(page, pagesize);
+            model.DirectoryModelList = pro.NewRegistered(AllType, page, pagesize);
             ViewBag.currentPage = page;
             ViewBag.TotalPages = Math.Ceiling((double)pro.GetTotalItemCount() / pagesize);
             return View(model);
         }
-
+        public ActionResult IndexN(int? AllType = 1, int page = 1)
+        {
+            int pagesize = 6;
+            var model = new DirectoryModel();
+            model.DirectoryModelList = pro.NewRegistered(AllType, page, pagesize);
+            ViewBag.currentPage = page;
+            ViewBag.TotalPages = Math.Ceiling((double)pro.GetTotalItemCount() / pagesize);
+            return PartialView("_IndexN",model);
+        }
         [HttpGet]
         public ActionResult Create()
         {
@@ -151,30 +159,55 @@ namespace DirectoryListApp.Areas.Directory.Controllers
             model.DirectoryModelList = pro.GetFilterList(category, subcategory, state, district, palika);
             return PartialView("VUC_AdvanceSearch", model);
         }
-        public ActionResult GetDirectoryCategory(int id,int page=1)
+        public ActionResult GetDirectoryCategory(int id,int? AllType = 1,int page=1)
         {
-            int pagesize = Utility.PageSize;
+            int pagesize = 6;
             var model = new DirectoryModel();
-            model.DirectoryModelList = pro.GetDirectoryCategory(id,page,pagesize);
+            model.DirectoryModelList = pro.GetDirectoryCategory(AllType, id, page, pagesize);
             ViewBag.currentPage = page;
             ViewBag.TotalPages = Math.Ceiling((double)pro.GetTotalItemCount() / pagesize);
             return View(model);
         }
-        public ActionResult GetDirectorySubCategory(int id,int page=1)
+        //public ActionResult GetDirectoryCategoryN(int? id, int? AllType = 1, int page = 1)
+        //{
+        //    int pagesize = 6;
+        //    var model = new DirectoryModel();
+        //    model.DirectoryModelList = pro.GetDirectoryCategory(AllType, id, page, pagesize);
+        //    ViewBag.currentPage = page;
+        //    ViewBag.TotalPages = Math.Ceiling((double)pro.GetTotalItemCount() / pagesize);
+        //    return PartialView("_GetDirectoryCategoryN", model);
+        //}
+        public ActionResult GetDirectorySubCategory(int id, int? AllType = 1, int page=1)
         {
-            int pagesize = Utility.PageSize;
+            int pagesize =6;
             var model = new DirectoryModel();
-            model.DirectoryModelList = pro.GetDirectorySubCategory(id,page,pagesize);
+            model.DirectoryModelList = pro.GetDirectorySubCategory(AllType, id, page, pagesize);
             ViewBag.currentPage = page;
             ViewBag.TotalPages = Math.Ceiling((double)pro.GetTotalItemCount() / pagesize);
             return View(model);
         }
+        //public ActionResult GetDirectorySubCategoryN(int id, int? AllType = 1, int page = 1)
+        //{
+        //    int pagesize = 6;
+        //    var model = new DirectoryModel();
+        //    model.DirectoryModelList = pro.GetDirectorySubCategory(AllType, id, page, pagesize);
+        //    ViewBag.currentPage = page;
+        //    ViewBag.TotalPages = Math.Ceiling((double)pro.GetTotalItemCount() / pagesize);
+        //    return PartialView("_GetDirectorySubCategoryN", model);
+        //}
         [HttpPost]
         public ActionResult AddReview(DirectoryModel model)
         {
             pro.InsertReview(model);
             return RedirectToAction("Details",new{ id = model.DirectoryItemId});
         }
-        
+        public ActionResult Category()
+        {
+            return View();
+        }
+        public ActionResult Contact()
+        {
+            return View();
+        }
     }
 }

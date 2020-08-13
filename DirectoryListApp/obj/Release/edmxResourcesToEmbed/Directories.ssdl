@@ -89,6 +89,9 @@
     <Property Name="Details" Type="nvarchar(max)" />
     <Property Name="Email" Type="nvarchar" MaxLength="150" />
     <Property Name="PhotoLogo" Type="nvarchar(max)" />
+    <Property Name="Address" Type="nvarchar" MaxLength="250" />
+    <Property Name="Latitude" Type="decimal" Precision="18" Scale="15" />
+    <Property Name="Longitude" Type="decimal" Precision="18" Scale="15" />
   </EntityType>
   <EntityType Name="tblDirectoryItem">
     <Key>

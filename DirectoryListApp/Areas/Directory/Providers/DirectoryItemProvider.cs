@@ -96,11 +96,12 @@ namespace DirectoryListApp.Areas.Directory.Providers
                                            }).OrderBy(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
             return result;
         }
-        public List<DirectoryModel> NewRegistered(int page,int pagesize)
+        public List<DirectoryModel> NewRegistered(int? Alltype,int page,int pagesize)
         {
             var baseUrl = Utility.GetUrlForImage();
             List<DirectoryModel> result = (from a in ent.tblDirectoryItems
                                            join b in ent.tblDirectoryDetails on a.DirectoryItemId equals b.DirectoryItemId
+                                           join c in ent.tblDirectoryCategories on a.DirectoryCategoryId equals c.DirectoryCategoryId
                                            select new DirectoryModel
                                            {
                                                DirectoryItemId = a.DirectoryItemId,
@@ -113,8 +114,23 @@ namespace DirectoryListApp.Areas.Directory.Providers
                                                AddressPalika = b.AddressPalika,
                                                AddressWard = b.AddressWard,
                                                PhotoLogo = baseUrl + (b.PhotoLogo ?? "/Images/NoImage (1).png"),
-                                               DirectoryPhone =b.DirectoryPhone
+                                               DirectoryPhone =b.DirectoryPhone,
+                                               CategoryLogo=baseUrl+(c.CategoryIcon?? "/Images/NoImage (1).png")
                                            }).OrderByDescending(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
+            switch (Alltype)
+            {
+                case 1:
+                    result=result.ToList();
+                    break;
+                case 2:
+                    result = result.OrderByDescending(x => x.DirectoryItemId).ToList();
+                    break;
+                case 3:
+                    result = result.OrderBy(x => x.DirectoryItemId).ToList();
+                    break;
+                default:
+                    break;
+            }
             return result;
         }
         public DirectoryModel GetDirectoryData(int Id)
@@ -194,7 +210,7 @@ namespace DirectoryListApp.Areas.Directory.Providers
             }
             return result;
         }
-        public List<DirectoryModel> GetDirectoryCategory(int Id,int page,int pagesize)
+        public List<DirectoryModel> GetDirectoryCategory(int? Alltype,int? Id,int page,int pagesize)
         {
             var baseUrl = Utility.GetUrlForImage();
             List<DirectoryModel> result = (from a in ent.tblDirectoryItems
@@ -215,10 +231,24 @@ namespace DirectoryListApp.Areas.Directory.Providers
                                                AddressWard = b.AddressWard,
                                                PhotoLogo = baseUrl + (b.PhotoLogo ?? "/Images/NoImage (1).png"),
                                                DirectoryPhone = b.DirectoryPhone
-                                           }).OrderBy(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
+                                           }).OrderByDescending(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
+            switch (Alltype)
+            {
+                case 1:
+                    result = result.ToList();
+                    break;
+                case 2:
+                    result = result.OrderByDescending(x => x.DirectoryItemId).ToList();
+                    break;
+                case 3:
+                    result = result.OrderBy(x => x.DirectoryItemId).ToList();
+                    break;
+                default:
+                    break;
+            }
             return result;
         }
-        public List<DirectoryModel> GetDirectorySubCategory(int Id,int page,int pagesize)
+        public List<DirectoryModel> GetDirectorySubCategory(int? Alltype,int Id,int page,int pagesize)
         {
             var baseUrl = Utility.GetUrlForImage();
             List<DirectoryModel> result = (from a in ent.tblDirectoryItems
@@ -239,7 +269,21 @@ namespace DirectoryListApp.Areas.Directory.Providers
                                                AddressWard = b.AddressWard,
                                                PhotoLogo = baseUrl + (b.PhotoLogo ?? "/Images/NoImage (1).png"),
                                                DirectoryPhone = b.DirectoryPhone
-                                           }).OrderBy(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
+                                           }).OrderByDescending(x => x.DirectoryItemId).Skip((page - 1) * pagesize).Take(pagesize).ToList();
+            switch (Alltype)
+            {
+                case 1:
+                    result = result.ToList();
+                    break;
+                case 2:
+                    result = result.OrderByDescending(x => x.DirectoryItemId).ToList();
+                    break;
+                case 3:
+                    result = result.OrderBy(x => x.DirectoryItemId).ToList();
+                    break;
+                default:
+                    break;
+            }
             return result;
         }
         public void InsertReview(DirectoryModel model)
