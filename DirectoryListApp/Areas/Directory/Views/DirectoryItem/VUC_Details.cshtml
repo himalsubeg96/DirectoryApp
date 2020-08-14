@@ -40,6 +40,30 @@
             height: 500px;    
             width: 680px;            
           }
+
+       
+.starrating > input {display: none;}  /* Remove radio buttons */
+
+.starrating > label:before { 
+  content: "\f005"; /* Star */
+  margin: 2px;
+  font-size: 2em;
+  font-family: FontAwesome;
+  display: inline-block; 
+}
+
+.starrating > label
+{
+  color: #222222; /* Start color when not clicked */
+}
+
+.starrating > input:checked ~ label
+{ color: #ffca08 ; } /* Set yellow color when star checked */
+
+.starrating > input:hover ~ label
+{ color: #ffca08 ;  } /* Set yellow color when star hover */
+
+
    </style>
 </head>
 <body>
@@ -49,7 +73,8 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand logo" href="#">
-                    <img src="~/Content/images/uno-logo.png" alt="logo" class="f-logo">
+                    @*<img src="~/Content/images/uno-logo.png" alt="logo" class="f-logo">*@
+                    <p>Gold Privilege Card</p>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -108,9 +133,7 @@
     </header>
     <!-- Main header end -->
     <!-- Sub banner start -->
-    <div class="sub-banner overview-bgi">
-        
-    </div>
+    <div class="sub-banner overview-bgi"></div>
     <!-- Sub Banner end -->
 
     <!-- Listing details page start -->
@@ -136,7 +159,7 @@
                                     {
                                         rate += (double)item.ReviewRating;
                                     }
-                                    var actualrating = rate / count;
+                                    var actualrating =Math.Round( rate / count,1);
                                     var avg = Math.Round(rate / count);
                                     <div class="ratings-2">
                                         <span class="ratings-box">@actualrating/5</span>
@@ -212,14 +235,17 @@
                         </h3>
                         <p>@Model.Details</p>
                     </div>
-
-                    <!-- Location start -->
-                    <div class="location mb-50">
-                        <div class="map">
-                            <h3 class="heading-2">Location</h3>
-                            <div id="gmap"></div>
+                    @if (Model.Latitude != 0 && Model.Longitude != 0)
+                    {
+                         <!-- Location start -->
+                        <div class="location mb-50">
+                            <div class="map">
+                                <h3 class="heading-2">Location</h3>
+                                <div id="gmap" style="width:700px; height: 500px;"></div>
+                            </div>
                         </div>
-                    </div>
+                    }
+                   
 
                     <!-- Reviews start -->
                     <div class="reviews">
@@ -310,15 +336,15 @@
                                                 <!-- Leave Rating -->
                                                 <div class="clearfix"></div>
                                                 <div class="ratings-3">
-                                                    <i class="fa fa-star" name="revmodel.ReviewRating" id="rating-5" value="5" ></i>
+                                                    @*<i class="fa fa-star" name="revmodel.ReviewRating" id="rating-5" value="5" ></i>
                                                     <i class="fa fa-star" name="revmodel.ReviewRating" id="rating-4" value="4"></i>
                                                     <i class="fa fa-star" name="revmodel.ReviewRating" id="rating-3" value="3"></i>
                                                     <i class="fa fa-star" name="revmodel.ReviewRating" id="rating-2" value="2"></i>
-                                                    <i class="fa fa-star" name="revmodel.ReviewRating" id="rating-1" value="1"></i>
+                                                    <i class="fa fa-star" name="revmodel.ReviewRating" id="rating-1" value="1"></i>*@
 
 
 
-                                                    @*<input type="radio" name="revmodel.ReviewRating" id="rating-5" value="5" />
+                                                    @*<input type="radio" name="revmodel.ReviewRating" id="rating-5" value="1" />
                                                     <label for="rating-5" class="fa fa-star"></label>
                                                     <input type="radio" name="revmodel.ReviewRating" id="rating-4" value="4" />
                                                     <label for="rating-4" class="fa fa-star"></label>
@@ -326,12 +352,20 @@
                                                     <label for="rating-3" class="fa fa-star"></label>
                                                     <input type="radio" name="revmodel.ReviewRating" id="rating-2" value="2" />
                                                     <label for="rating-2" class="fa fa-star"></label>
-                                                    <input type="radio" name="revmodel.ReviewRating" id="rating-1" value="1" />
+                                                    <input type="radio" name="revmodel.ReviewRating" id="rating-1" value="5" />
                                                     <label for="rating-1" class="fa fa-star"></label>*@
-                                                </div>
+                                                    <div class="starrating risingstar d-flex justify-content-center flex-row-reverse">
+                                                        <input type="radio" id="star5" name="revmodel.ReviewRating" value="5" /><label for="star5" title="5 star"></label>
+                                                        <input type="radio" id="star4" name="revmodel.ReviewRating" value="4" /><label for="star4" title="4 star"></label>
+                                                        <input type="radio" id="star3" name="revmodel.ReviewRating" value="3" /><label for="star3" title="3 star"></label>
+                                                        <input type="radio" id="star2" name="revmodel.ReviewRating" value="2" /><label for="star2" title="2 star"></label>
+                                                        <input type="radio" id="star1" name="revmodel.ReviewRating" value="1" /><label for="star1" title="1 star"></label>
+                                           
+
+                                                    </div>
 
                                             </div>
-
+                                                </div>
                                         </div>
                                 </div>
                             </div>
@@ -541,34 +575,20 @@
     <script>
 
 // Location enable to write
-$('#Manual').change(function ()
-{
-    if ($(this).prop("checked") == true)
-    {
-        $('#Latitude').attr('readonly', false);
-        $('#Longitude').attr('readonly', false);
-    }
-    else if ($(this).prop("checked") == false)
-    {
-        $('#Latitude').attr('readonly', true).val("");
-        $('#Longitude').attr('readonly', true).val("");
-    }
-});
-
 // Get Latitude and Longitude for using google map
 var map;
 function initMap()
 {
-    var latitude = $('#Latitude').val(); // YOUR LATITUDE VALUE
-    var longitude = $('#Longitude').val(); // YOUR LONGITUDE VALUE
+    var latitude =parseFloat( @Model.Latitude); // YOUR LATITUDE VALUE
+    var longitude =parseFloat( @Model.Longitude); // YOUR LONGITUDE VALUE
     debugger;
-    if (latitude == "0" && longitude == "0") {
-        latitude = 27.707575175;
-        longitude = 85.321166278;
-    } else {
-        latitude = parseFloat(latitude);
-        longitude = parseFloat(longitude);
-    }
+    //if (latitude == "0" && longitude == "0") {
+    //    latitude = 27.707575175;
+    //    longitude = 85.321166278;
+    //} else {
+    //    latitude = parseFloat(latitude);
+    //    longitude = parseFloat(longitude);
+    //}
 
     var myLatLng = { lat: latitude, lng: longitude };
 

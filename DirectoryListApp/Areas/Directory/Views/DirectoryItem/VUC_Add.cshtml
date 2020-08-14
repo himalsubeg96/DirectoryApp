@@ -309,16 +309,16 @@ $('#Manual').change(function ()
 var map;
 function initMap()
 {
-    var latitude = $('#Latitude').val(); // YOUR LATITUDE VALUE
-    var longitude = $('#Longitude').val(); // YOUR LONGITUDE VALUE
+    var latitude = 27.707575175; // YOUR LATITUDE VALUE
+    var longitude = 85.321166278; // YOUR LONGITUDE VALUE
     debugger;
-    if (latitude == "0" && longitude == "0") {
-        latitude = 27.707575175;
-        longitude = 85.321166278;
-    } else {
+    //if (latitude == "" && longitude == "") {
+    //    latitude = 27.707575175;
+    //    longitude = 85.321166278;
+    //} else {
         latitude = parseFloat(latitude);
         longitude = parseFloat(longitude);
-    }
+    //}
 
     var myLatLng = { lat: latitude, lng: longitude };
 

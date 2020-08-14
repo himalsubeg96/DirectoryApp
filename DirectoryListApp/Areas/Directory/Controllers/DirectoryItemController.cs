@@ -137,15 +137,7 @@ namespace DirectoryListApp.Areas.Directory.Controllers
         public ActionResult SearchList(string anydata)
         {
             var model = new DirectoryModel();
-
-            model.DirectoryModelList = ent.tblDirectoryItems.Where(x => x.DirectoryItemName.Contains(anydata)).Select(x => new DirectoryModel
-            {
-                DirectoryItemId = x.DirectoryItemId,
-                DirectoryItemName = x.DirectoryItemName,
-                DirectoryCategoryId = x.DirectoryCategoryId,
-                DirectorySubCategoryId = x.DirectorySubCategoryId,
-                Specification = x.Specification,
-            }).ToList();
+            model.DirectoryModelList = pro.GetSearchItem(anydata);
             return PartialView(model);
         }
         public ActionResult AdvanceSearch()

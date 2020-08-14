@@ -169,6 +169,41 @@ namespace DirectoryListApp.Areas.Directory.Providers
                                      }).SingleOrDefault();
             return result;
         }
+        public List<DirectoryModel> GetSearchItem(string anydata)
+        {
+            var baseUrl = Utility.GetUrlForImage();
+            List<DirectoryModel> result= (from a in ent.tblDirectoryItems
+                                          join b in ent.tblDirectoryDetails
+                                          on a.DirectoryItemId equals b.DirectoryItemId
+                                          where a.DirectoryItemName.Contains(anydata)
+                                          select new DirectoryModel
+                                          {
+                                              DirectoryItemId = a.DirectoryItemId,
+                                              DirectoryItemName = a.DirectoryItemName,
+                                              DirectoryCategoryId = a.DirectoryCategoryId,
+                                              DirectorySubCategoryId = a.DirectorySubCategoryId,
+                                              Specification = a.Specification,
+
+                                              DirectoryDetailsId = b.DirectoryDetailsId,
+                                              MapDirectoryItemId = (int)b.DirectoryItemId,
+                                              AddressState = b.AddressState,
+                                              AddressDistrict = b.AddressDistrict,
+                                              AddressPalika = b.AddressPalika,
+                                              AddressWard = b.AddressWard,
+                                              DirectoryPhone = b.DirectoryPhone,
+                                              PAN = b.PAN,
+                                              VAT = b.VAT,
+                                              ContactPersonName = b.ContactPersonName,
+                                              ContactPersonPhone = b.ContactPersonPhone,
+                                              Details = b.Details,
+                                              Email = b.Email,
+                                              PhotoLogo = baseUrl + (b.PhotoLogo ?? "/Images/NoImage (1).png"),
+                                              Address = b.Address,
+                                              Latitude = b.Latitude ?? 0,
+                                              Longitude = b.Longitude ?? 0
+                                          }).ToList();
+            return result;
+        }
         public List<DirectoryModel> GetFilterList(int? category, int? subcategory, int? state, int? district, int? palika)
         {
             var baseUrl = Utility.GetUrlForImage();

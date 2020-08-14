@@ -388,6 +388,20 @@
         });
 
     </script>
+    <script>
+    $('#filter').on('click', '#SearchBtn', function () {
+        debugger;
+        var href = '/Directory/DirectoryItem/SearchList';
+        //var url = href;
+
+        var anydata = $('#SearchId').val();
+        $.get(href, { anydata }, function (data) {
+            debugger;
+            $('#ResultDisplay').html(data);
+        })
+    })
+
+    </script>
 </body>
 
 </html>

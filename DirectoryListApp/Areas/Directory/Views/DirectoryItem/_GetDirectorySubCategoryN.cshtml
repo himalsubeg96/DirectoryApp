@@ -5,7 +5,7 @@
     {
         foreach (var item in Model.DirectoryModelList)
         {
-            <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="listing-item-box">
                     <div class="listing-thumbnail">
                         <a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId" class="listing-photo">
@@ -14,10 +14,9 @@
                         </a>
                     </div>
                     <div class="detail">
-                        <a class="icon">
-                            @*<img src="@item.CategoryLogo" alt="category-photo" />*@
+                        @*<a class="icon">
                             <i class="flaticon-cook"></i>
-                        </a>
+                        </a>*@
                         <h3 class="title">
                             <a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId">@item.DirectoryItemName</a>
                         </h3>

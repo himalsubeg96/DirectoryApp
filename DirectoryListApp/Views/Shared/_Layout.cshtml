@@ -35,7 +35,7 @@
 <body>
     <div class="page_loader"></div>
 
-    @Html.Partial("Header")    
+    @Html.Partial("Header")       
     
     <div class="iwrapper" style="margin-bottom:100px;">
         <div class="row">
@@ -49,9 +49,7 @@
                 </div>
                 
                 <div class="latest">
-                    <div class="float-right">
-                        <a class="btn btn-outline-primary" href="~/Directory/DirectoryItem/Create">Free Registration</a>
-                    </div>
+                   
                     <!-- Main title -->
                     <div class="main-title">
                         <h1>Latest Listings</h1>
@@ -86,10 +84,9 @@
                             </a>
                         </div>
                         <div class="detail">
-                            <a class="icon">
-                                @*<img src="@item.CategoryLogo" alt="category-photo" />*@
+                            @*<a class="icon">
                                 <i class="flaticon-cook"></i>
-                            </a>
+                            </a>*@
                             <h3 class="title">
                                 <a href="~/Directory/DirectoryItem/Details/@item.DirectoryItemId">@item.DirectoryItemName</a>
                             </h3>
